@@ -18,6 +18,7 @@ const GhostButton = styled.button(
   justify-content: center;
   align-items: center;
   margin-left: auto;
+  cursor: pointer;
   &:hover {
     background-color: ${theme.colors.secondary};
     color: ${theme.colors.background}
