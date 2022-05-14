@@ -3,6 +3,10 @@ import { useThemeContext } from "./ThemeContext";
 import { ValueIcon } from "@radix-ui/react-icons";
 import styled from "@emotion/styled";
 
+const saveToLocalStorage = (mode: string) => {
+  localStorage.setItem("theme-mode", mode);
+};
+
 const GhostButton = styled.button(
   ({ theme }) => `
   all: unset;
@@ -35,7 +39,9 @@ const ColorModeToggle: React.FC = () => {
   return (
     <GhostButton
       onClick={() => {
-        setMode(mode === "light" ? "dark" : "light");
+        const nextMode = mode === "light" ? "dark" : "light";
+        setMode(nextMode);
+        saveToLocalStorage(nextMode);
       }}
     >
       <ValueIcon />

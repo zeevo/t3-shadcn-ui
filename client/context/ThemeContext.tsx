@@ -7,10 +7,20 @@ const useThemeContext = () => {
 };
 
 const ThemeContextProvider: React.FC<{ children: any }> = ({ children }) => {
-  const prefersDark =
+  let prefersDark: boolean | null = false;
+  let localStorageTheme: string | null = null;
+  prefersDark =
     typeof window !== undefined ||
     window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [mode, setTheme] = useState(prefersDark ? "dark" : "light");
+
+  try {
+    localStorageTheme = localStorage.getItem("theme-mode");
+  } catch (e) {}
+
+  const [mode, setTheme] = useState(
+    localStorageTheme ? localStorageTheme : prefersDark ? "dark" : "light"
+  );
+
   return (
     <ThemeContext.Provider value={[mode, setTheme]}>
       {children}
