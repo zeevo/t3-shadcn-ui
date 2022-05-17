@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 const ThemeContext = createContext<[string, Function]>(["light", () => {}]);
 
@@ -17,9 +17,7 @@ const ThemeContextProvider: React.FC<{ children: any }> = ({ children }) => {
     localStorageTheme = localStorage.getItem("theme-mode");
   } catch (e) {}
 
-  const [mode, setTheme] = useState(
-    localStorageTheme ? localStorageTheme : prefersDark ? "dark" : "light"
-  );
+  const [mode, setTheme] = useState(prefersDark ? "dark" : "light");
 
   return (
     <ThemeContext.Provider value={[mode, setTheme]}>

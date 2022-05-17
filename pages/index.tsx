@@ -7,6 +7,10 @@ const Flex = styled.div`
   display: flex;
 `;
 
+const MarginRight = styled.div`
+  margin-right: 5px;
+`;
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -22,17 +26,38 @@ const Home: NextPage = () => {
       </p>
       <h2>Button</h2>
       <h3>Text</h3>
-      <Button variant="text">
-        <BellIcon />
-      </Button>
+      <Flex>
+        <MarginRight>
+          <Button variant="text">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="text" fillWidth>
+          <BellIcon />
+        </Button>
+      </Flex>
       <h3>Contained</h3>
-      <Button variant="contained">
-        <BellIcon />
-      </Button>
+      <Flex>
+        <MarginRight>
+          <Button variant="contained">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="contained" fillWidth>
+          <BellIcon />
+        </Button>
+      </Flex>
       <h3>Outlined</h3>
-      <Button variant="outlined">
-        <BellIcon />
-      </Button>
+      <Flex>
+        <MarginRight>
+          <Button variant="outlined">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="outlined" fillWidth>
+          <BellIcon />
+        </Button>
+      </Flex>
     </div>
   );
 };

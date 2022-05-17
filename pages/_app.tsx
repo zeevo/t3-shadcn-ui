@@ -14,8 +14,9 @@ import "../styles/globals.css";
 // to create a new theme object
 const getTheme = (mode: string): Theme => {
   const theme = merge({}, baseTheme, {
-    colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
+    colors: { ...get(baseTheme.colors.modes, mode, baseTheme.colors), mode },
   });
+  console.log(theme);
   return theme;
 };
 

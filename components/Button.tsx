@@ -6,25 +6,25 @@ const getVariantStyles = (variant: string, theme: Theme, invert?: boolean) => {
     case "contained":
       return {
         colorHover: theme.colors.text,
-        color: theme.colors.text,
+        color: theme.colors.background,
         bgHover: theme.colors.background,
-        bg: theme.colors.background,
+        bg: theme.colors.text,
         activeFocus: theme.colors.secondary,
         borderColor: theme.colors.text,
       };
     case "outlined":
       return {
         colorHover: theme.colors.text,
-        color: theme.colors.background,
+        color: theme.colors.text,
         bgHover: theme.colors.secondary,
         bg: "inherit",
         activeFocus: theme.colors.secondary,
-        borderColor: theme.colors.secondary,
+        borderColor: theme.colors.text,
       };
     default: // "text"
       return {
         colorHover: theme.colors.text,
-        color: theme.colors.background,
+        color: theme.colors.text,
         bgHover: theme.colors.secondary,
         bg: "inherit",
         activeFocus: theme.colors.secondary,
