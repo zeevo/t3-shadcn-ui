@@ -1,3 +1,5 @@
+import { slate, slateDark, blue, blueDark } from "@radix-ui/colors";
+
 const theme = {
   space: [0, 4, 8, 15, 32, 64],
   fonts: {
@@ -14,28 +16,18 @@ const theme = {
     heading: 1.125,
   },
   colors: {
-    text: "#f2f2f2",
-    background: "#151515",
-    primary: "#4CC9F0",
-    secondary: "#0064ab",
     modes: {
       dark: {
-        text: "#f2f2f2",
-        background: "#151515",
-        primary: "#4CC9F0",
-        secondary: "#0064ab",
+        text: slateDark.slate12,
+        background: slateDark.slate1,
+        primary: blueDark.blue3,
+        secondary: slateDark.slate2,
       },
       light: {
-        text: "#333",
-        background: "#EEEEEE",
-        primary: "#0077cc",
-        secondary: "#004678",
-      },
-      cyber: {
-        text: "#00ff2b",
-        background: "#000",
-        primary: "#FF00FF",
-        secondary: "#00ff2b",
+        text: slate.slate12,
+        background: slate.slate1,
+        primary: blue.blue3,
+        secondary: slate.slate4,
       },
     },
   },
