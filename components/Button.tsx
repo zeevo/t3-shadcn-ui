@@ -1,45 +1,75 @@
 import { Theme } from "@emotion/react";
 import styled from "@emotion/styled";
+import { AnchorHTMLAttributes } from "react";
 
-const getVariantStyles = (variant: string, theme: Theme, invert?: boolean) => {
+const getVariantStyles = ({
+  variant,
+  theme,
+  borderColor,
+}: {
+  variant: string;
+  theme: Theme;
+  invert?: boolean;
+  borderColor?: string;
+  textColor?: string;
+}) => {
   switch (variant) {
     case "contained":
       return {
-        colorHover: theme.colors.text,
-        color: theme.colors.background,
-        bgHover: theme.colors.background,
+        colorHover: theme.colors.bg,
+        color: theme.colors.bg,
+        bgHover: theme.colors.soft,
         bg: theme.colors.text,
-        activeFocus: theme.colors.secondary,
-        borderColor: theme.colors.text,
+        activeFocus: theme.colors.uiActive,
+        borderColor: borderColor ? borderColor : theme.colors.text,
       };
     case "outlined":
       return {
         colorHover: theme.colors.text,
         color: theme.colors.text,
-        bgHover: theme.colors.secondary,
-        bg: "inherit",
-        activeFocus: theme.colors.secondary,
-        borderColor: theme.colors.text,
+        bgHover: theme.colors.subtleBg,
+        bg: theme.colors.bg,
+        activeFocus: theme.colors.uiActive,
+        borderColor: borderColor ? borderColor : theme.colors.text,
       };
     default: // "text"
       return {
         colorHover: theme.colors.text,
         color: theme.colors.text,
-        bgHover: theme.colors.secondary,
-        bg: "inherit",
-        activeFocus: theme.colors.secondary,
+        bgHover: theme.colors.uiHovered,
+        bg: theme.colors.subtleBg,
+        activeFocus: theme.colors.uiActive,
+        // borderColor: borderColor ? borderColor : theme.colors.text,
       };
   }
 };
 
-const GhostButton = styled.button<{
-  invert?: boolean;
-  fillWidth?: boolean;
-  variant?: string;
-}>(({ theme, invert, fillWidth, variant = "text" }) => {
-  const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
-    getVariantStyles(variant, theme, invert);
-  return `
+const GhostButton = styled.button<
+  {
+    invert?: boolean;
+    fillWidth?: boolean;
+    variant?: string;
+    borderColor?: string;
+    color?: string;
+  } & AnchorHTMLAttributes<{}>
+>(
+  ({
+    theme,
+    invert,
+    fillWidth,
+    variant = "text",
+    borderColor: bcolor,
+    color: vcolor,
+  }) => {
+    const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
+      getVariantStyles({
+        variant,
+        theme,
+        invert,
+        borderColor: bcolor,
+        textColor: vcolor,
+      });
+    return `
     all: unset;
     flex: 0 0 auto;
     height: 45px;
@@ -55,7 +85,7 @@ const GhostButton = styled.button<{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    ${borderColor ? `border: 1px solid ${borderColor}` : ""};
+    ${borderColor ? `border: 3px solid ${borderColor}` : ""};
     &:hover {
       background-color: ${bgHover};
       color: ${colorHover}
@@ -67,6 +97,7 @@ const GhostButton = styled.button<{
       transform: scale(0.85);
     }
   `;
-});
+  }
+);
 
 export default GhostButton;
