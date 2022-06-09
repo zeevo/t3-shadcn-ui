@@ -6,6 +6,12 @@ const Container = styled.div`
   margin: 0 10px 10px 10px;
 `;
 
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,14 +20,10 @@ const Flex = styled.div`
   margin: auto;
 `;
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const Main = styled.main`
   width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
 `;
 
 const Auto = styled.div`

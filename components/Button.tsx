@@ -70,8 +70,6 @@ const GhostButton = styled.button<
         textColor: vcolor,
       });
     return `
-    all: unset;
-    flex: 0 0 auto;
     height: 45px;
     border-radius: 8px;
     font-size: 15px;
@@ -94,7 +92,7 @@ const GhostButton = styled.button<
       box-shadow: 0 0 0 2px ${activeFocus};
     }
     &:active {
-      transform: scale(0.85);
+      transform: scale(0.95);
     }
   `;
   }

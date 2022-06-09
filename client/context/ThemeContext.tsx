@@ -1,6 +1,8 @@
 import { useState, createContext, useContext, useEffect } from "react";
 
-const ThemeContext = createContext<[string, Function]>(["light", () => {}]);
+type Theme = "light" | "dark";
+
+const ThemeContext = createContext<[Theme, Function]>(["light", () => {}]);
 
 const useThemeContext = () => {
   return useContext(ThemeContext);
@@ -8,20 +10,26 @@ const useThemeContext = () => {
 
 const ThemeContextProvider: React.FC<{ children: any }> = ({ children }) => {
   let prefersDark: boolean | null = false;
-  let localStorageTheme: string | null = null;
   prefersDark =
     typeof window !== undefined ||
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  try {
-    localStorageTheme = localStorage.getItem("theme-mode");
-  } catch (e) {}
+  const [mode, setTheme] = useState<Theme>(prefersDark ? "dark" : "light");
 
-  const [mode, setTheme] = useState(prefersDark ? "dark" : "light");
+  const [themeLoaded, setThemeLoaded] = useState(false);
+  useEffect(() => {
+    const localStorageTheme = localStorage.getItem("theme-mode") as Theme;
+    if (localStorageTheme) {
+      setTheme(localStorageTheme);
+    }
+    setThemeLoaded(true);
+  }, [setThemeLoaded]);
+
+  console.log(mode);
 
   return (
     <ThemeContext.Provider value={[mode, setTheme]}>
-      {children}
+      {themeLoaded && children}
     </ThemeContext.Provider>
   );
 };
