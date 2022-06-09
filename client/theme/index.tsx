@@ -1,4 +1,4 @@
-import { mauve, mauveDark, red, redDark } from "@radix-ui/colors";
+import { slate, slateDark, blue, blueDark } from "@radix-ui/colors";
 
 const getColors = (
   color: any,
@@ -17,7 +17,7 @@ const getColors = (
   solid: color[`${name}9`],
   solidHover: color[`${name}10`],
   subtext: color[`${name}11`],
-  text: color[`${name}12`],
+  text: grayScale[`${grayName}12`],
 });
 
 const theme = {
@@ -37,8 +37,8 @@ const theme = {
   },
   colors: {
     modes: {
-      dark: getColors(redDark, "red", mauveDark, "mauve"),
-      light: getColors(red, "red", mauve, "mauve"),
+      dark: getColors(blueDark, "blue", slateDark, "slate"),
+      light: getColors(blue, "blue", slate, "slate"),
     },
   },
 };

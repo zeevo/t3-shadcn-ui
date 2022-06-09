@@ -8,7 +8,7 @@ const Globals: React.FC = () => {
       styles={css`
         body {
           color: ${theme.colors.text};
-          background: ${theme.colors.background};
+          background: ${theme.colors.bg};
         }
         svg {
           display: block;

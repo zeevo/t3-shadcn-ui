@@ -39,7 +39,7 @@ const getVariantStyles = ({
         bgHover: theme.colors.uiHovered,
         bg: theme.colors.subtleBg,
         activeFocus: theme.colors.uiActive,
-        // borderColor: borderColor ? borderColor : theme.colors.text,
+        borderColor: borderColor ? borderColor : "rgba(0,0,0,0)",
       };
   }
 };
@@ -83,7 +83,7 @@ const GhostButton = styled.button<
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    ${borderColor ? `border: 3px solid ${borderColor}` : ""};
+    ${borderColor ? `border: 2px solid ${borderColor}` : ""};
     &:hover {
       background-color: ${bgHover};
       color: ${colorHover}
