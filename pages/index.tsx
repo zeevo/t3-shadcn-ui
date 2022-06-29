@@ -58,6 +58,17 @@ const Home: NextPage = () => {
           <BellIcon />
         </Button>
       </Flex>
+      <h3>Soft</h3>
+      <Flex>
+        <MarginRight>
+          <Button variant="soft">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="soft" fillWidth>
+          <BellIcon />
+        </Button>
+      </Flex>
     </div>
   );
 };

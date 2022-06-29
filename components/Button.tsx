@@ -33,14 +33,24 @@ const getVariantStyles = ({
         activeFocus: theme.colors.uiActive,
         borderColor: borderColor ? borderColor : theme.colors.text,
       };
-    default: // "text"
+    case "soft": {
       return {
         colorHover: theme.colors.text,
         color: theme.colors.text,
         bgHover: theme.colors.uiHovered,
         bg: theme.colors.subtleBg,
         activeFocus: theme.colors.uiActive,
-        // borderColor: borderColor ? borderColor : theme.colors.text,
+        borderColor: theme.colors.subtleBg,
+      };
+    }
+    default: // "text"
+      return {
+        colorHover: theme.colors.text,
+        color: theme.colors.text,
+        bgHover: theme.colors.uiHovered,
+        bg: theme.colors.bg,
+        activeFocus: theme.colors.uiActive,
+        borderColor: theme.colors.bg,
       };
   }
 };
@@ -66,6 +76,7 @@ const GhostButton = styled.button<
     color: vcolor,
     onHover,
   } = props;
+  console.log(theme);
   const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
     getVariantStyles({
       variant,
@@ -74,6 +85,7 @@ const GhostButton = styled.button<
       borderColor: bcolor,
       textColor: vcolor,
     });
+
   return {
     flex: "0 0 auto",
     minHeight: "45px",
@@ -82,14 +94,15 @@ const GhostButton = styled.button<
     lineHeight: 1,
     transition: "all 100ms",
     minWidth: "45px",
-    fillWidth: fillWidth ? "width: 100%" : "",
+    width: fillWidth ? "100%" : "",
     backgroundColor: bg,
     color: color,
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
     cursor: "pointer",
-    border: borderColor ? `3px solid ${borderColor}` : "",
+    borderRadius: "10px",
+    border: borderColor ? `2px solid ${borderColor}` : "",
     "&:hover": {
       backgroundColor: bgHover,
       color: colorHover,
