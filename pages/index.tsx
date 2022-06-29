@@ -32,29 +32,7 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="text" fillWidth>
-          <BellIcon />
-        </Button>
-      </Flex>
-      <h3>Contained</h3>
-      <Flex>
-        <MarginRight>
-          <Button variant="contained">
-            <BellIcon />
-          </Button>
-        </MarginRight>
-        <Button variant="contained" fillWidth>
-          <BellIcon />
-        </Button>
-      </Flex>
-      <h3>Outlined</h3>
-      <Flex>
-        <MarginRight>
-          <Button variant="outlined">
-            <BellIcon />
-          </Button>
-        </MarginRight>
-        <Button variant="outlined" fillWidth>
+        <Button variant="text" flex={1}>
           <BellIcon />
         </Button>
       </Flex>
@@ -65,7 +43,29 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="soft" fillWidth>
+        <Button variant="soft" flex={1}>
+          <BellIcon />
+        </Button>
+      </Flex>
+      <h3>Outlined</h3>
+      <Flex>
+        <MarginRight>
+          <Button variant="outlined">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="outlined" flex={1}>
+          <BellIcon />
+        </Button>
+      </Flex>
+      <h3>Contained</h3>
+      <Flex>
+        <MarginRight>
+          <Button variant="contained">
+            <BellIcon />
+          </Button>
+        </MarginRight>
+        <Button variant="contained" flex={1}>
           <BellIcon />
         </Button>
       </Flex>

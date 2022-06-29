@@ -1,7 +1,14 @@
 import { Theme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnchorHTMLAttributes } from "react";
-import { border, layout, BorderProps, LayoutProps } from "styled-system";
+import {
+  border,
+  layout,
+  BorderProps,
+  LayoutProps,
+  flex,
+  FlexProps,
+} from "styled-system";
 
 const getVariantStyles = ({
   variant,
@@ -65,7 +72,8 @@ const GhostButton = styled.button<
     onHover?: any;
   } & AnchorHTMLAttributes<{}> &
     BorderProps &
-    LayoutProps
+    LayoutProps &
+    FlexProps
 >((props) => {
   const {
     theme,
@@ -116,6 +124,7 @@ const GhostButton = styled.button<
     },
     ...border(props),
     ...layout(props),
+    ...flex(props),
   };
 });
 
