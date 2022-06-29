@@ -1,6 +1,7 @@
 import { Theme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnchorHTMLAttributes } from "react";
+import { border, layout, BorderProps, LayoutProps } from "styled-system";
 
 const getVariantStyles = ({
   variant,
@@ -39,7 +40,7 @@ const getVariantStyles = ({
         bgHover: theme.colors.uiHovered,
         bg: theme.colors.subtleBg,
         activeFocus: theme.colors.uiActive,
-        borderColor: borderColor ? borderColor : "rgba(0,0,0,0)",
+        // borderColor: borderColor ? borderColor : theme.colors.text,
       };
   }
 };
@@ -51,51 +52,58 @@ const GhostButton = styled.button<
     variant?: string;
     borderColor?: string;
     color?: string;
-  } & AnchorHTMLAttributes<{}>
->(
-  ({
+    onHover?: any;
+  } & AnchorHTMLAttributes<{}> &
+    BorderProps &
+    LayoutProps
+>((props) => {
+  const {
     theme,
     invert,
     fillWidth,
     variant = "text",
     borderColor: bcolor,
     color: vcolor,
-  }) => {
-    const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
-      getVariantStyles({
-        variant,
-        theme,
-        invert,
-        borderColor: bcolor,
-        textColor: vcolor,
-      });
-    return `
-    height: 45px;
-    border-radius: 8px;
-    font-size: 15px;
-    line-height: 1;
-    transition: all 100ms;
-    min-width: 45px;
-    ${fillWidth ? "width: 100%" : ""};
-    background-color: ${bg};
-    color: ${color};
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    ${borderColor ? `border: 2px solid ${borderColor}` : ""};
-    &:hover {
-      background-color: ${bgHover};
-      color: ${colorHover}
-    }
-    &:active, &:focus {
-      box-shadow: 0 0 0 2px ${activeFocus};
-    }
-    &:active {
-      transform: scale(0.95);
-    }
-  `;
-  }
-);
+    onHover,
+  } = props;
+  const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
+    getVariantStyles({
+      variant,
+      theme,
+      invert,
+      borderColor: bcolor,
+      textColor: vcolor,
+    });
+  return {
+    flex: "0 0 auto",
+    minHeight: "45px",
+    padding: "15px",
+    fontSize: "15px",
+    lineHeight: 1,
+    transition: "all 100ms",
+    minWidth: "45px",
+    fillWidth: fillWidth ? "width: 100%" : "",
+    backgroundColor: bg,
+    color: color,
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer",
+    border: borderColor ? `3px solid ${borderColor}` : "",
+    "&:hover": {
+      backgroundColor: bgHover,
+      color: colorHover,
+      ...onHover,
+    },
+    "&:active, &:focus": {
+      boxShadow: `0 0 0 2px ${activeFocus}`,
+    },
+    "&:active": {
+      transform: "scale(0.95)",
+    },
+    ...border(props),
+    ...layout(props),
+  };
+});
 
 export default GhostButton;
