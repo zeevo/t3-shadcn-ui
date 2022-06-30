@@ -16,7 +16,6 @@ const getTheme = (mode: string): Theme => {
   const theme = merge({}, baseTheme, {
     colors: { ...get(baseTheme.colors.modes, mode, baseTheme.colors), mode },
   });
-  console.log(theme);
   return theme;
 };
 
