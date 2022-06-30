@@ -1,7 +1,7 @@
 import { useThemeContext } from "./ThemeContext";
 
 import { SunIcon, MoonIcon } from "@radix-ui/react-icons";
-import Button from "../../components/Button";
+import Button from "../components/Button";
 
 const saveToLocalStorage = (mode: string) => {
   localStorage.setItem("theme-mode", mode);

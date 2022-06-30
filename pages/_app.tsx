@@ -6,8 +6,8 @@ import ThemeContextProvider, {
   Consumer as ThemeContextConsumer,
 } from "../client/context/ThemeContext";
 import baseTheme from "../client/theme";
-import Globals from "../components/Globals";
-import Layout from "../components/Layout";
+import Globals from "../client/components/Globals";
+import Layout from "../client/components/Layout";
 import "../styles/globals.css";
 
 // merge the color mode with the base theme

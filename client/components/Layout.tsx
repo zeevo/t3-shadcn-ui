@@ -1,6 +1,6 @@
 import Helmet from "react-helmet";
 import styled from "@emotion/styled";
-import ColorModeToggle from "../client/context/ColorModeToggle";
+import ColorModeToggle from "../context/ColorModeToggle";
 
 const Container = styled.div`
   margin: 0 10px 10px 10px;

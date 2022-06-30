@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
-import Button from "../components/Button";
+import Button from "../client/components/Button";
 
 const Flex = styled.div`
   display: flex;
