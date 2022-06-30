@@ -8,7 +8,7 @@ import ThemeContextProvider, {
 import baseTheme from "../client/theme";
 import Globals from "../client/components/Globals";
 import Layout from "../client/components/Layout";
-import "../styles/globals.css";
+import "../client/styles/globals.css";
 
 // merge the color mode with the base theme
 // to create a new theme object
