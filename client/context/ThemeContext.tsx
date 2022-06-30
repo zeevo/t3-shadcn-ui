@@ -25,8 +25,6 @@ const ThemeContextProvider: React.FC<{ children: any }> = ({ children }) => {
     setThemeLoaded(true);
   }, [setThemeLoaded]);
 
-  console.log(mode);
-
   return (
     <ThemeContext.Provider value={[mode, setTheme]}>
       {themeLoaded && children}
