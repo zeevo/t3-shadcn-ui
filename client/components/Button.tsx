@@ -62,6 +62,16 @@ const getVariantStyles = ({
   }
 };
 
+interface GhostButtonProps {
+  theme: any;
+  invert: any;
+  fillWidth: any;
+  variant?: "text" | "soft" | "outlined" | "contained";
+  borderColor: any;
+  color: any;
+  onHover: any;
+}
+
 const GhostButton = styled.button<
   {
     invert?: boolean;
@@ -74,7 +84,7 @@ const GhostButton = styled.button<
     BorderProps &
     LayoutProps &
     FlexProps
->((props) => {
+>((props: GhostButtonProps) => {
   const {
     theme,
     invert,
@@ -84,7 +94,6 @@ const GhostButton = styled.button<
     color: vcolor,
     onHover,
   } = props;
-  console.log(theme);
   const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
     getVariantStyles({
       variant,

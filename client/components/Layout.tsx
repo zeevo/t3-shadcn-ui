@@ -35,9 +35,9 @@ const Layout = (props: any) => {
   return (
     <Container>
       <Flex>
-        <Helmet defaultTitle="Radix Starter" />
+        <Helmet defaultTitle="Next Starter" />
         <Nav>
-          <h1>Radix Starter</h1>
+          <h1>Next Starter</h1>
           <ColorModeToggle />
         </Nav>
         <Main>
