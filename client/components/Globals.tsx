@@ -13,6 +13,9 @@ const Globals: React.FC = () => {
         svg {
           display: block;
         }
+        button {
+          border-width: 0px;
+        }
       `}
     />
   );

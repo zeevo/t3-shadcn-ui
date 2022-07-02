@@ -55,22 +55,12 @@ const getVariantStyles = ({
         colorHover: theme.colors.text,
         color: theme.colors.text,
         bgHover: theme.colors.uiHovered,
-        bg: theme.colors.bg,
+        bg: "inherit",
         activeFocus: theme.colors.uiActive,
         borderColor: theme.colors.bg,
       };
   }
 };
-
-interface GhostButtonProps {
-  theme: any;
-  invert: any;
-  fillWidth: any;
-  variant?: "text" | "soft" | "outlined" | "contained";
-  borderColor: any;
-  color: any;
-  onHover: any;
-}
 
 const GhostButton = styled.button<
   {
@@ -84,7 +74,7 @@ const GhostButton = styled.button<
     BorderProps &
     LayoutProps &
     FlexProps
->((props: GhostButtonProps) => {
+>((props) => {
   const {
     theme,
     invert,
@@ -94,6 +84,7 @@ const GhostButton = styled.button<
     color: vcolor,
     onHover,
   } = props;
+  console.log(theme);
   const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
     getVariantStyles({
       variant,
@@ -119,7 +110,8 @@ const GhostButton = styled.button<
     alignItems: "center",
     cursor: "pointer",
     borderRadius: "10px",
-    border: borderColor ? `2px solid ${borderColor}` : "",
+    border:
+      borderColor && variant === "outlined" ? `2px solid ${borderColor}` : "",
     "&:hover": {
       backgroundColor: bgHover,
       color: colorHover,
