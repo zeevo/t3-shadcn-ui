@@ -39,7 +39,7 @@ const Layout = (props: any) => {
       <Flex>
         <Helmet defaultTitle="Radix Starter" />
         <Nav>
-          <GhostButton>
+          <GhostButton href="/">
             <HomeIcon />
           </GhostButton>
 
