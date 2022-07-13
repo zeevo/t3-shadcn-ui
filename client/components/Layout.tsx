@@ -1,17 +1,9 @@
 import Helmet from "react-helmet";
 import styled from "@emotion/styled";
-import ColorModeToggle from "../context/ColorModeToggle";
-import { HomeIcon } from "@radix-ui/react-icons";
-import GhostButton from "./Button";
+import Navbar from "./Navbar";
 
 const Container = styled.div`
   margin: 10px 10px 10px 10px;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const Flex = styled.div`
@@ -37,14 +29,8 @@ const Layout = (props: any) => {
   return (
     <Container>
       <Flex>
-        <Helmet defaultTitle="Radix Starter" />
-        <Nav>
-          <GhostButton href="/">
-            <HomeIcon />
-          </GhostButton>
-
-          <ColorModeToggle />
-        </Nav>
+        <Helmet defaultTitle="Next Starter" />
+        <Navbar />
         <Main>
           <Auto>{props.children}</Auto>
         </Main>
