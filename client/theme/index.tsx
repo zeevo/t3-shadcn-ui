@@ -1,4 +1,5 @@
 import { slate, slateDark, blue, blueDark } from "@radix-ui/colors";
+import { createStitches } from "@stitches/react";
 
 const getColors = (
   color: any,
@@ -16,31 +17,22 @@ const getColors = (
   uiHover: color[`${name}8`],
   solid: color[`${name}9`],
   solidHover: color[`${name}10`],
-  subtext: color[`${name}11`],
+  subtext: grayScale[`${grayName}11`],
   text: grayScale[`${grayName}12`],
 });
 
-const theme = {
-  space: [0, 4, 8, 15, 32, 64],
-  fonts: {
-    body: 'ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace',
-  },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
-  fontWeights: {
-    body: 400,
-    heading: 550,
-    bold: 600,
-  },
-  lineHeights: {
-    body: 1.5,
-    heading: 1.125,
-  },
-  colors: {
-    modes: {
-      dark: getColors(blueDark, "blue", slateDark, "slate"),
-      light: getColors(blue, "blue", slate, "slate"),
+export const { styled, getCssText, createTheme, globalCss, keyframes } =
+  createStitches({
+    theme: {
+      fonts: {
+        body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`,
+      },
+      colors: getColors(blueDark, "blue", slateDark, "slate"),
     },
-  },
-};
+  });
 
-export default theme;
+export const lightTheme = createTheme({
+  colors: getColors(blue, "blue", slate, "slate"),
+});
+
+export default styled;

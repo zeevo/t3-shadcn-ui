@@ -1,132 +1,142 @@
-import { Theme } from "@emotion/react";
-import styled from "@emotion/styled";
-import { AnchorHTMLAttributes } from "react";
-import {
-  border,
-  layout,
-  BorderProps,
-  LayoutProps,
-  flex,
-  FlexProps,
-} from "styled-system";
+import React, { ComponentProps, PropsWithChildren } from "react";
+import * as Tooltip from "@radix-ui/react-tooltip";
+import styled from "../theme";
+import { keyframes } from "../theme";
 
-const getVariantStyles = ({
-  variant,
-  theme,
-  borderColor,
-}: {
-  variant: string;
-  theme: Theme;
-  invert?: boolean;
-  borderColor?: string;
-  textColor?: string;
-}) => {
-  switch (variant) {
-    case "contained":
-      return {
-        colorHover: theme.colors.bg,
-        color: theme.colors.bg,
-        bgHover: theme.colors.soft,
-        bg: theme.colors.text,
-        activeFocus: theme.colors.uiActive,
-        borderColor: borderColor ? borderColor : theme.colors.text,
-      };
-    case "outlined":
-      return {
-        colorHover: theme.colors.text,
-        color: theme.colors.text,
-        bgHover: theme.colors.subtleBg,
-        bg: theme.colors.bg,
-        activeFocus: theme.colors.uiActive,
-        borderColor: borderColor ? borderColor : theme.colors.text,
-      };
-    case "soft": {
-      return {
-        colorHover: theme.colors.text,
-        color: theme.colors.text,
-        bgHover: theme.colors.uiHovered,
-        bg: theme.colors.subtleBg,
-        activeFocus: theme.colors.uiActive,
-        borderColor: theme.colors.subtleBg,
-      };
-    }
-    default: // "text"
-      return {
-        colorHover: theme.colors.text,
-        color: theme.colors.text,
-        bgHover: theme.colors.uiHovered,
-        bg: "inherit",
-        activeFocus: theme.colors.uiActive,
-        borderColor: theme.colors.bg,
-      };
-  }
-};
-
-const GhostButton = styled.button<
-  {
-    invert?: boolean;
-    fillWidth?: boolean;
-    variant?: string;
-    borderColor?: string;
-    color?: string;
-    onHover?: any;
-  } & AnchorHTMLAttributes<{}> &
-    BorderProps &
-    LayoutProps &
-    FlexProps
->((props) => {
-  const {
-    theme,
-    invert,
-    fillWidth,
-    variant = "text",
-    borderColor: bcolor,
-    color: vcolor,
-    onHover,
-  } = props;
-  console.log(theme);
-  const { color, bgHover, colorHover, bg, activeFocus, borderColor } =
-    getVariantStyles({
-      variant,
-      theme,
-      invert,
-      borderColor: bcolor,
-      textColor: vcolor,
-    });
-
-  return {
-    flex: "0 0 auto",
-    minHeight: "45px",
-    padding: "15px",
-    fontSize: "15px",
-    lineHeight: 1,
-    transition: "all 100ms",
-    minWidth: "45px",
-    width: fillWidth ? "100%" : "",
-    backgroundColor: bg,
-    color: color,
-    display: "inline-flex",
-    justifyContent: "center",
-    alignItems: "center",
-    cursor: "pointer",
-    borderRadius: "10px",
-    border:
-      borderColor && variant === "outlined" ? `2px solid ${borderColor}` : "",
-    "&:hover": {
-      backgroundColor: bgHover,
-      color: colorHover,
-      ...onHover,
-    },
-    "&:active, &:focus": {
-      boxShadow: `0 0 0 2px ${activeFocus}`,
-    },
-    "&:active": {
-      transform: "scale(0.95)",
-    },
-    ...border(props),
-    ...layout(props),
-    ...flex(props),
-  };
+const slideDownAndFade = keyframes({
+  "0%": { transform: "scale(.5)" },
+  "100%": { transform: "scale(1)" },
 });
+
+const ThemedButton = styled("button", {
+  flex: "0 0 auto",
+  minHeight: "45px",
+  padding: "15px",
+  fontSize: "15px",
+  lineHeight: 1,
+  transition: "all 100ms",
+  minWidth: "45px",
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  cursor: "pointer",
+  borderRadius: "10px",
+  "&:active": {
+    transform: "scale(0.95)",
+  },
+  variants: {
+    spaced: {
+      true: {
+        "&:not(:last-child)": {
+          marginRight: "15px",
+        },
+      },
+    },
+    fillWidth: {
+      true: {
+        width: "100%",
+      },
+    },
+    active: {
+      true: {
+        backgroundColor: "$uiHovered",
+      },
+    },
+    variant: {
+      text: {
+        "&:hover": {
+          color: "$text",
+          backgroundColor: "$uiHovered",
+        },
+        color: "$text",
+        backgroundColor: "inherit",
+        "&:active, &:focus": {
+          boxShadow: `0 0 0 2px $uiActive`,
+        },
+        borderColor: "$text",
+      },
+      contained: {
+        "&:hover": {
+          color: "$text",
+          backgroundColor: "$uiHover",
+        },
+        color: "$text",
+        backgroundColor: "$subtle",
+        "&:active, &:focus": {
+          boxShadow: `0 0 0 2px $uiActive`,
+        },
+        borderColor: "$text",
+      },
+      outlined: {
+        "&:hover": {
+          color: "$text",
+          backgroundColor: "$subtleBg",
+        },
+        color: "$text",
+        "&:active, &:focus": {
+          boxShadow: `0 0 0 2px $uiActive`,
+        },
+        border: "2px solid $text",
+        colorHover: "$text",
+        backgroundColor: "$bg",
+      },
+      soft: {
+        "&:hover": {
+          color: "$text",
+          backgroundColor: "$uiHovered",
+        },
+        color: "$text",
+        "&:active, &:focus": {
+          boxShadow: `0 0 0 2px $uiActive`,
+        },
+        border: "2px solid $subtleBg",
+        colorHover: "$text",
+        backgroundColor: "$subtleBg",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "text",
+  },
+});
+
+const StyledContent = styled(Tooltip.Content, {
+  marginTop: "5px",
+  borderRadius: "10px",
+  padding: "5px 15px",
+  fontWeight: "bold",
+  fontSize: ".8rem",
+  color: "$text",
+  backgroundColor: "$uiHovered",
+  transformOrigin: "var(--radix-tooltip-content-transform-origin)",
+  animation: `${slideDownAndFade} 0.1s`,
+});
+
+interface GhostButtonProps {
+  tooltip?: string;
+  active?: boolean;
+  href?: string;
+  as?: string;
+}
+
+const GhostButton: React.FC<
+  ComponentProps<typeof ThemedButton> & PropsWithChildren<GhostButtonProps>
+> = ({ children, tooltip, ...props }) => {
+  if (tooltip) {
+    return (
+      <Tooltip.Provider>
+        <Tooltip.Root delayDuration={100}>
+          <Tooltip.Trigger asChild>
+            <ThemedButton {...props}>{children}</ThemedButton>
+          </Tooltip.Trigger>
+          <Tooltip.Content>
+            <StyledContent>{tooltip}</StyledContent>
+          </Tooltip.Content>
+        </Tooltip.Root>
+      </Tooltip.Provider>
+    );
+  }
+  return <ThemedButton {...props}>{children}</ThemedButton>;
+};
 
 export default GhostButton;

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Button from "../client/components/Button";
+import getConfig from "../lib/config";
 
 const Flex = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="text" flex={1}>
+        <Button variant="text" fillWidth>
           <BellIcon />
         </Button>
       </Flex>
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="soft" flex={1}>
+        <Button variant="soft" fillWidth>
           <BellIcon />
         </Button>
       </Flex>
@@ -54,7 +55,7 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="outlined" flex={1}>
+        <Button variant="outlined" fillWidth>
           <BellIcon />
         </Button>
       </Flex>
@@ -65,12 +66,20 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="contained" flex={1}>
+        <Button variant="contained" fillWidth>
           <BellIcon />
         </Button>
       </Flex>
     </div>
   );
+};
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      config: getConfig(),
+    },
+  };
 };
 
 export default Home;

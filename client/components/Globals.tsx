@@ -1,24 +1,24 @@
-import { css, Global, useTheme } from "@emotion/react";
+import { globalCss } from "../theme";
+
+const GlobalStyles = globalCss({
+  body: {
+    background: "$bg",
+    color: "$text",
+    fontFamily: "$body",
+  },
+  button: {
+    fontFamily: "$body",
+    fontWeight: "body",
+  },
+  html: {
+    fontFamily: "$body",
+  },
+});
 
 const Globals: React.FC = () => {
-  const theme = useTheme();
+  GlobalStyles();
 
-  return (
-    <Global
-      styles={css`
-        body {
-          color: ${theme.colors.text};
-          background: ${theme.colors.bg};
-        }
-        svg {
-          display: block;
-        }
-        button {
-          border-width: 0px;
-        }
-      `}
-    />
-  );
+  return <></>;
 };
 
 export default Globals;
