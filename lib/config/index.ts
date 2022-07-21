@@ -1,6 +1,18 @@
 import fs from "fs";
+import path from "path";
 
-const CONFIG_PATH = "../../config";
+export const getRootDir = () => {
+  let cur = __dirname;
+  let i = 0;
+  while (!fs.readdirSync(cur).includes("next.config.js")) {
+    cur = path.join(cur, "..");
+    if (i > 500) {
+      throw new Error("Could not find root dir");
+    }
+    i++;
+  }
+  return cur;
+};
 
 const DEFAULT_CONFIG: Config = {
   site: {
@@ -60,8 +72,9 @@ export interface Config {
 }
 
 const getConfig = (): Config => {
-  if (fs.existsSync(CONFIG_PATH)) {
-    return JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8")) as Config;
+  const configPath = path.join(getRootDir(), "config.json");
+  if (fs.existsSync(configPath)) {
+    return JSON.parse(fs.readFileSync(configPath, "utf-8")) as Config;
   }
   return DEFAULT_CONFIG;
 };
