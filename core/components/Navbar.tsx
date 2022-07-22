@@ -6,8 +6,8 @@ import {
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import * as Separator from "@radix-ui/react-separator";
-import { NavbarConfig } from "../../lib/config";
-import styled from "../theme";
+import styled from "../../theme";
+import { NavbarConfig } from "../lib/config";
 import GhostButton from "./Button";
 import ColorModeToggle from "./ColorModeToggle";
 

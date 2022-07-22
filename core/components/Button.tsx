@@ -1,7 +1,6 @@
 import React, { ComponentProps, PropsWithChildren } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import styled from "../theme";
-import { keyframes } from "../theme";
+import styled, { keyframes } from "../../theme";
 
 const slideDownAndFade = keyframes({
   "0%": { transform: "scale(.5)" },

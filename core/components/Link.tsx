@@ -1,6 +1,6 @@
 import Link, { LinkProps } from "next/link";
 import { PropsWithChildren } from "react";
-import styled from "../theme";
+import styled from "../../theme";
 
 const StyledLink = styled("a", {
   textDecoration: "underline",

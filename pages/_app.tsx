@@ -1,9 +1,9 @@
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
-import Globals from "../client/components/Globals";
-import Layout from "../client/components/Layout";
-import "../client/styles/globals.css";
-import { lightTheme } from "../client/theme";
+import Globals from "../core/components/Globals";
+import Layout from "../core/components/Layout";
+import { lightTheme } from "../theme";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

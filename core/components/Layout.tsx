@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import { Config } from "../../lib/config";
-import styled from "../theme";
+import styled from "../../theme";
+import { Config } from "../lib/config";
 import Navbar from "./Navbar";
 
 const Container = styled("div", {

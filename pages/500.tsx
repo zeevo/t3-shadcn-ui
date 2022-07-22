@@ -1,5 +1,5 @@
-import Head from "../client/components/Head";
-import { Config, getConfig } from "../lib/config";
+import Head from "../core/components/Head";
+import { Config, getConfig } from "../core/lib/config";
 
 const Custom404: React.FC<{ config: Config }> = ({ config }) => (
   <div>
