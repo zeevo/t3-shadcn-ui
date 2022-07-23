@@ -8,6 +8,10 @@ const Flex = styled.div`
   display: flex;
 `;
 
+const Flex1 = styled.div`
+  flex: 1;
+`;
+
 const MarginRight = styled.div`
   margin-right: 5px;
 `;
@@ -33,9 +37,11 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="text" fillWidth>
-          <BellIcon />
-        </Button>
+        <Flex1>
+          <Button variant="text" fillWidth>
+            <BellIcon />
+          </Button>
+        </Flex1>
       </Flex>
       <h3>Soft</h3>
       <Flex>
@@ -44,9 +50,11 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="soft" fillWidth>
-          <BellIcon />
-        </Button>
+        <Flex1>
+          <Button variant="soft" fillWidth>
+            <BellIcon />
+          </Button>
+        </Flex1>
       </Flex>
       <h3>Outlined</h3>
       <Flex>
@@ -55,9 +63,11 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="outlined" fillWidth>
-          <BellIcon />
-        </Button>
+        <Flex1>
+          <Button variant="outlined" fillWidth>
+            <BellIcon />
+          </Button>
+        </Flex1>
       </Flex>
       <h3>Contained</h3>
       <Flex>
@@ -66,9 +76,11 @@ const Home: NextPage = () => {
             <BellIcon />
           </Button>
         </MarginRight>
-        <Button variant="contained" fillWidth>
-          <BellIcon />
-        </Button>
+        <Flex1>
+          <Button variant="contained" fillWidth>
+            <BellIcon />
+          </Button>
+        </Flex1>
       </Flex>
     </div>
   );

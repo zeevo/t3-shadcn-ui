@@ -24,13 +24,6 @@ const ThemedButton = styled("button", {
     transform: "scale(0.95)",
   },
   variants: {
-    spaced: {
-      true: {
-        "&:not(:last-child)": {
-          marginRight: "15px",
-        },
-      },
-    },
     fillWidth: {
       true: {
         width: "100%",

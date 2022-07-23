@@ -11,13 +11,15 @@ const Flex = styled("div", {
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",
-  maxWidth: "40rem",
-  margin: "auto",
+  "@small": {
+    maxWidth: "40rem",
+    margin: "auto",
+  },
+  width: "100%",
 });
 
 const Main = styled("main", {
   width: "100%",
-  maxWidth: "40rem",
   margin: "0 auto",
 });
 

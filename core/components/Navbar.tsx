@@ -23,8 +23,6 @@ const Nav = styled("nav", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginLeft: "-15px",
-  marginRight: "-15px",
   variants: {
     spaced: {
       true: {

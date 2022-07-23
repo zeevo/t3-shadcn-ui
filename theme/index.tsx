@@ -29,6 +29,11 @@ export const { styled, getCssText, createTheme, globalCss, keyframes } =
       },
       colors: getColors(blueDark, "blue", slateDark, "slate"),
     },
+    media: {
+      small: "(min-width: 425px)",
+      medium: "(min-width: 768px)",
+      large: "(min-width: 1024px)",
+    },
   });
 
 export const lightTheme = createTheme({
