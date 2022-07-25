@@ -42,6 +42,7 @@ const StyledSeparator = styled(Separator.Root, {
   height: "15px",
   width: "1px",
   marginRight: "1rem",
+  marginLeft: "1rem",
 });
 
 const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
@@ -67,7 +68,6 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
             tooltip={item.tooltip}
             as="a"
             active={page === item.href}
-            spaced
           >
             {Icon && <Icon />}
           </GhostButton>
