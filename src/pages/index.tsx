@@ -1,20 +1,23 @@
-import styled from "@emotion/styled";
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Button from "../core/components/Button";
+import Image from "../core/components/Image";
 import getConfig from "../core/lib/config";
 
-const Flex = styled.div`
-  display: flex;
-`;
+import image from "../core/resources/image.jpg";
+import styled from "../theme";
 
-const Flex1 = styled.div`
-  flex: 1;
-`;
+const Flex = styled("div", {
+  display: "flex",
+});
 
-const MarginRight = styled.div`
-  margin-right: 5px;
-`;
+const Flex1 = styled("div", {
+  flex: "1",
+});
+
+const MarginRight = styled("div", {
+  marginRight: "5px",
+});
 
 const Home: NextPage = () => {
   return (
@@ -82,6 +85,8 @@ const Home: NextPage = () => {
           </Button>
         </Flex1>
       </Flex>
+      <h2>Image</h2>
+      <Image variant="next" src={image} alt="vercel" layout="fill" />
     </div>
   );
 };

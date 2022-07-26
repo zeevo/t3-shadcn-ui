@@ -1,22 +1,23 @@
-import NextImage, { ImageProps as NextProps } from "next/image";
-import styled from "@emotion/styled";
+import NextImage from "next/image";
+import styled from "../../theme";
 
-const BaseImage = styled(NextImage)`
-  object-fit: contain;
-  width: auto !important;
-  position: relative !important;
-  height: 100% !important;
-`;
-const ImgContainer = styled.div`
-  > span {
-    position: unset !important;
-    height: 100%;
-  }
-`;
+const BaseImage = styled(NextImage, {
+  objectFit: "contain",
+  width: "auto !important",
+  position: "relative !important",
+  height: "100% !important",
+});
 
-const ImgWrapper = styled.img`
-  max-width: 100%;
-`;
+const ImgContainer = styled("div", {
+  "& > span": {
+    position: "unset !important",
+    height: "100%",
+  },
+});
+
+const ImgWrapper = styled("img", {
+  maxWidth: "100%",
+});
 
 const Image = ({ variant, children, ...props }: any) => {
   if (!variant) {
