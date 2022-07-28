@@ -87,9 +87,6 @@ export const ThemedButton = styled("button", {
       },
     },
   },
-  defaultVariants: {
-    variant: "text",
-  },
 });
 
 export const StyledContent = styled(Tooltip.Content, {
