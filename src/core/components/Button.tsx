@@ -2,12 +2,12 @@ import React, { ComponentProps, PropsWithChildren } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styled, { keyframes } from "../../theme";
 
-const slideDownAndFade = keyframes({
+export const slideDownAndFade = keyframes({
   "0%": { transform: "scale(.5)" },
   "100%": { transform: "scale(1)" },
 });
 
-const ThemedButton = styled("button", {
+export const ThemedButton = styled("button", {
   flex: "0 0 auto",
   minHeight: "45px",
   padding: "15px",
@@ -92,7 +92,7 @@ const ThemedButton = styled("button", {
   },
 });
 
-const StyledContent = styled(Tooltip.Content, {
+export const StyledContent = styled(Tooltip.Content, {
   marginTop: "5px",
   borderRadius: "10px",
   padding: "5px 15px",
@@ -104,14 +104,14 @@ const StyledContent = styled(Tooltip.Content, {
   animation: `${slideDownAndFade} 0.1s`,
 });
 
-interface GhostButtonProps {
+export interface GhostButtonProps {
   tooltip?: string;
   active?: boolean;
   href?: string;
   as?: string;
 }
 
-const GhostButton: React.FC<
+export const GhostButton: React.FC<
   ComponentProps<typeof ThemedButton> & PropsWithChildren<GhostButtonProps>
 > = ({ children, tooltip, ...props }) => {
   if (tooltip) {
