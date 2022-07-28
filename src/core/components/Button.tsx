@@ -7,6 +7,14 @@ export const slideDownAndFade = keyframes({
   "100%": { transform: "scale(1)" },
 });
 
+export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
+
+export type ThemedButtonVariant =
+  | ThemeButtonVariantText
+  | {
+      [key: string]: any;
+    };
+
 export const ThemedButton = styled("button", {
   flex: "0 0 auto",
   minHeight: "45px",
@@ -23,6 +31,7 @@ export const ThemedButton = styled("button", {
   "&:active": {
     transform: "scale(0.95)",
   },
+  backgroundColor: "inherit",
   variants: {
     fillWidth: {
       true: {

@@ -68,6 +68,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
             tooltip={item.tooltip}
             as="a"
             active={page === item.href}
+            variant="text"
           >
             {Icon && <Icon />}
           </GhostButton>
@@ -76,7 +77,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
     </Flex>
 
     {config.colorModeToggle && (
-      <ColorModeToggle tooltip={config.colorModeTooltip} />
+      <ColorModeToggle tooltip={config.colorModeTooltip} variant="text" />
     )}
   </Nav>
 );
