@@ -33,6 +33,11 @@ export const ThemedButton = styled("button", {
   },
   backgroundColor: "inherit",
   variants: {
+    borderRadius: {
+      straight: {
+        borderRadius: "0px",
+      },
+    },
     fillWidth: {
       true: {
         width: "100%",
