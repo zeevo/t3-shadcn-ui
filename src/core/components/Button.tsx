@@ -22,6 +22,7 @@ export const ThemedButton = styled("button", {
   fontSize: "15px",
   lineHeight: 1,
   transition: "all 100ms",
+  whiteSpace: "nowrap",
   minWidth: "45px",
   display: "inline-flex",
   justifyContent: "center",
