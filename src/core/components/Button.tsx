@@ -49,6 +49,13 @@ export const ThemedButton = styled("button", {
         backgroundColor: "$uiHovered",
       },
     },
+    spaced: {
+      true: {
+        "&:not(:last-child)": {
+          marginRight: "15px",
+        },
+      },
+    },
     variant: {
       text: {
         "&:hover": {
