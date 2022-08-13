@@ -6,6 +6,8 @@ import {
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import * as Separator from "@radix-ui/react-separator";
+import Link from "next/link";
+import React from "react";
 import styled from "../../theme";
 import { NavbarConfig } from "../lib/config";
 import GhostButton from "./Button";
@@ -60,12 +62,9 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
           Icon = icons[item.icon];
         }
 
-        return (
+        const Button = (
           <GhostButton
-            key={id}
-            href={item.href}
             tooltip={item.tooltip}
-            as="a"
             active={page === item.href}
             variant="text"
             spaced
@@ -73,6 +72,16 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
             {Icon && <Icon />}
           </GhostButton>
         );
+
+        if (item.href) {
+          return (
+            <Link key={id} href={item.href} passHref>
+              {Button}
+            </Link>
+          );
+        }
+
+        return <React.Fragment key={id}>{Button}</React.Fragment>;
       })}
     </Flex>
 
