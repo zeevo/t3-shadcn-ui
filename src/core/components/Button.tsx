@@ -1,6 +1,7 @@
 import React, { ComponentProps, PropsWithChildren } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styled, { keyframes } from "../../theme";
+import Link from "next/link";
 
 export const slideDownAndFade = keyframes({
   "0%": { transform: "scale(.5)" },
@@ -133,13 +134,24 @@ export interface GhostButtonProps {
 export const GhostButton: React.FC<
   ComponentProps<typeof ThemedButton> & PropsWithChildren<GhostButtonProps>
 > = ({ children, tooltip, ...props }) => {
+  let button;
+  if (props.href) {
+    const { href, ...rest } = props;
+    button = (
+      <ThemedButton as="div" {...rest}>
+        <Link href={href} passHref>
+          <a>{children}</a>
+        </Link>
+      </ThemedButton>
+    );
+  } else {
+    button = <ThemedButton {...props}>{children}</ThemedButton>;
+  }
   if (tooltip) {
     return (
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={100}>
-          <Tooltip.Trigger asChild>
-            <ThemedButton {...props}>{children}</ThemedButton>
-          </Tooltip.Trigger>
+          <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
           <Tooltip.Content>
             <StyledContent>{tooltip}</StyledContent>
           </Tooltip.Content>

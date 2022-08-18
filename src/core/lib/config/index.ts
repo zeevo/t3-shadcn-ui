@@ -73,8 +73,12 @@ export interface Config {
 
 const getConfig = (): Config => {
   const configPath = path.join(getRootDir(), "config.json");
-  if (fs.existsSync(configPath)) {
-    return JSON.parse(fs.readFileSync(configPath, "utf-8")) as Config;
+  try {
+    if (fs.existsSync(configPath)) {
+      return JSON.parse(fs.readFileSync(configPath, "utf-8")) as Config;
+    }
+  } catch (e) {
+    console.log("Unable to parse config");
   }
   return DEFAULT_CONFIG;
 };

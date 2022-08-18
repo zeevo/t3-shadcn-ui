@@ -62,26 +62,18 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
           Icon = icons[item.icon];
         }
 
-        const Button = (
+        return (
           <GhostButton
+            key={item.href}
             tooltip={item.tooltip}
             active={page === item.href}
             variant="text"
+            href={item.href}
             spaced
           >
             {Icon && <Icon />}
           </GhostButton>
         );
-
-        if (item.href) {
-          return (
-            <Link key={id} href={item.href} passHref>
-              {Button}
-            </Link>
-          );
-        }
-
-        return <React.Fragment key={id}>{Button}</React.Fragment>;
       })}
     </Flex>
 
