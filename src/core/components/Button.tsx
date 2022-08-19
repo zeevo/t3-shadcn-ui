@@ -18,13 +18,10 @@ export type ThemedButtonVariant =
 
 export const ThemedButton = styled("button", {
   flex: "0 0 auto",
-  minHeight: "45px",
-  padding: "15px",
   fontSize: "15px",
   lineHeight: 1,
   transition: "all 100ms",
   whiteSpace: "nowrap",
-  minWidth: "45px",
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
@@ -109,6 +106,16 @@ export const ThemedButton = styled("button", {
         backgroundColor: "$subtleBg",
       },
     },
+    padded: {
+      true: {
+        padding: "15px",
+        minHeight: "45px",
+        minWidth: "45px",
+      },
+    },
+  },
+  defaultVariants: {
+    padded: true,
   },
 });
 
@@ -122,6 +129,12 @@ export const StyledContent = styled(Tooltip.Content, {
   backgroundColor: "$uiHovered",
   transformOrigin: "var(--radix-tooltip-content-transform-origin)",
   animation: `${slideDownAndFade} 0.1s`,
+});
+
+export const StyledAnchor = styled("a", {
+  padding: "15px",
+  minHeight: "45px",
+  minWidth: "45px",
 });
 
 export interface GhostButtonProps {
@@ -138,9 +151,9 @@ export const GhostButton: React.FC<
   if (props.href) {
     const { href, ...rest } = props;
     button = (
-      <ThemedButton as="div" {...rest}>
+      <ThemedButton as="div" padded={false} {...rest}>
         <Link href={href} passHref>
-          <a>{children}</a>
+          <StyledAnchor>{children}</StyledAnchor>
         </Link>
       </ThemedButton>
     );
