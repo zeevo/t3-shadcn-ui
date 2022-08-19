@@ -5,13 +5,12 @@ import {
   PersonIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import * as Separator from "@radix-ui/react-separator";
-import Link from "next/link";
 import React from "react";
 import styled from "../../theme";
 import { NavbarConfig } from "../lib/config";
 import GhostButton from "./Button";
 import ColorModeToggle from "./ColorModeToggle";
+import StyledSeparator from "./Separator";
 
 const icons = {
   HomeIcon: HomeIcon,
@@ -37,13 +36,6 @@ const Nav = styled("nav", {
 const Flex = styled("div", {
   display: "flex",
   alignItems: "center",
-});
-
-const StyledSeparator = styled(Separator.Root, {
-  backgroundColor: "$uiHovered",
-  height: "15px",
-  width: "1px",
-  marginRight: "15px",
 });
 
 const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({

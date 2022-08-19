@@ -69,13 +69,23 @@ export interface SiteConfig {
 export interface Config {
   navbar: NavbarConfig;
   site: SiteConfig;
+  providers?: {
+    [key: string]: {
+      id: string;
+      name: string;
+      type: string;
+      signinUrl: string;
+      callbackUrl: string;
+    };
+  };
 }
 
 const getConfig = (): Config => {
   const configPath = path.join(getRootDir(), "config.json");
   try {
     if (fs.existsSync(configPath)) {
-      return JSON.parse(fs.readFileSync(configPath, "utf-8")) as Config;
+      const config = JSON.parse(fs.readFileSync(configPath, "utf-8")) as Config;
+      return Object.assign(DEFAULT_CONFIG, config);
     }
   } catch (e) {
     console.log("Unable to parse config");

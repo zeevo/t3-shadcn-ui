@@ -2,6 +2,7 @@ import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Button from "../core/components/Button";
 import Image from "../core/components/Image";
+import SignIn from "../core/components/SignIn";
 import getConfig from "../core/lib/config";
 
 import image from "../core/resources/image.jpg";
@@ -22,6 +23,9 @@ const MarginRight = styled("div", {
 const Home: NextPage = () => {
   return (
     <div>
+      <h2>Next Auth</h2>
+      <SignIn />
+
       <h2>Text</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
