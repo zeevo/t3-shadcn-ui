@@ -61,7 +61,6 @@ export const ThemedButton = styled("button", {
           backgroundColor: "$uiHovered",
         },
         color: "$text",
-        backgroundColor: "inherit",
         "&:active, &:focus": {
           boxShadow: `0 0 0 2px $uiActive`,
         },
@@ -151,9 +150,9 @@ export const GhostButton: React.FC<
   if (props.href) {
     const { href, ...rest } = props;
     button = (
-      <ThemedButton as="div" padded={false} {...rest}>
+      <ThemedButton as="div" {...rest}>
         <Link href={href} passHref>
-          <StyledAnchor>{children}</StyledAnchor>
+          <a>{children}</a>
         </Link>
       </ThemedButton>
     );
@@ -164,7 +163,9 @@ export const GhostButton: React.FC<
     return (
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={100}>
-          <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
+          <Tooltip.Trigger asChild>
+            <ThemedButton {...props}>{children}</ThemedButton>
+          </Tooltip.Trigger>
           <Tooltip.Content>
             <StyledContent>{tooltip}</StyledContent>
           </Tooltip.Content>
