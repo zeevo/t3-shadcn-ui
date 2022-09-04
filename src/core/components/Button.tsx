@@ -150,9 +150,9 @@ export const GhostButton: React.FC<
   if (props.href) {
     const { href, ...rest } = props;
     button = (
-      <ThemedButton as="div" {...rest}>
+      <ThemedButton as="div" padded={false} {...rest}>
         <Link href={href} passHref>
-          <a>{children}</a>
+          <StyledAnchor>{children}</StyledAnchor>
         </Link>
       </ThemedButton>
     );
@@ -163,9 +163,7 @@ export const GhostButton: React.FC<
     return (
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={100}>
-          <Tooltip.Trigger asChild>
-            <ThemedButton {...props}>{children}</ThemedButton>
-          </Tooltip.Trigger>
+          <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
           <Tooltip.Content>
             <StyledContent>{tooltip}</StyledContent>
           </Tooltip.Content>
