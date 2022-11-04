@@ -5,11 +5,18 @@ import GhostButton, { ThemedButtonVariant } from "./Button";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
+  tooltipGradient?: boolean;
   variant: ThemedButtonVariant;
+  gradient: boolean;
 }
 
 const ColorModeToggle: React.FC<ColorModeToggleProps> = (
-  { tooltip, variant } = { tooltip: false, variant: "text" }
+  { tooltip, variant, gradient, tooltipGradient } = {
+    tooltip: false,
+    variant: "text",
+    gradient: false,
+    tooltipGradient: false,
+  }
 ) => {
   const { theme, setTheme } = useTheme();
   return (
@@ -22,6 +29,8 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
         tooltip ? (theme === "light" ? "Light mode" : "Dark mode") : undefined
       }
       variant={variant}
+      gradients={gradient}
+      tooltipGradient={tooltipGradient}
     >
       {theme === "light" ? <SunIcon /> : <MoonIcon />}
     </GhostButton>

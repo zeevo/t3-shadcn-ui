@@ -16,6 +16,9 @@ export type ThemedButtonVariant =
       [key: string]: any;
     };
 
+const gradient =
+  "linear-gradient(30deg, $lowContrastText 20%, $uiHover 69%, $subtleBg 100%)";
+
 export const ThemedButton = styled("button", {
   flex: "0 0 auto",
   fontSize: "15px",
@@ -45,6 +48,14 @@ export const ThemedButton = styled("button", {
     active: {
       true: {
         backgroundColor: "$uiHovered",
+      },
+    },
+    gradients: {
+      true: {
+        "&:hover": {
+          backgroundImage: gradient,
+          color: "$bg !important",
+        },
       },
     },
     spaced: {
@@ -113,6 +124,16 @@ export const ThemedButton = styled("button", {
       },
     },
   },
+  compoundVariants: [
+    {
+      gradients: true,
+      active: true,
+      css: {
+        backgroundImage: gradient,
+        color: "$bg",
+      },
+    },
+  ],
   defaultVariants: {
     padded: true,
   },
@@ -124,10 +145,18 @@ export const StyledContent = styled(Tooltip.Content, {
   padding: "5px 15px",
   fontWeight: "bold",
   fontSize: ".8rem",
-  color: "$text",
-  backgroundColor: "$uiHovered",
+  color: "$bg",
+  backgroundColor: "$lowContrastText",
   transformOrigin: "var(--radix-tooltip-content-transform-origin)",
-  animation: `${slideDownAndFade} 0.1s`,
+  animation: `${slideDownAndFade} 0.05s`,
+  variants: {
+    gradient: {
+      true: {
+        backgroundImage: gradient,
+        color: "$bg !important",
+      },
+    },
+  },
 });
 
 export const StyledAnchor = styled("a", {
@@ -141,11 +170,12 @@ export interface GhostButtonProps {
   active?: boolean;
   href?: string;
   as?: string;
+  tooltipGradient?: boolean;
 }
 
 export const GhostButton: React.FC<
   ComponentProps<typeof ThemedButton> & PropsWithChildren<GhostButtonProps>
-> = ({ children, tooltip, ...props }) => {
+> = ({ children, tooltip, tooltipGradient, ...props }) => {
   let button;
   if (props.href) {
     const { href, ...rest } = props;
@@ -165,7 +195,7 @@ export const GhostButton: React.FC<
         <Tooltip.Root delayDuration={100}>
           <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
           <Tooltip.Content>
-            <StyledContent>{tooltip}</StyledContent>
+            <StyledContent gradient={tooltipGradient}>{tooltip}</StyledContent>
           </Tooltip.Content>
         </Tooltip.Root>
       </Tooltip.Provider>

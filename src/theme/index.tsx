@@ -17,6 +17,8 @@ const getColors = (
   uiHover: color[`${name}8`],
   solid: color[`${name}9`],
   solidHover: color[`${name}10`],
+  lowContrastText: color[`${name}11`],
+  highContrastText: color[`${name}12`],
   subtext: grayScale[`${grayName}11`],
   text: grayScale[`${grayName}12`],
 });
