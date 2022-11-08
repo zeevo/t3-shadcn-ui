@@ -1,4 +1,4 @@
-import React, { ComponentProps, PropsWithChildren } from "react";
+import React, { ComponentProps, PropsWithChildren, useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styled, { keyframes } from "../../theme";
 import Link from "next/link";
@@ -142,7 +142,7 @@ export const ThemedButton = styled("button", {
 export const StyledContent = styled(Tooltip.Content, {
   marginTop: "5px",
   borderRadius: "10px",
-  padding: "5px 15px",
+  padding: "5px 10px",
   fontWeight: "bold",
   fontSize: ".8rem",
   color: "$bg",
@@ -176,6 +176,7 @@ export interface GhostButtonProps {
 export const GhostButton: React.FC<
   ComponentProps<typeof ThemedButton> & PropsWithChildren<GhostButtonProps>
 > = ({ children, tooltip, tooltipGradient, ...props }) => {
+  const [open, setOpen] = useState<boolean>();
   let button;
   if (props.href) {
     const { href, ...rest } = props;
@@ -191,14 +192,20 @@ export const GhostButton: React.FC<
   }
   if (tooltip) {
     return (
-      <Tooltip.Provider>
-        <Tooltip.Root delayDuration={100}>
-          <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
-          <Tooltip.Content>
-            <StyledContent gradient={tooltipGradient}>{tooltip}</StyledContent>
-          </Tooltip.Content>
-        </Tooltip.Root>
-      </Tooltip.Provider>
+      <Tooltip.Root open={open}>
+        <Tooltip.Trigger
+          asChild
+          onMouseLeave={() => {
+            setOpen(false);
+          }}
+          onMouseEnter={() => setOpen(true)}
+        >
+          {button}
+        </Tooltip.Trigger>
+        <Tooltip.Content>
+          <StyledContent gradient={tooltipGradient}>{tooltip}</StyledContent>
+        </Tooltip.Content>
+      </Tooltip.Root>
     );
   }
   return <ThemedButton {...props}>{children}</ThemedButton>;

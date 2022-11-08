@@ -5,6 +5,7 @@ import {
   PersonIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
+import * as Tooltip from "@radix-ui/react-tooltip";
 import React from "react";
 import styled from "../../theme";
 import { NavbarConfig } from "../lib/config";
@@ -43,44 +44,46 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
   page,
 }) => {
   return (
-    <Nav spaced={config.spacing}>
-      <Flex>
-        {config.items.map((item) => {
-          const id = item.href || item.type;
-          let Icon;
-          if (item.type === "separator") {
-            return <StyledSeparator key={id} orientation="vertical" />;
-          }
-          if (item.icon) {
-            Icon = icons[item.icon];
-          }
+    <Tooltip.Provider>
+      <Nav spaced={config.spacing}>
+        <Flex>
+          {config.items.map((item) => {
+            const id = item.href || item.type;
+            let Icon;
+            if (item.type === "separator") {
+              return <StyledSeparator key={id} orientation="vertical" />;
+            }
+            if (item.icon) {
+              Icon = icons[item.icon];
+            }
 
-          return (
-            <GhostButton
-              key={item.href}
-              tooltip={item.tooltip}
-              active={page === item.href}
-              variant="text"
-              href={item.href}
-              gradients={item.gradient}
-              tooltipGradient={item.tooltipGradient}
-              spaced
-            >
-              {Icon && <Icon />}
-            </GhostButton>
-          );
-        })}
-      </Flex>
+            return (
+              <GhostButton
+                key={item.href}
+                tooltip={item.tooltip}
+                active={page === item.href}
+                variant="text"
+                href={item.href}
+                gradients={item.gradient}
+                tooltipGradient={item.tooltipGradient}
+                spaced
+              >
+                {Icon && <Icon />}
+              </GhostButton>
+            );
+          })}
+        </Flex>
 
-      {config.colorModeToggle && (
-        <ColorModeToggle
-          tooltip={config.colorModeToggle.tooltip}
-          gradient={!!config.colorModeToggle.gradient}
-          tooltipGradient={!!config.colorModeToggle.tooltipGradient}
-          variant="text"
-        />
-      )}
-    </Nav>
+        {config.colorModeToggle && (
+          <ColorModeToggle
+            tooltip={config.colorModeToggle.tooltip}
+            gradient={!!config.colorModeToggle.gradient}
+            tooltipGradient={!!config.colorModeToggle.tooltipGradient}
+            variant="text"
+          />
+        )}
+      </Nav>
+    </Tooltip.Provider>
   );
 };
 
