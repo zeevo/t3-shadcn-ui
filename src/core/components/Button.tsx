@@ -1,4 +1,5 @@
-import React, { ComponentProps, PropsWithChildren, useState } from "react";
+import type { ComponentProps, PropsWithChildren } from "react";
+import React, { useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styled, { keyframes } from "../../theme";
 import Link from "next/link";

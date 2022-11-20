@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import styled from "../../theme";
-import { Config } from "../lib/config";
+import type { Config } from "../lib/config";
 import Navbar from "./Navbar";
 
 const Container = styled("div", {
@@ -33,6 +33,7 @@ const Layout: React.FC<PropsWithChildren<{ config: Config; page: string }>> = ({
   page,
   children,
 }) => {
+  console.log(config.navbar);
   return (
     <Container>
       <Flex>

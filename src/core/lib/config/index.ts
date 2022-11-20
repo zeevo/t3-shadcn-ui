@@ -4,7 +4,12 @@ import path from "path";
 export const getRootDir = () => {
   let cur = __dirname;
   let i = 0;
-  while (!fs.readdirSync(cur).includes("next.config.js")) {
+  while (
+    !(
+      fs.readdirSync(cur).includes("next.config.js") ||
+      fs.readdirSync(cur).includes("next.config.mjs")
+    )
+  ) {
     cur = path.join(cur, "..");
     if (i > 500) {
       throw new Error("Could not find root dir");
