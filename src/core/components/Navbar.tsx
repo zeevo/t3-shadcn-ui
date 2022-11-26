@@ -8,9 +8,8 @@ import {
 import * as Tooltip from "@radix-ui/react-tooltip";
 import React from "react";
 
-import styled from "../../theme";
 import type { NavbarConfig } from "../lib/config";
-import GhostButton from "./Button";
+import GhostButton from "./Button/Button";
 import ColorModeToggle from "./ColorModeToggle";
 import StyledSeparator from "./Separator";
 
@@ -22,37 +21,31 @@ const icons = {
   TwitterIcon: TwitterLogoIcon,
 };
 
-const Nav = styled("nav", {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  variants: {
-    spaced: {
-      true: {
-        marginBottom: "3rem",
-      },
-    },
-  },
-});
-
-const Flex = styled("div", {
-  display: "flex",
-  alignItems: "center",
-});
-
 const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
   config,
   page,
 }) => {
   return (
     <Tooltip.Provider>
-      <Nav spaced={config.spacing}>
-        <Flex>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div className="flex items-center justify-center">
           {config.items.map((item) => {
             const id = item.href || item.type;
             let Icon;
             if (item.type === "separator") {
-              return <StyledSeparator key={id} orientation="vertical" />;
+              return (
+                <StyledSeparator
+                  key={id}
+                  orientation="vertical"
+                  className="h-3.5 w-px"
+                />
+              );
             }
             if (item.icon) {
               Icon = icons[item.icon];
@@ -73,7 +66,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
               </GhostButton>
             );
           })}
-        </Flex>
+        </div>
 
         {config.colorModeToggle && (
           <ColorModeToggle
@@ -83,7 +76,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
             variant="text"
           />
         )}
-      </Nav>
+      </nav>
     </Tooltip.Provider>
   );
 };

@@ -1,5 +1,4 @@
 import NextImage from "next/image";
-import styled from "../../theme";
 
 const BaseImage = styled(NextImage, {
   objectFit: "contain",

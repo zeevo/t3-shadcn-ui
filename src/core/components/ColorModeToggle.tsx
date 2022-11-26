@@ -1,12 +1,13 @@
 import { useTheme } from "next-themes";
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import GhostButton, { ThemedButtonVariant } from "./Button";
+import type { ThemeButtonVariantText } from "./Button/Button";
+import GhostButton from "./Button/Button";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
   tooltipGradient?: boolean;
-  variant: ThemedButtonVariant;
+  variant: ThemeButtonVariantText;
   gradient: boolean;
 }
 
@@ -29,8 +30,6 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
         tooltip ? (theme === "light" ? "Light mode" : "Dark mode") : undefined
       }
       variant={variant}
-      gradients={gradient}
-      tooltipGradient={tooltipGradient}
     >
       {theme === "light" ? <SunIcon /> : <MoonIcon />}
     </GhostButton>

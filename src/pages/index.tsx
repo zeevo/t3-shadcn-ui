@@ -1,30 +1,18 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
-import Button from "../core/components/Button";
-import Image from "../core/components/Image";
-import SignIn from "../core/components/SignIn";
+import Button from "../core/components/Button/Button";
+// import SignIn from "../core/components/SignIn";
 import getConfig from "../core/lib/config";
+import Img from "next/image";
 
 import image from "../core/resources/image.jpg";
-import styled from "../theme";
-
-const Flex = styled("div", {
-  display: "flex",
-});
-
-const Flex1 = styled("div", {
-  flex: "1",
-});
-
-const MarginRight = styled("div", {
-  marginRight: "5px",
-});
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="mt-16">
+      <h1>Next Starter</h1>
       <h2>Next Auth</h2>
-      <SignIn />
+      {/* <SignIn /> */}
 
       <h2>Text</h2>
       <p>
@@ -38,59 +26,91 @@ const Home: NextPage = () => {
       </p>
       <h2>Button</h2>
       <h3>Text</h3>
-      <Flex>
-        <MarginRight>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "5px",
+          }}
+        >
           <Button variant="text">
             <BellIcon />
           </Button>
-        </MarginRight>
-        <Flex1>
+        </div>
+        <div style={{ flex: 1 }}>
           <Button variant="text" fillWidth>
             <BellIcon />
           </Button>
-        </Flex1>
-      </Flex>
+        </div>
+      </div>
       <h3>Soft</h3>
-      <Flex>
-        <MarginRight>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "5px",
+          }}
+        >
           <Button variant="soft">
             <BellIcon />
           </Button>
-        </MarginRight>
-        <Flex1>
+        </div>
+        <div style={{ flex: 1 }}>
           <Button variant="soft" fillWidth>
             <BellIcon />
           </Button>
-        </Flex1>
-      </Flex>
+        </div>
+      </div>
       <h3>Outlined</h3>
-      <Flex>
-        <MarginRight>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "5px",
+          }}
+        >
           <Button variant="outlined">
             <BellIcon />
           </Button>
-        </MarginRight>
-        <Flex1>
+        </div>
+        <div style={{ flex: 1 }}>
           <Button variant="outlined" fillWidth>
             <BellIcon />
           </Button>
-        </Flex1>
-      </Flex>
+        </div>
+      </div>
       <h3>Contained</h3>
-      <Flex>
-        <MarginRight>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            marginRight: "5px",
+          }}
+        >
           <Button variant="contained">
             <BellIcon />
           </Button>
-        </MarginRight>
-        <Flex1>
+        </div>
+        <div style={{ flex: 1 }}>
           <Button variant="contained" fillWidth>
             <BellIcon />
           </Button>
-        </Flex1>
-      </Flex>
+        </div>
+      </div>
       <h2>Image</h2>
-      <Image variant="next" src={image} alt="vercel" layout="fill" />
+      <Img src={image} alt="vercel" />
     </div>
   );
 };

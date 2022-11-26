@@ -1,7 +1,6 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { useSession, signIn, signOut } from "next-auth/react";
-import styled from "../../theme";
-import GhostButton from "./Button";
+import GhostButton from "./Button/Button";
 import Separator from "./Separator";
 
 const StyledAvatar = styled(AvatarPrimitive.Root, {
@@ -80,9 +79,7 @@ const SignIn = () => {
           </div>
         </Flex>
 
-        <GhostButton fillWidth variant="contained" onClick={() => signOut()}>
-          Sign out
-        </GhostButton>
+        <GhostButton onClick={() => signOut()}>Sign out</GhostButton>
         <pre>
           <code>{JSON.stringify(session, null, 2)}</code>
         </pre>

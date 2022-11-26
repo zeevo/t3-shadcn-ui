@@ -1,5 +1,6 @@
-import Link, { LinkProps } from "next/link";
-import { PropsWithChildren } from "react";
+import type { LinkProps } from "next/link";
+import Link from "next/link";
+import type { PropsWithChildren } from "react";
 import styled from "../../theme";
 
 const StyledLink = styled("a", {
@@ -19,7 +20,16 @@ const GhostLink: React.FC<PropsWithChildren<LinkProps>> = ({
 }) => {
   return (
     <Link {...props} href={href} passHref>
-      <StyledLink>{children}</StyledLink>
+      <a
+        style={{
+          textDecoration: "underline",
+          textUnderlineOffset: "3px",
+          textDecorationColor: "$subtle",
+          cursor: "pointer",
+        }}
+      >
+        {children}
+      </a>
     </Link>
   );
 };

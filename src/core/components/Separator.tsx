@@ -1,11 +1,15 @@
 import * as Separator from "@radix-ui/react-separator";
-import styled from "../../theme";
+import type { ComponentProps, PropsWithChildren } from "react";
 
-const StyledSeparator = styled(Separator.Root, {
-  backgroundColor: "$text",
-  marginRight: "15px",
-  "&[data-orientation=horizontal]": { height: "1px", width: "100%" },
-  "&[data-orientation=vertical]": { height: "15px", width: "1px" },
-});
+const StyledSeparator: React.FC<
+  PropsWithChildren<ComponentProps<typeof Separator.Root>>
+> = ({ children, ...props }) => (
+  <Separator.Root
+    {...props}
+    className="mr-3.5 ml-3.5 h-3.5 w-px bg-text-light dark:bg-text-dark"
+  >
+    {children}
+  </Separator.Root>
+);
 
 export default StyledSeparator;
