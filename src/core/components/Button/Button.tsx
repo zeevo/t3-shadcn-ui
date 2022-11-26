@@ -10,13 +10,7 @@ export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
 //   "linear-gradient(30deg, $lowContrastText 20%, $uiHover 69%, $subtleBg 100%)";
 
 const baseStyles =
-  "active:scale-95 flex min-h-[45px] min-w-[45px] items-center justify-center rounded-lg border border-solid border-text-light dark:border-text-dark";
-
-const DefaultButton: React.FC<PropsWithChildren & OtherProps> = ({
-  children,
-  fillWidth,
-  ...props
-}) => <button {...props}>{children}</button>;
+  "active:scale-95 flex min-h-[45px] min-w-[45px] items-center justify-center rounded-lg hover:bg-uiHovered-light hover:dark:bg-uiHovered-dark";
 
 interface OtherProps {
   fillWidth?: boolean;
@@ -24,7 +18,23 @@ interface OtherProps {
 }
 
 const getButtonStyles = (variant = "text", { fillWidth }: OtherProps = {}) => {
-  return classNames(baseStyles, { "w-full": fillWidth });
+  switch (variant) {
+    case "text": {
+      return classNames(baseStyles, { "w-full": fillWidth });
+    }
+    case "soft": {
+      return classNames(baseStyles, "bg-subtleBg-light dark:bg-subtleBg-dark", {
+        "w-full": fillWidth,
+      });
+    }
+    default: {
+      return classNames(
+        baseStyles,
+        "border border-solid border-text-light dark:border-text-dark",
+        { "w-full": fillWidth }
+      );
+    }
+  }
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
