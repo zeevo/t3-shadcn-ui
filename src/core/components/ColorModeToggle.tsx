@@ -12,7 +12,7 @@ interface ColorModeToggleProps {
 }
 
 const ColorModeToggle: React.FC<ColorModeToggleProps> = (
-  { tooltip, variant, gradient, tooltipGradient } = {
+  { tooltip, variant } = {
     tooltip: false,
     variant: "text",
     gradient: false,

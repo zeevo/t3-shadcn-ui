@@ -56,8 +56,8 @@ const getButtonStyles = (
         "border-solid",
         "border",
 
-        // "border-text-light",
-        // "dark:border-text-dark",
+        "border-text-light",
+        "dark:border-text-dark",
 
         // hover
         // border
@@ -74,7 +74,6 @@ const getButtonStyles = (
 
         "hover:bg-uiHover-light",
         "dark:hover:bg-uiHover-dark",
-        "border-slate-100",
       ]);
     }
     case "contained": {
