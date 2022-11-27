@@ -19,14 +19,13 @@ const getColors = (colors, other) => {
     "solidHover",
     "lowContrastText",
     "highContrastText",
-    "subtext",
-    "text",
   ];
 
   const base = keys.reduce((prev, curr, i) => {
     prev[curr] = Object.keys(colors).reduce((colorMap, mode) => {
       const name = colors[mode]?.name;
       colorMap[mode] = colors[mode]?.colors[`${name}${i + 1}`];
+      console.log(mode, "assigning", curr, "to", `${name}${i + 1}`);
       return colorMap;
     }, {});
     return prev;

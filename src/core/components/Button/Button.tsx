@@ -9,30 +9,85 @@ export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
 // const gradient =
 //   "linear-gradient(30deg, $lowContrastText 20%, $uiHover 69%, $subtleBg 100%)";
 
-const baseStyles =
-  "active:scale-95 flex min-h-[45px] min-w-[45px] items-center justify-center rounded-lg hover:bg-uiHovered-light hover:dark:bg-uiHovered-dark";
+const baseStyles = [
+  "active:scale-95",
+  "flex",
+  "duration-75",
+  "min-h-[45px]",
+  "min-w-[45px]",
+  "items-center",
+  "justify-center",
+  "rounded-lg",
+];
 
 interface OtherProps {
   fillWidth?: boolean;
+  active?: boolean;
   href?: string;
 }
 
-const getButtonStyles = (variant = "text", { fillWidth }: OtherProps = {}) => {
+const getButtonStyles = (
+  variant = "text",
+  { fillWidth, active }: OtherProps = {}
+) => {
+  const allStyles = classNames(baseStyles, {
+    "w-full": fillWidth,
+    "bg-uiHovered-light": active,
+    "bg-uiHovered-dark": active,
+  });
+
   switch (variant) {
     case "text": {
-      return classNames(baseStyles, { "w-full": fillWidth });
+      return classNames(allStyles, [
+        "hover:bg-uiHovered-light",
+        "hover:dark:bg-uiHovered-dark",
+      ]);
     }
     case "soft": {
-      return classNames(baseStyles, "bg-subtleBg-light dark:bg-subtleBg-dark", {
-        "w-full": fillWidth,
-      });
+      return classNames(allStyles, [
+        "bg-subtleBg-light",
+        "dark:bg-subtleBg-dark",
+        "hover:bg-uiHovered-light",
+        "hover:dark:bg-uiHovered-dark",
+      ]);
+    }
+    case "outlined": {
+      return classNames(allStyles, [
+        "border-solid",
+        "border",
+
+        // "border-text-light",
+        // "dark:border-text-dark",
+
+        // hover
+        // border
+        "hover:border-bg-light",
+        "hover:dark:border-bg-dark",
+        "hover:bg-lowContrastText-light",
+        "hover:dark:bg-lowContrastText-dark",
+        "[&>*]:hover:text-bg-light",
+        "[&>*]:hover:dark:text-bg-dark",
+
+        // color
+        "hover:text-color-light",
+        "hover:dark:text-color-dark",
+
+        "hover:bg-uiHover-light",
+        "dark:hover:bg-uiHover-dark",
+        "border-slate-100",
+      ]);
+    }
+    case "contained": {
+      return classNames(allStyles, [
+        "bg-uiBorder-light",
+        "dark:bg-uiBorder-dark",
+
+        "hover:bg-uiHover-light",
+        "dark:hover:bg-uiHover-dark",
+      ]);
     }
     default: {
-      return classNames(
-        baseStyles,
-        "border border-solid border-text-light dark:border-text-dark",
-        { "w-full": fillWidth }
-      );
+      return classNames(allStyles);
     }
   }
 };
@@ -50,11 +105,12 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
   tooltip,
   href,
   fillWidth,
+  active,
   ...rest
 }): React.ReactElement => {
   const [open, setOpen] = useState<boolean>();
 
-  const styles = getButtonStyles(variant, { fillWidth });
+  const styles = getButtonStyles(variant, { fillWidth, active });
 
   let content;
   if (href) {
@@ -87,7 +143,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="mt-2 rounded-lg border border-solid border-text-light pt-1 pb-1 pr-2 pl-2 text-sm dark:border-text-dark">
+            <Tooltip.Content className="mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm dark:bg-uiHovered-dark">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>
