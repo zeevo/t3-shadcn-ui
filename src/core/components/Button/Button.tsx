@@ -12,7 +12,7 @@ export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
 const baseStyles = [
   "active:scale-95",
   "flex",
-  "duration-75",
+  "duration-150",
   "min-h-[45px]",
   "min-w-[45px]",
   "items-center",
@@ -60,20 +60,15 @@ const getButtonStyles = (
         "dark:border-text-dark",
 
         // hover
-        // border
+        "hover:text-color-light",
         "hover:border-bg-light",
-        "hover:dark:border-bg-dark",
         "hover:bg-lowContrastText-light",
-        "hover:dark:bg-lowContrastText-dark",
         "[&>*]:hover:text-bg-light",
         "[&>*]:hover:dark:text-bg-dark",
 
-        // color
-        "hover:text-color-light",
+        "hover:dark:border-bg-dark",
         "hover:dark:text-color-dark",
-
-        "hover:bg-uiHover-light",
-        "dark:hover:bg-uiHover-dark",
+        "hover:dark:bg-lowContrastText-dark",
       ]);
     }
     case "contained": {

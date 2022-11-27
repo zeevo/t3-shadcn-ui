@@ -28,7 +28,6 @@ const DEFAULT_CONFIG: Config = {
   navbar: {
     spacing: true,
     colorModeToggle: {
-      gradient: true,
       tooltip: true,
     },
     items: [
@@ -36,7 +35,6 @@ const DEFAULT_CONFIG: Config = {
         icon: "HomeIcon",
         href: "/",
         tooltip: "Home",
-        gradient: true,
       },
       {
         type: "separator",
@@ -45,7 +43,6 @@ const DEFAULT_CONFIG: Config = {
         icon: "GithubIcon",
         href: "https://github.com/zeevo/next-starter",
         tooltip: "Github",
-        gradient: true,
       },
     ],
   },
@@ -56,8 +53,6 @@ export interface NavbarItem {
   icon?: "HomeIcon" | "GithubIcon" | "MixIcon" | "PersonIcon";
   tooltip?: string;
   type?: "separator";
-  gradient?: boolean;
-  tooltipGradient?: boolean;
 }
 
 type NavbarItemOrSeparator = NavbarItem;
@@ -66,8 +61,6 @@ export interface NavbarConfig {
   spacing: boolean;
   colorModeToggle?: {
     tooltip?: boolean;
-    gradient?: boolean;
-    tooltipGradient?: boolean;
   };
   items: NavbarItemOrSeparator[];
 }

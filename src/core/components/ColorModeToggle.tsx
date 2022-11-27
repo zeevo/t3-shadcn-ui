@@ -6,17 +6,13 @@ import GhostButton from "./Button/Button";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
-  tooltipGradient?: boolean;
   variant: ThemeButtonVariantText;
-  gradient: boolean;
 }
 
 const ColorModeToggle: React.FC<ColorModeToggleProps> = (
   { tooltip, variant } = {
     tooltip: false,
     variant: "text",
-    gradient: false,
-    tooltipGradient: false,
   }
 ) => {
   const { theme, setTheme } = useTheme();

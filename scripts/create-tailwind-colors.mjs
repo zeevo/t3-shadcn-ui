@@ -25,7 +25,6 @@ const getColors = (colors, other) => {
     prev[curr] = Object.keys(colors).reduce((colorMap, mode) => {
       const name = colors[mode]?.name;
       colorMap[mode] = colors[mode]?.colors[`${name}${i + 1}`];
-      console.log(mode, "assigning", curr, "to", `${name}${i + 1}`);
       return colorMap;
     }, {});
     return prev;

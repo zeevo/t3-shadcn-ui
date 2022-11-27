@@ -58,8 +58,6 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
                 active={page === item.href}
                 variant="text"
                 href={item.href}
-                gradients={item.gradient}
-                tooltipGradient={item.tooltipGradient}
                 spaced
               >
                 {Icon && <Icon />}
@@ -71,8 +69,6 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
         {config.colorModeToggle && (
           <ColorModeToggle
             tooltip={config.colorModeToggle.tooltip}
-            gradient={!!config.colorModeToggle.gradient}
-            tooltipGradient={!!config.colorModeToggle.tooltipGradient}
             variant="text"
           />
         )}
