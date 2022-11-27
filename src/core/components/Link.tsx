@@ -8,7 +8,6 @@ const Link: React.FC<PropsWithChildren<LinkProps>> = ({
   href,
   ...props
 }) => {
-  console.log();
   return (
     <NextLink
       {...props}
