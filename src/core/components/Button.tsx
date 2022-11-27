@@ -137,7 +137,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm dark:bg-uiHovered-dark">
+            <Tooltip.Content className="tooltip mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm dark:bg-uiHovered-dark">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>

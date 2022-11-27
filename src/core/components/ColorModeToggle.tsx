@@ -1,8 +1,8 @@
 import { useTheme } from "next-themes";
-
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import type { ThemeButtonVariantText } from "./Button/Button";
-import GhostButton from "./Button/Button";
+
+import type { ThemeButtonVariantText } from "./Button";
+import GhostButton from "./Button";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;

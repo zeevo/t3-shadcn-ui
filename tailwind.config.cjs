@@ -5,7 +5,14 @@ module.exports = {
     {
       pattern:
         /.*-(bg|subtleBg|uiBg|uiHovered|uiActive|subtle|uiBorder|uiHover|solid|solidHover|lowContrastText|highContrastText|subtext|text)-(light|dark)/,
-      variants: ["hover", "active", "focus"],
+      variants: [
+        "hover",
+        "active",
+        "focus",
+        "dark",
+        "dark:hover",
+        "hover:dark",
+      ],
     },
   ],
   darkMode: "class",

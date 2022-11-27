@@ -1,19 +1,17 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
-import Button from "../core/components/Button/Button";
-// import SignIn from "../core/components/SignIn";
-import getConfig from "../core/lib/config";
 import Img from "next/image";
 
-import image from "../core/resources/image.jpg";
+import Button from "../core/components/Button";
 import Link from "../core/components/Link";
+import getConfig from "../core/lib/config";
+import image from "../core/resources/image.jpg";
 
 const Home: NextPage = () => {
   return (
     <div className="mt-16">
       <h1>Next Starter</h1>
       <h2>Next Auth</h2>
-      {/* <SignIn /> */}
 
       <h2>Text</h2>
       <p>

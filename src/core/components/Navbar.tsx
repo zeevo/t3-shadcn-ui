@@ -9,7 +9,7 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import React from "react";
 
 import type { NavbarConfig } from "../lib/config";
-import GhostButton from "./Button/Button";
+import GhostButton from "./Button";
 import ColorModeToggle from "./ColorModeToggle";
 import StyledSeparator from "./Separator";
 

@@ -1,6 +1,6 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { useSession, signIn, signOut } from "next-auth/react";
-import GhostButton from "./Button/Button";
+import GhostButton from "./Button";
 import Separator from "./Separator";
 
 const SignIn = () => {
