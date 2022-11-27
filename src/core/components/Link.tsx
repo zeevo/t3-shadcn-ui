@@ -1,37 +1,27 @@
 import type { LinkProps } from "next/link";
-import Link from "next/link";
+import NextLink from "next/link";
 import type { PropsWithChildren } from "react";
-import styled from "../../theme";
+import { clr } from "../utils/colors";
 
-const StyledLink = styled("a", {
-  textDecoration: "underline",
-  textUnderlineOffset: "3px",
-  textDecorationColor: "$subtle",
-  "&:hover": {
-    textDecorationColor: "$uiHover",
-  },
-  cursor: "pointer",
-});
-
-const GhostLink: React.FC<PropsWithChildren<LinkProps>> = ({
+const Link: React.FC<PropsWithChildren<LinkProps>> = ({
   children,
   href,
   ...props
 }) => {
+  console.log();
   return (
-    <Link {...props} href={href} passHref>
-      <a
-        style={{
-          textDecoration: "underline",
-          textUnderlineOffset: "3px",
-          textDecorationColor: "$subtle",
-          cursor: "pointer",
-        }}
-      >
-        {children}
-      </a>
-    </Link>
+    <NextLink
+      {...props}
+      href={href}
+      className={`${clr("decoration", "subtle")} ${clr(
+        "decoration",
+        "uiHover",
+        ["hover"]
+      )} underline underline-offset-4`}
+    >
+      {children}
+    </NextLink>
   );
 };
 
-export default GhostLink;
+export default Link;

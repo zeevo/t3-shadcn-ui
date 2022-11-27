@@ -6,6 +6,7 @@ import getConfig from "../core/lib/config";
 import Img from "next/image";
 
 import image from "../core/resources/image.jpg";
+import Link from "../core/components/Link";
 
 const Home: NextPage = () => {
   return (
@@ -24,6 +25,9 @@ const Home: NextPage = () => {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
+
+      <h2>Link</h2>
+      <Link href="#">This is a link</Link>
       <h2>Button</h2>
       <h3>Text</h3>
       <div

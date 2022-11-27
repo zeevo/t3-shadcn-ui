@@ -3,81 +3,40 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import GhostButton from "./Button/Button";
 import Separator from "./Separator";
 
-const StyledAvatar = styled(AvatarPrimitive.Root, {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  verticalAlign: "middle",
-  overflow: "hidden",
-  userSelect: "none",
-  width: 45,
-  height: 45,
-  borderRadius: "100%",
-  backgroundColor: "$bg",
-});
-
-const StyledImage = styled(AvatarPrimitive.Image, {
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  borderRadius: "inherit",
-});
-
-const StyledFallback = styled(AvatarPrimitive.Fallback, {
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "white",
-  // color: violet.violet11,
-  fontSize: 15,
-  lineHeight: 1,
-  fontWeight: 500,
-});
-
-const Bold = styled("span", {
-  fontWeight: "bold",
-});
-
-const Flex = styled("div", {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-});
-
-const FlexElement = styled("div", {
-  flex: "0 0 auto",
-});
-
-// Exports
-export const Avatar = StyledAvatar;
-export const AvatarImage = StyledImage;
-export const AvatarFallback = StyledFallback;
-
 const SignIn = () => {
   const { data: session } = useSession();
   if (session) {
     return (
       <div>
-        <Flex>
-          <FlexElement>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              flex: "0 0 auto",
+            }}
+          >
             <span>
-              Signed in as <Bold> {session.user?.name} </Bold>
+              Signed in as{" "}
+              <span style={{ fontWeight: "bold" }}> {session.user?.name} </span>
             </span>
-          </FlexElement>
+          </div>
           <Separator orientation="horizontal" />
           <div>
             <p>
-              <Avatar>
-                <AvatarImage
+              <AvatarPrimitive.Root>
+                <AvatarPrimitive.Image
                   src={session.user?.image as string}
                   alt="Github profile picture"
                 />
-              </Avatar>
+              </AvatarPrimitive.Root>
             </p>
           </div>
-        </Flex>
+        </div>
 
         <GhostButton onClick={() => signOut()}>Sign out</GhostButton>
         <pre>

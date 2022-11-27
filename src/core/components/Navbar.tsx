@@ -58,7 +58,6 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
                 active={page === item.href}
                 variant="text"
                 href={item.href}
-                spaced
               >
                 {Icon && <Icon />}
               </GhostButton>
