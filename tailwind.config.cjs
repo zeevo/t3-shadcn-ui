@@ -2,22 +2,23 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   safelist: [
-    {
-      pattern:
-        /.*-(bg|subtleBg|uiBg|uiHovered|uiActive|subtle|uiBorder|uiHover|solid|solidHover|lowContrastText|highContrastText|subtext|text)-(light|dark)/,
-      variants: [
-        "hover",
-        "active",
-        "focus",
-        "dark",
-        "dark:hover",
-        "hover:dark",
-      ],
-    },
+    // {
+    //   pattern:
+    //     /.*-(bg|subtleBg|uiBg|uiHovered|uiActive|subtle|uiBorder|uiHover|solid|solidHover|lowContrastText|highContrastText|subtext|text)-(light|dark)/,
+    //   variants: [
+    //     "hover",
+    //     "active",
+    //     "focus",
+    //     "dark",
+    //     "dark:hover",
+    //     "hover:dark",
+    //   ],
+    // },
   ],
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: `ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
       scale: {
         15: "0.15",
       },

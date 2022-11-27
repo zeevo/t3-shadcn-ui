@@ -1,7 +1,7 @@
 import type { LinkProps } from "next/link";
 import NextLink from "next/link";
 import type { PropsWithChildren } from "react";
-import { clr } from "../utils/colors";
+import cls from "classnames";
 
 const Link: React.FC<PropsWithChildren<LinkProps>> = ({
   children,
@@ -12,11 +12,13 @@ const Link: React.FC<PropsWithChildren<LinkProps>> = ({
     <NextLink
       {...props}
       href={href}
-      className={`${clr("decoration", "subtle")} ${clr(
-        "decoration",
-        "uiHover",
-        ["hover"]
-      )} underline underline-offset-4`}
+      className={cls([
+        "decoration-subtle-light",
+        "dark:decoration-subtle-dark",
+        "hover:decoration-uiHover-light",
+        "hover:dark:decoration-uiHover-dark",
+        "underline underline-offset-4",
+      ])}
     >
       {children}
     </NextLink>
