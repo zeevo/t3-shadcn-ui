@@ -2,11 +2,9 @@ import type { PropsWithChildren } from "react";
 import type { Config } from "../lib/config";
 import Navbar from "./Navbar";
 
-const Layout: React.FC<PropsWithChildren<{ config: Config; page: string }>> = ({
-  config,
-  page,
-  children,
-}) => {
+const Layout: React.FC<
+  PropsWithChildren<{ config: Config; page?: string }>
+> = ({ config, page = "/", children }) => {
   return (
     <div className="m-4">
       <div

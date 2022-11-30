@@ -28,13 +28,18 @@ interface OtherProps {
 
 const getButtonStyles = (
   variant = "text",
-  { fillWidth, active }: OtherProps = {}
+  { fillWidth, active }: OtherProps = {},
+  className = ""
 ) => {
-  const allStyles = classNames(baseStyles, {
-    "w-full": fillWidth,
-    "bg-uiHovered-light": active,
-    "bg-uiHovered-dark": active,
-  });
+  const allStyles = classNames(
+    baseStyles,
+    {
+      "w-full": fillWidth,
+      "bg-uiHovered-light": active,
+      "dark:bg-uiHovered-dark": active,
+    },
+    className
+  );
 
   switch (variant) {
     case "text": {
@@ -100,11 +105,12 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
   href,
   fillWidth,
   active,
+  className,
   ...rest
 }): React.ReactElement => {
   const [open, setOpen] = useState<boolean>();
 
-  const styles = getButtonStyles(variant, { fillWidth, active });
+  const styles = getButtonStyles(variant, { fillWidth, active }, className);
 
   let content;
   if (href) {
