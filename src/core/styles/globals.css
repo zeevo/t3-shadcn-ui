@@ -18,6 +18,14 @@ body {
   @apply bg-bg-light text-text-light dark:bg-bg-dark dark:text-text-dark;
 }
 
+code {
+  @apply block overflow-x-auto rounded-lg bg-uiBg-light bg-uiBg-dark pt-1 pb-1 pr-2 pl-2 text-text-light text-text-dark;
+}
+
+pre {
+  @apply rounded-lg bg-uiBg-light bg-uiBg-dark p-1 text-text-light text-text-dark;
+}
+
 @keyframes slide-down {
   0% {
     transform: scale(0.6) translateY(-90%);

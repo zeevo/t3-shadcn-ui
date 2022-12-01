@@ -6,7 +6,7 @@ import Button from "./Button";
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
+  const { data } = trpc.auth.getSecretMessage.useQuery(
     undefined, // no input
     { enabled: sessionData?.user !== undefined }
   );
@@ -15,8 +15,15 @@ const AuthShowcase: React.FC = () => {
     <div>
       <h3>
         {sessionData && <span>Logged in as {sessionData?.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
       </h3>
+      {data && (
+        <div className="mt-4 mb-4">
+          <pre>
+            <code>{JSON.stringify(data, null, 2)}</code>
+          </pre>
+        </div>
+      )}
+
       <Button
         variant="contained"
         className="p-3"
