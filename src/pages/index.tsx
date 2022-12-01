@@ -30,19 +30,22 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         />
         <h1>Next Starter</h1>
         <h2>tRPC</h2>
-        <p>
-          {hello.data ? (
-            <pre>
-              <code>{JSON.stringify(hello.data, null, 2)}</code>
-            </pre>
-          ) : (
-            "Loading tRPC query..."
-          )}
-        </p>
-        <StyledSeparator className="mt-8" orientation="horizontal" />
+        {hello.data ? (
+          <pre>
+            <code>{JSON.stringify(hello.data, null, 2)}</code>
+          </pre>
+        ) : (
+          "Loading tRPC query..."
+        )}
+        <div className="mt-4">
+          <StyledSeparator orientation="horizontal" />
+        </div>
+
         <h2>Next Auth</h2>
         <AuthShowcase />
-        <StyledSeparator className="mt-8" orientation="horizontal" />
+        <div className="mt-4">
+          <StyledSeparator orientation="horizontal" />
+        </div>
         <h2>Text</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -53,10 +56,14 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <StyledSeparator className="mt-8" orientation="horizontal" />
+        <div className="mt-4">
+          <StyledSeparator orientation="horizontal" />
+        </div>
         <h2>Link</h2>
         <Link href="#">This is a link</Link>
-        <StyledSeparator className="mt-8" orientation="horizontal" />
+        <div className="mt-4">
+          <StyledSeparator orientation="horizontal" />
+        </div>
         <h2>Button</h2>
         <h3>Text</h3>
         <div
@@ -142,7 +149,9 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
-        <StyledSeparator className="mt-8" orientation="horizontal" />
+        <div className="mt-4">
+          <StyledSeparator orientation="horizontal" />
+        </div>
         <h2>Image</h2>
         <Img src={image} alt="vercel" />
       </div>

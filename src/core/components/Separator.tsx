@@ -6,7 +6,7 @@ const StyledSeparator: React.FC<
   PropsWithChildren<
     { className?: string } & ComponentProps<typeof Separator.Root>
   >
-> = ({ children, orientation, className, ...props }) => {
+> = ({ children, orientation, ...props }) => {
   let baseStyles;
 
   if (orientation === "vertical") {
@@ -19,11 +19,7 @@ const StyledSeparator: React.FC<
     <div className="flex justify-center">
       <Separator.Root
         {...props}
-        className={cls(
-          className,
-          baseStyles,
-          "bg-subtext-light dark:bg-subtext-dark"
-        )}
+        className={cls(baseStyles, "bg-subtext-light dark:bg-subtext-dark")}
       >
         {children}
       </Separator.Root>
