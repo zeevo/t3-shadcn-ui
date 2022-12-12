@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Layout: React.FC<
   PropsWithChildren<{ config: Config; page?: string }>
-> = ({ config, page = "/", children }) => {
+> = ({ config, page, children }) => {
   return (
     <div className="m-4">
       <div
@@ -17,7 +17,9 @@ const Layout: React.FC<
           width: "100%",
         }}
       >
-        <Navbar config={config.navbar} page={page} />
+        <div className="mb-14">
+          <Navbar config={config.navbar} page={page} />
+        </div>
         <main
           style={{
             width: "100%",

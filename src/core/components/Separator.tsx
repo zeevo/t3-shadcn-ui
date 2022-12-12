@@ -1,12 +1,12 @@
 import * as Separator from "@radix-ui/react-separator";
 import type { ComponentProps, PropsWithChildren } from "react";
-import cls from "classnames";
+import { twMerge } from "tailwind-merge";
 
 const StyledSeparator: React.FC<
   PropsWithChildren<
     { className?: string } & ComponentProps<typeof Separator.Root>
   >
-> = ({ children, orientation, ...props }) => {
+> = ({ children, orientation, className, ...props }) => {
   let baseStyles;
 
   if (orientation === "vertical") {
@@ -19,7 +19,11 @@ const StyledSeparator: React.FC<
     <div className="flex justify-center">
       <Separator.Root
         {...props}
-        className={cls(baseStyles, "bg-subtext-light dark:bg-subtext-dark")}
+        className={twMerge(
+          baseStyles,
+          "bg-subtext-light dark:bg-subtext-dark",
+          className
+        )}
       >
         {children}
       </Separator.Root>

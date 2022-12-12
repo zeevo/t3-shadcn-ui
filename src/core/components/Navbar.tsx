@@ -37,30 +37,32 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
         <div className="flex items-center justify-center">
           {config.items.map((item) => {
             const id = item.href || item.type;
+            let ele;
             let Icon;
             if (item.type === "separator") {
-              return (
-                <StyledSeparator
-                  key={id}
-                  orientation="vertical"
-                  className="h-3.5 w-px"
-                />
+              ele = (
+                <StyledSeparator orientation="vertical" className="mr-0 ml-0" />
               );
-            }
-            if (item.icon) {
-              Icon = icons[item.icon];
+            } else {
+              if (item.icon) {
+                Icon = icons[item.icon];
+              }
+              ele = (
+                <GhostButton
+                  tooltip={item.tooltip}
+                  active={page === item.href}
+                  variant="text"
+                  href={item.href}
+                >
+                  {Icon && <Icon />}
+                </GhostButton>
+              );
             }
 
             return (
-              <GhostButton
-                key={item.href}
-                tooltip={item.tooltip}
-                active={page === item.href}
-                variant="text"
-                href={item.href}
-              >
-                {Icon && <Icon />}
-              </GhostButton>
+              <div key={id} className="[&:not(:last-child)]:mr-4">
+                {ele}
+              </div>
             );
           })}
         </div>
