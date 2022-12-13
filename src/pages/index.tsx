@@ -19,7 +19,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
 
   return (
     <Layout config={config}>
-      <div className="mt-16">
+      <div className="mt-8">
         <Head
           title={config.site.title}
           defaultTitle={config.site.defaultTitle}
