@@ -1,9 +1,9 @@
 import { slate, slateDark, blue, blueDark } from "@radix-ui/colors";
 
-const LIGHT_COLORS = blue;
-const LIGHT_COLOR_TEXT = slate;
-const DARK_COLORS = blueDark;
-const DARK_COLOR_TEXT = slateDark;
+const LIGHT_COLORS = [blue, "blue"];
+const LIGHT_COLOR_TEXT = [slate, "blue"];
+const DARK_COLORS = [blueDark, "orange"];
+const DARK_COLOR_TEXT = [slateDark, "slate"];
 
 const getColors = (colors, other) => {
   const keys = [
@@ -36,17 +36,17 @@ const getColors = (colors, other) => {
 console.log(
   getColors(
     {
-      light: { colors: LIGHT_COLORS, name: "blue" },
-      dark: { colors: DARK_COLORS, name: "blue" },
+      light: { colors: LIGHT_COLORS[0], name: LIGHT_COLORS[1] },
+      dark: { colors: DARK_COLORS[0], name: DARK_COLORS[1] },
     },
     {
       subtext: {
-        light: LIGHT_COLOR_TEXT.slate11,
-        dark: DARK_COLOR_TEXT.slate11,
+        light: LIGHT_COLOR_TEXT[0][`${LIGHT_COLOR_TEXT[1]}11`],
+        dark: DARK_COLOR_TEXT[0][`${DARK_COLOR_TEXT[1]}11`],
       },
       text: {
-        light: LIGHT_COLOR_TEXT.slate12,
-        dark: DARK_COLOR_TEXT.slate12,
+        light: LIGHT_COLOR_TEXT[0][`${LIGHT_COLOR_TEXT[1]}12`],
+        dark: DARK_COLOR_TEXT[0][`${DARK_COLOR_TEXT[1]}12`],
       },
     }
   )
