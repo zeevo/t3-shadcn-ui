@@ -2,7 +2,7 @@ import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 import type { ThemeButtonVariantText } from "./Button";
-import GhostButton from "./Button";
+import Button from "./Button";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
@@ -17,7 +17,7 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
 ) => {
   const { theme, setTheme } = useTheme();
   return (
-    <GhostButton
+    <Button
       onClick={() => {
         const nextMode = theme === "light" ? "dark" : "light";
         setTheme(nextMode);
@@ -26,9 +26,10 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
         tooltip ? (theme === "light" ? "Light mode" : "Dark mode") : undefined
       }
       variant={variant}
+      aria-label="color mode toggle"
     >
       {theme === "light" ? <SunIcon /> : <MoonIcon />}
-    </GhostButton>
+    </Button>
   );
 };
 export default ColorModeToggle;
