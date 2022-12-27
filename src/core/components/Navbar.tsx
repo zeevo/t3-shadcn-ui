@@ -51,8 +51,9 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
                 <GhostButton
                   tooltip={item.tooltip}
                   active={page === item.href}
-                  variant="text"
                   href={item.href}
+                  variant="text"
+                  aria-label={`${item.tooltip} button`}
                 >
                   {Icon && <Icon />}
                 </GhostButton>
