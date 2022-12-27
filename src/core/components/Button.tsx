@@ -18,6 +18,7 @@ const baseStyles = [
   "items-center",
   "justify-center",
   "rounded-lg",
+  "font-semibold",
 ];
 
 interface OtherProps {
@@ -54,6 +55,7 @@ const getButtonStyles = (
         "dark:bg-subtleBg-dark",
         "hover:bg-uiHovered-light",
         "hover:dark:bg-uiHovered-dark",
+        "shadow",
       ]);
     }
     case "outlined": {
@@ -63,6 +65,8 @@ const getButtonStyles = (
 
         "border-text-light",
         "dark:border-text-dark",
+
+        "shadow",
 
         // hover
         "hover:text-color-light",
@@ -78,6 +82,8 @@ const getButtonStyles = (
     }
     case "contained": {
       return classNames(allStyles, [
+        "shadow",
+
         "bg-uiBorder-light",
         "dark:bg-uiBorder-dark",
 
@@ -143,7 +149,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="tooltip mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm dark:bg-uiHovered-dark">
+            <Tooltip.Content className="tooltip mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm font-semibold dark:bg-uiHovered-dark">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>

@@ -1,8 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { slate, slateDark, blue, blueDark } = require("@radix-ui/colors");
 
 const LIGHT_COLORS = [blue, "blue"];
-const LIGHT_COLOR_TEXT = [slate, "blue"];
-const DARK_COLORS = [blueDark, "orange"];
+const LIGHT_COLOR_TEXT = [slate, "slate"];
+const DARK_COLORS = [blueDark, "blue"];
 const DARK_COLOR_TEXT = [slateDark, "slate"];
 
 const getColors = (colors, other) => {
