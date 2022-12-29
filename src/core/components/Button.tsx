@@ -19,6 +19,7 @@ const baseStyles = [
   "justify-center",
   "rounded-lg",
   "font-semibold",
+  "dark:dark-shadow-none",
 ];
 
 interface OtherProps {
@@ -70,14 +71,14 @@ const getButtonStyles = (
 
         // hover
         "hover:text-color-light",
-        "hover:border-bg-light",
+        "hover:border-lowContrastText-light",
         "hover:bg-lowContrastText-light",
         "[&>*]:hover:text-bg-light",
         "[&>*]:hover:dark:text-bg-dark",
 
-        "hover:dark:border-bg-dark",
-        "hover:dark:text-color-dark",
-        "hover:dark:bg-lowContrastText-dark",
+        "dark:hover:text-color-dark",
+        "dark:hover:border-lowContrastText-dark",
+        "dark:hover:bg-lowContrastText-dark",
       ]);
     }
     case "contained": {
