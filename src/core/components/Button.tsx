@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import classNames from "classnames";
+import { twMerge } from "tailwind-merge";
 
 export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
 
@@ -33,34 +34,35 @@ const getButtonStyles = (
   { fillWidth, active }: OtherProps = {},
   className = ""
 ) => {
-  const allStyles = classNames(
-    baseStyles,
-    {
-      "w-full": fillWidth,
-      "bg-uiHovered-light": active,
-      "dark:bg-uiHovered-dark": active,
-    },
-    className
-  );
+  const allStyles = classNames(baseStyles, { "w-full": fillWidth });
+
+  let activeStyles = classNames({
+    "bg-uiHovered-light": active,
+    "dark:bg-uiHovered-dark": active,
+  });
+
+  let variantStyles;
 
   switch (variant) {
     case "text": {
-      return classNames(allStyles, [
+      variantStyles = [
         "hover:bg-uiHovered-light",
         "hover:dark:bg-uiHovered-dark",
-      ]);
+      ];
+      break;
     }
     case "soft": {
-      return classNames(allStyles, [
+      variantStyles = [
         "bg-subtleBg-light",
         "dark:bg-subtleBg-dark",
         "hover:bg-uiHovered-light",
         "hover:dark:bg-uiHovered-dark",
         "shadow",
-      ]);
+      ];
+      break;
     }
     case "outlined": {
-      return classNames(allStyles, [
+      variantStyles = [
         "border-solid",
         "border",
 
@@ -79,10 +81,20 @@ const getButtonStyles = (
         "dark:hover:text-color-dark",
         "dark:hover:border-lowContrastText-dark",
         "dark:hover:bg-lowContrastText-dark",
-      ]);
+      ];
+      activeStyles = classNames({
+        "bg-lowContrastText-light": active,
+        "text-bg-light": active,
+        "dark:bg-lowContrastText-dark": active,
+        "dark:text-bg-dark": active,
+
+        "border-lowContrastText-light": active,
+        "dark:border-lowContrastText-dark": active,
+      });
+      break;
     }
     case "contained": {
-      return classNames(allStyles, [
+      variantStyles = [
         "shadow",
 
         "bg-uiBorder-light",
@@ -90,12 +102,14 @@ const getButtonStyles = (
 
         "hover:bg-uiHover-light",
         "dark:hover:bg-uiHover-dark",
-      ]);
+      ];
+      break;
     }
     default: {
-      return classNames(allStyles);
+      variantStyles = "";
     }
   }
+  return twMerge(allStyles, variantStyles, activeStyles, className);
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

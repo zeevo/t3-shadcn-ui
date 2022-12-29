@@ -1,6 +1,7 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Img from "next/image";
+import { useState } from "react";
 
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
@@ -16,6 +17,8 @@ import { trpc } from "../core/utils/trpc";
 
 const Home: NextPage<{ config: Config }> = ({ config }) => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+
+  const [active, setActive] = useState<boolean>(false);
 
   return (
     <Layout config={config}>
@@ -118,12 +121,21 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               marginRight: "5px",
             }}
           >
-            <Button variant="outlined">
+            <Button
+              variant="outlined"
+              onClick={() => setActive(!active)}
+              active={active}
+            >
               <BellIcon />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
-            <Button variant="outlined" fillWidth>
+            <Button
+              variant="outlined"
+              onClick={() => setActive(!active)}
+              active={active}
+              fillWidth
+            >
               <BellIcon />
             </Button>
           </div>
