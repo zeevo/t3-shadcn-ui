@@ -25,7 +25,7 @@ const AuthShowcase: React.FC = () => {
       )}
 
       <Button
-        variant="contained"
+        variant="outlined"
         className="p-3"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >

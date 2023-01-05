@@ -74,9 +74,7 @@ const getButtonStyles = (
 
         // Hover color
         "hover:text-bg-light",
-        "[&>*]:hover:text-bg-light",
         "dark:hover:text-bg-dark",
-        "dark:[&>*]:hover:text-bg-dark",
 
         // Hover border color
         "hover:border-lowContrastText-light",
@@ -111,9 +109,7 @@ const getButtonStyles = (
 
         // Hover color
         "hover:text-color-light",
-        "[&>*]:hover:text-text-light",
         "dark:hover:text-color-dark",
-        "dark:[&>*]:hover:text-text-dark",
 
         // Hover border color
         "hover:border-text-light",
@@ -124,9 +120,7 @@ const getButtonStyles = (
       activeStyles = classNames(
         [
           "text-color-light",
-          "[&>*]:text-text-light",
           "dark:text-color-dark",
-          "dark:[&>*]:text-text-dark",
           "border-text-light",
           "bg-bg-light",
           "dark:border-text-dark",
