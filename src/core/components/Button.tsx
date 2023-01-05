@@ -24,8 +24,6 @@ const baseStyles = [
   "items-center",
   "justify-center",
   "rounded-lg",
-  "font-semibold",
-  "dark:dark-shadow-none",
 ];
 
 interface OtherProps {
@@ -118,9 +116,9 @@ const getButtonStyles = (
         "dark:[&>*]:hover:text-text-dark",
 
         // Hover border color
-        "hover:border-lowContrastText-light",
+        "hover:border-text-light",
         "hover:bg-bg-light",
-        "dark:hover:border-lowContrastText-dark",
+        "dark:hover:border-text-dark",
         "dark:hover:bg-bg-dark",
       ];
       activeStyles = classNames(
@@ -129,9 +127,9 @@ const getButtonStyles = (
           "[&>*]:text-text-light",
           "dark:text-color-dark",
           "dark:[&>*]:text-text-dark",
-          "border-lowContrastText-light",
+          "border-text-light",
           "bg-bg-light",
-          "dark:border-lowContrastText-dark",
+          "dark:border-text-dark",
           "dark:bg-bg-dark",
         ].reduce<{ [key: string]: boolean }>((prev, curr) => {
           prev[curr] = active;
@@ -142,14 +140,20 @@ const getButtonStyles = (
     }
     case "contained": {
       variantStyles = [
-        "shadow",
-
         "bg-uiBorder-light",
         "dark:bg-uiBorder-dark",
-
         "hover:bg-uiHover-light",
         "dark:hover:bg-uiHover-dark",
       ];
+
+      activeStyles = classNames(
+        ["bg-uiHover-light", "dark:bg-uiHover-dark"].reduce<{
+          [key: string]: boolean;
+        }>((prev, curr) => {
+          prev[curr] = active;
+          return prev;
+        }, {})
+      );
       break;
     }
     default: {

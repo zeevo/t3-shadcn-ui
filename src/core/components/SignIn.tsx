@@ -49,7 +49,7 @@ const SignIn = () => {
     <div>
       Not signed in <br />
       <GhostButton fillWidth variant="contained" onClick={() => signIn()}>
-        Sign in
+        <span className="font-normal">Sign in</span>
       </GhostButton>
     </div>
   );
