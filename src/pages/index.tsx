@@ -67,7 +67,20 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
-        <h2>Button</h2>
+        <div className="flex items-center gap-2">
+          <h2>Button</h2>
+          <div>
+            <Button
+              variant="outlined"
+              className="min-h-0 min-w-0"
+              onClick={() => setActive(!active)}
+              active={active}
+            >
+              <span className="p-1">active</span>
+            </Button>
+          </div>
+        </div>
+
         <h3>Text</h3>
         <div
           style={{
@@ -79,12 +92,12 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               marginRight: "5px",
             }}
           >
-            <Button variant="text">
+            <Button variant="text" active={active}>
               <BellIcon />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
-            <Button variant="text" fillWidth>
+            <Button variant="text" active={active} fillWidth>
               <BellIcon />
             </Button>
           </div>
@@ -100,12 +113,12 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               marginRight: "5px",
             }}
           >
-            <Button variant="soft">
+            <Button variant="soft" active={active}>
               <BellIcon />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
-            <Button variant="soft" fillWidth>
+            <Button variant="soft" active={active} fillWidth>
               <BellIcon />
             </Button>
           </div>
@@ -121,21 +134,33 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               marginRight: "5px",
             }}
           >
-            <Button
-              variant="outlined"
-              onClick={() => setActive(!active)}
-              active={active}
-            >
+            <Button variant="outlined" active={active}>
               <BellIcon />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
-            <Button
-              variant="outlined"
-              onClick={() => setActive(!active)}
-              active={active}
-              fillWidth
-            >
+            <Button variant="outlined" active={active} fillWidth>
+              <BellIcon />
+            </Button>
+          </div>
+        </div>
+        <h3>Inverted Outlined</h3>
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          <div
+            style={{
+              marginRight: "5px",
+            }}
+          >
+            <Button variant="outlined-inverted" active={active}>
+              <BellIcon />
+            </Button>
+          </div>
+          <div style={{ flex: 1 }}>
+            <Button variant="outlined-inverted" active={active} fillWidth>
               <BellIcon />
             </Button>
           </div>
@@ -151,12 +176,12 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               marginRight: "5px",
             }}
           >
-            <Button variant="contained">
+            <Button variant="contained" active={active}>
               <BellIcon />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
-            <Button variant="contained" fillWidth>
+            <Button variant="contained" active={active} fillWidth>
               <BellIcon />
             </Button>
           </div>

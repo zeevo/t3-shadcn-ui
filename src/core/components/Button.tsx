@@ -5,7 +5,12 @@ import Link from "next/link";
 import classNames from "classnames";
 import { twMerge } from "tailwind-merge";
 
-export type ThemeButtonVariantText = "text" | "contained" | "soft" | "outlined";
+export type ThemeButtonVariantText =
+  | "text"
+  | "contained"
+  | "soft"
+  | "outlined"
+  | "outlined-inverted";
 
 // const gradient =
 //   "linear-gradient(30deg, $lowContrastText 20%, $uiHover 69%, $subtleBg 100%)";
@@ -31,7 +36,7 @@ interface OtherProps {
 
 const getButtonStyles = (
   variant = "text",
-  { fillWidth, active }: OtherProps = {},
+  { fillWidth, active = false }: OtherProps = {},
   className = ""
 ) => {
   const allStyles = classNames(baseStyles, { "w-full": fillWidth });
@@ -57,7 +62,6 @@ const getButtonStyles = (
         "dark:bg-subtleBg-dark",
         "hover:bg-uiHovered-light",
         "hover:dark:bg-uiHovered-dark",
-        "shadow",
       ];
       break;
     }
@@ -66,19 +70,19 @@ const getButtonStyles = (
         "border-solid",
         "border",
 
+        // Border color
         "border-text-light",
         "dark:border-text-dark",
 
-        "shadow",
+        // Hover color
+        "hover:text-bg-light",
+        "[&>*]:hover:text-bg-light",
+        "dark:hover:text-bg-dark",
+        "dark:[&>*]:hover:text-bg-dark",
 
-        // hover
-        "hover:text-color-light",
+        // Hover border color
         "hover:border-lowContrastText-light",
         "hover:bg-lowContrastText-light",
-        "[&>*]:hover:text-bg-light",
-        "[&>*]:hover:dark:text-bg-dark",
-
-        "dark:hover:text-color-dark",
         "dark:hover:border-lowContrastText-dark",
         "dark:hover:bg-lowContrastText-dark",
       ];
@@ -87,10 +91,53 @@ const getButtonStyles = (
         "text-bg-light": active,
         "dark:bg-lowContrastText-dark": active,
         "dark:text-bg-dark": active,
-
         "border-lowContrastText-light": active,
         "dark:border-lowContrastText-dark": active,
       });
+      break;
+    }
+    case "outlined-inverted": {
+      variantStyles = [
+        "border-solid",
+        "border",
+
+        // Background
+        "bg-lowContrastText-light",
+        "text-bg-light",
+        "dark:bg-lowContrastText-dark",
+        "dark:text-bg-dark",
+
+        // Border color
+        "border-lowContrastText-light",
+        "dark:border-lowContrastText-dark",
+
+        // Hover color
+        "hover:text-color-light",
+        "[&>*]:hover:text-text-light",
+        "dark:hover:text-color-dark",
+        "dark:[&>*]:hover:text-text-dark",
+
+        // Hover border color
+        "hover:border-lowContrastText-light",
+        "hover:bg-bg-light",
+        "dark:hover:border-lowContrastText-dark",
+        "dark:hover:bg-bg-dark",
+      ];
+      activeStyles = classNames(
+        [
+          "text-color-light",
+          "[&>*]:text-text-light",
+          "dark:text-color-dark",
+          "dark:[&>*]:text-text-dark",
+          "border-lowContrastText-light",
+          "bg-bg-light",
+          "dark:border-lowContrastText-dark",
+          "dark:bg-bg-dark",
+        ].reduce<{ [key: string]: boolean }>((prev, curr) => {
+          prev[curr] = active;
+          return prev;
+        }, {})
+      );
       break;
     }
     case "contained": {
