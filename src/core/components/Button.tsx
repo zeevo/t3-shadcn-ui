@@ -108,8 +108,8 @@ const getButtonStyles = (
         "dark:border-lowContrastText-dark",
 
         // Hover color
-        "hover:text-color-light",
-        "dark:hover:text-color-dark",
+        "hover:text-text-light",
+        "dark:hover:text-text-dark",
 
         // Hover border color
         "hover:border-text-light",
