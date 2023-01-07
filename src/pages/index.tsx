@@ -20,6 +20,8 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
 
   const [active, setActive] = useState<boolean>(false);
 
+  const [linkActive, setLinkActive] = useState<boolean>(false);
+
   return (
     <Layout config={config}>
       <div className="mt-8">
@@ -62,8 +64,28 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
-        <h2>Link</h2>
-        <Link href="#">This is a link</Link>
+        <div className="flex items-center gap-2">
+          <h2>Link</h2>
+          <div>
+            <Button
+              variant="outlined"
+              className="min-h-0 min-w-0"
+              onClick={() => setLinkActive(!linkActive)}
+              active={linkActive}
+            >
+              <span className="p-1">active</span>
+            </Button>
+          </div>
+        </div>
+
+        <h3>Normal</h3>
+        <Link active={linkActive} href="#">
+          This is a link
+        </Link>
+        <h3>Soft</h3>
+        <Link active={linkActive} variant="soft" href="#">
+          This is a link
+        </Link>
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>

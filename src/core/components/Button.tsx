@@ -12,9 +12,6 @@ export type ThemeButtonVariantText =
   | "outlined"
   | "outlined-inverted";
 
-// const gradient =
-//   "linear-gradient(30deg, $lowContrastText 20%, $uiHover 69%, $subtleBg 100%)";
-
 const baseStyles = [
   "active:scale-95",
   "flex",
