@@ -28,8 +28,8 @@ const getVariantStyles = (variant?: string, active?: boolean) => {
         cls([
           "decoration-subtle-light",
           "dark:decoration-subtle-dark",
-          "hover:decoration-uiHover-light",
-          "hover:dark:decoration-uiHover-dark",
+          "hover:decoration-lowContrastText-light",
+          "hover:dark:decoration-lowContrastText-dark",
           "underline underline-offset-4",
         ]),
         cls({

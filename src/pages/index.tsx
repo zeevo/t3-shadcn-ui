@@ -5,9 +5,11 @@ import { useState } from "react";
 
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
+import { useDemoModal } from "../core/components/DemoModal";
 import Head from "../core/components/Head";
 import Layout from "../core/components/Layout";
 import Link from "../core/components/Link";
+import Modal from "../core/components/Modal";
 import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
 import getConfig from "../core/lib/config";
@@ -17,6 +19,8 @@ import { trpc } from "../core/utils/trpc";
 
 const Home: NextPage<{ config: Config }> = ({ config }) => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+
+  const { DemoModal, setShowDemoModal } = useDemoModal();
 
   const [active, setActive] = useState<boolean>(false);
 
@@ -73,7 +77,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               onClick={() => setLinkActive(!linkActive)}
               active={linkActive}
             >
-              <span className="p-1">active</span>
+              <span className="p-2">active</span>
             </Button>
           </div>
         </div>
@@ -98,7 +102,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               onClick={() => setActive(!active)}
               active={active}
             >
-              <span className="p-1">active</span>
+              <span className="p-2">active</span>
             </Button>
           </div>
         </div>
@@ -208,6 +212,29 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
+
+        <h3>Unstyled</h3>
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          <div
+            style={{
+              marginRight: "5px",
+            }}
+          >
+            <Button variant="unstyled" active={active}>
+              <BellIcon />
+            </Button>
+          </div>
+          <div style={{ flex: 1 }}>
+            <Button variant="unstyled" active={active} fillWidth>
+              <BellIcon />
+            </Button>
+          </div>
+        </div>
+
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>

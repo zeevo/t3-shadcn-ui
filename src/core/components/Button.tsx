@@ -12,17 +12,6 @@ export type ThemeButtonVariantText =
   | "outlined"
   | "outlined-inverted";
 
-const baseStyles = [
-  "active:scale-95",
-  "flex",
-  "duration-150",
-  "min-h-[45px]",
-  "min-w-[45px]",
-  "items-center",
-  "justify-center",
-  "rounded-lg",
-];
-
 interface OtherProps {
   fillWidth?: boolean;
   active?: boolean;
@@ -34,6 +23,17 @@ const getButtonStyles = (
   { fillWidth, active = false }: OtherProps = {},
   className = ""
 ) => {
+  let baseStyles = [
+    "active:scale-95",
+    "flex",
+    "duration-150",
+    "min-h-[45px]",
+    "min-w-[45px]",
+    "items-center",
+    "justify-center",
+    "rounded-2xl",
+  ];
+
   const allStyles = classNames(baseStyles, { "w-full": fillWidth });
 
   let activeStyles = classNames({
@@ -51,13 +51,25 @@ const getButtonStyles = (
       ];
       break;
     }
+    case "unstyled": {
+      variantStyles = [];
+      baseStyles = [];
+      activeStyles = "";
+      break;
+    }
     case "soft": {
       variantStyles = [
-        "bg-subtleBg-light",
-        "dark:bg-subtleBg-dark",
-        "hover:bg-uiHovered-light",
-        "hover:dark:bg-uiHovered-dark",
+        "hover:border-text-light",
+        "hover:dark:border-text-dark",
+        "border-solid",
+        "border",
       ];
+
+      activeStyles = classNames({
+        "bg-uiHovered-light": active,
+        "dark:bg-uiHovered-dark": active,
+      });
+
       break;
     }
     case "outlined": {
@@ -206,7 +218,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="tooltip mt-2 rounded-lg bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm font-semibold dark:bg-uiHovered-dark">
+            <Tooltip.Content className="tooltip mt-2 rounded-2xl bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm font-semibold dark:bg-uiHovered-dark">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>
