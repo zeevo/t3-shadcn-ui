@@ -5,11 +5,9 @@ import { useState } from "react";
 
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
-import { useDemoModal } from "../core/components/DemoModal";
 import Head from "../core/components/Head";
 import Layout from "../core/components/Layout";
 import Link from "../core/components/Link";
-import Modal from "../core/components/Modal";
 import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
 import getConfig from "../core/lib/config";
@@ -19,8 +17,6 @@ import { trpc } from "../core/utils/trpc";
 
 const Home: NextPage<{ config: Config }> = ({ config }) => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
-
-  const { DemoModal, setShowDemoModal } = useDemoModal();
 
   const [active, setActive] = useState<boolean>(false);
 
