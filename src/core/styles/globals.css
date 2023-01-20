@@ -6,53 +6,6 @@ html {
   @apply font-0;
 }
 
-code,
-kbd,
-samp,
-pre {
-  @apply font-0 text-base;
-}
-
-code {
-  @apply inline overflow-x-auto rounded-lg bg-uiBg-light pt-1 pb-1 pr-1 pl-1  text-text-light dark:bg-uiBg-dark dark:text-text-dark;
-}
-
-pre {
-  @apply rounded-lg bg-uiBg-light p-4 text-text-light dark:bg-uiBg-dark dark:text-text-dark;
-}
-
-pre > code {
-  @apply pl-0;
-}
-
-body {
-  @apply bg-bg-light text-text-light dark:bg-bg-dark dark:text-text-dark;
-}
-
-h1 {
-  @apply mt-6 mb-6 text-4xl font-bold leading-relaxed;
-}
-
-h2 {
-  @apply mt-5 mb-5 text-2xl font-bold leading-relaxed;
-}
-
-h3 {
-  @apply mt-4 mb-4 font-bold leading-relaxed;
-}
-
-li {
-  @apply pl-8;
-}
-
-li:not(:last-child) {
-  @apply mb-2;
-}
-
-p {
-  @apply mt-4 mb-4;
-}
-
 @keyframes slide-down {
   0% {
     transform: scale(0.6) translateY(-90%);
@@ -62,6 +15,6 @@ p {
   }
 }
 
-.tooltip {
+.mtooltip {
   animation: slide-down 0.07s;
 }

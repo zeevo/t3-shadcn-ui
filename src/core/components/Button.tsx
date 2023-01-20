@@ -24,31 +24,32 @@ const getButtonStyles = (
   className = ""
 ) => {
   let baseStyles = [
-    "active:scale-95",
+    "btn",
+    "bg-base-100",
+    "hover:bg-base-100",
+    "border-base-100",
+    "border-0",
     "flex",
-    "duration-150",
+    "uppercase",
+    "font-semibold",
+    "duration-200",
     "min-h-[45px]",
     "min-w-[45px]",
     "items-center",
     "justify-center",
-    "rounded-2xl",
   ];
 
   const allStyles = classNames(baseStyles, { "w-full": fillWidth });
 
   let activeStyles = classNames({
-    "bg-uiHovered-light": active,
-    "dark:bg-uiHovered-dark": active,
+    "bg-accent": active,
   });
 
   let variantStyles;
 
   switch (variant) {
     case "text": {
-      variantStyles = [
-        "hover:bg-uiHovered-light",
-        "hover:dark:bg-uiHovered-dark",
-      ];
+      variantStyles = ["hover:bg-accent", "hover:bg-accent"];
       break;
     }
     case "unstyled": {
@@ -58,46 +59,34 @@ const getButtonStyles = (
       break;
     }
     case "soft": {
-      variantStyles = [
-        "hover:border-text-light",
-        "hover:dark:border-text-dark",
-        "border-solid",
-        "border",
-      ];
+      variantStyles = ["hover:border-base-content", "border-neutral", "border"];
 
       activeStyles = classNames({
-        "bg-uiHovered-light": active,
-        "dark:bg-uiHovered-dark": active,
+        "border-base-content": active,
       });
 
       break;
     }
     case "outlined": {
       variantStyles = [
-        "border-solid",
         "border",
 
+        "text-base-content",
+
         // Border color
-        "border-text-light",
-        "dark:border-text-dark",
+        "border-base-content",
 
         // Hover color
-        "hover:text-bg-light",
-        "dark:hover:text-bg-dark",
+        "hover:text-base-100",
 
         // Hover border color
-        "hover:border-lowContrastText-light",
-        "hover:bg-lowContrastText-light",
-        "dark:hover:border-lowContrastText-dark",
-        "dark:hover:bg-lowContrastText-dark",
+        "hover:border-primary",
+        "hover:bg-primary",
       ];
       activeStyles = classNames({
-        "bg-lowContrastText-light": active,
-        "text-bg-light": active,
-        "dark:bg-lowContrastText-dark": active,
-        "dark:text-bg-dark": active,
-        "border-lowContrastText-light": active,
-        "dark:border-lowContrastText-dark": active,
+        "bg-primary": active,
+        "text-base-100": active,
+        "border-primary": active,
       });
       break;
     }
@@ -107,34 +96,23 @@ const getButtonStyles = (
         "border",
 
         // Background
-        "bg-lowContrastText-light",
-        "text-bg-light",
-        "dark:bg-lowContrastText-dark",
-        "dark:text-bg-dark",
+        "bg-primary",
+        "text-base-100",
 
         // Border color
-        "border-lowContrastText-light",
-        "dark:border-lowContrastText-dark",
+        "border-primary",
 
         // Hover color
-        "hover:text-text-light",
-        "dark:hover:text-text-dark",
+        "hover:text-base-content",
 
         // Hover border color
-        "hover:border-text-light",
-        "hover:bg-bg-light",
-        "dark:hover:border-text-dark",
-        "dark:hover:bg-bg-dark",
+        "hover:border-base-content",
+        "hover:bg-base-100",
       ];
       activeStyles = classNames(
-        [
-          "text-color-light",
-          "dark:text-color-dark",
-          "border-text-light",
-          "bg-bg-light",
-          "dark:border-text-dark",
-          "dark:bg-bg-dark",
-        ].reduce<{ [key: string]: boolean }>((prev, curr) => {
+        ["text-color", "border-base-content", "bg-base-100"].reduce<{
+          [key: string]: boolean;
+        }>((prev, curr) => {
           prev[curr] = active;
           return prev;
         }, {})
@@ -142,15 +120,10 @@ const getButtonStyles = (
       break;
     }
     case "contained": {
-      variantStyles = [
-        "bg-uiBorder-light",
-        "dark:bg-uiBorder-dark",
-        "hover:bg-uiHover-light",
-        "dark:hover:bg-uiHover-dark",
-      ];
+      variantStyles = ["bg-secondary", "hover:bg-secondary-focus"];
 
       activeStyles = classNames(
-        ["bg-uiHover-light", "dark:bg-uiHover-dark"].reduce<{
+        ["bg-secondary-focus"].reduce<{
           [key: string]: boolean;
         }>((prev, curr) => {
           prev[curr] = active;
@@ -218,7 +191,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="tooltip mt-2 rounded-2xl bg-uiHovered-light pt-2 pb-2 pr-4 pl-4 text-sm font-semibold dark:bg-uiHovered-dark">
+            <Tooltip.Content className="mtooltip mt-2 rounded-2xl bg-accent pt-2 pb-2 pr-4 pl-4 text-sm font-semibold">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>

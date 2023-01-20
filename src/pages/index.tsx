@@ -1,7 +1,7 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
 import Img from "next/image";
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
@@ -15,6 +15,10 @@ import image from "../core/resources/image.jpg";
 
 import { trpc } from "../core/utils/trpc";
 
+const H2: React.FC<PropsWithChildren<>> = ({ children }) => (
+  <h2 className="mt-4 mb-4">{children}</h2>
+);
+
 const Home: NextPage<{ config: Config }> = ({ config }) => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
@@ -24,7 +28,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
 
   return (
     <Layout config={config}>
-      <div className="mt-8">
+      <div className="prose mt-8">
         <Head
           title={config.site.title}
           defaultTitle={config.site.defaultTitle}
@@ -34,42 +38,46 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           site={config.site.url}
         />
         <h1>Next Starter</h1>
-        <h2>tRPC</h2>
-        {hello.data ? (
-          <pre>
-            <code>{JSON.stringify(hello.data, null, 2)}</code>
-          </pre>
-        ) : (
-          "Loading tRPC query..."
-        )}
+        <div>
+          <H2>tRPC</H2>
+          {hello.data ? (
+            <pre>
+              <code>{JSON.stringify(hello.data, null, 2)}</code>
+            </pre>
+          ) : (
+            "Loading tRPC query..."
+          )}
+        </div>
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
-
-        <h2>Next Auth</h2>
-        <AuthShowcase />
+        <div>
+          <H2>Next Auth</H2>
+          <AuthShowcase />
+        </div>
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
-        <h2>Text</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <div>
+          <H2>Typography</H2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
         <div className="flex items-center gap-2">
-          <h2>Link</h2>
+          <H2>Link</H2>
           <div>
             <Button
               variant="outlined"
-              className="min-h-0 min-w-0"
               onClick={() => setLinkActive(!linkActive)}
               active={linkActive}
             >
@@ -77,7 +85,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
-
         <h3>Normal</h3>
         <Link active={linkActive} href="#">
           This is a link
@@ -90,11 +97,10 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           <StyledSeparator orientation="horizontal" />
         </div>
         <div className="flex items-center gap-2">
-          <h2>Button</h2>
+          <H2>Button</H2>
           <div>
             <Button
               variant="outlined"
-              className="min-h-0 min-w-0"
               onClick={() => setActive(!active)}
               active={active}
             >
@@ -102,7 +108,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
-
         <h3>Text</h3>
         <div
           style={{
@@ -208,7 +213,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
-
         <h3>Unstyled</h3>
         <div
           style={{
@@ -230,12 +234,18 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             </Button>
           </div>
         </div>
-
         <div className="mt-4">
           <StyledSeparator orientation="horizontal" />
         </div>
-        <h2>Image</h2>
-        <Img src={image} alt="vercel" />
+        <H2>DaisyUI</H2>
+        <div className="flex gap-2">
+          <button className="btn-primary btn">Primary</button>
+          <button className="btn-secondary btn">Secondary</button>
+          <button className="btn-accent btn">Accent</button>
+          <button className="btn">Neutral</button>
+          <button className="btn-ghost btn">Ghost</button>
+          <button className="btn-link btn">Link</button>
+        </div>
       </div>
     </Layout>
   );
