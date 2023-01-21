@@ -1,6 +1,6 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import { useState } from "react";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
@@ -12,7 +12,7 @@ import type { Config } from "../core/lib/config";
 import getConfig from "../core/lib/config";
 import { trpc } from "../core/utils/trpc";
 
-const H2: React.FC<PropsWithChildren<{}>> = ({ children }) => (
+const H2: React.FC<{ children: ReactNode }> = ({ children }) => (
   <h2 className="mt-4 mb-4">{children}</h2>
 );
 
