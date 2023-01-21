@@ -4,6 +4,7 @@ import type { PropsWithChildren, ReactNode } from "react";
 import { useState } from "react";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
+import ComponentPreview from "../core/components/ComponentPreview";
 import Head from "../core/components/Head";
 import Layout from "../core/components/Layout";
 import Link from "../core/components/Link";
@@ -124,7 +125,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="text" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -145,7 +146,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="soft" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -166,7 +167,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="outlined" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -187,7 +188,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="outlined-inverted" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -208,7 +209,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="contained" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -229,7 +230,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
           <div style={{ flex: 1 }}>
             <Button variant="unstyled" active={active} fillWidth>
-              <BellIcon />
+              Button
             </Button>
           </div>
         </div>
@@ -237,14 +238,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           <StyledSeparator orientation="horizontal" />
         </div>
         <H2>DaisyUI</H2>
-        <div className="flex gap-2">
-          <button className="btn-primary btn">Primary</button>
-          <button className="btn-secondary btn">Secondary</button>
-          <button className="btn-accent btn">Accent</button>
-          <button className="btn">Neutral</button>
-          <button className="btn-ghost btn">Ghost</button>
-          <button className="btn-link btn">Link</button>
-        </div>
+        <ComponentPreview />
       </div>
     </Layout>
   );

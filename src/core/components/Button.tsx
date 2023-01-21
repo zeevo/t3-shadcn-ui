@@ -28,7 +28,6 @@ const getButtonStyles = (
     "bg-base-100",
     "hover:bg-base-100",
     "border-base-100",
-    "border-0",
     "flex",
     "uppercase",
     "font-semibold",
@@ -49,7 +48,11 @@ const getButtonStyles = (
 
   switch (variant) {
     case "text": {
-      variantStyles = ["hover:bg-accent", "hover:bg-accent", "bg-transparent"];
+      variantStyles = [
+        "hover:bg-accent",
+        "bg-transparent",
+        "hover:border-accent",
+      ];
       break;
     }
     case "unstyled": {
@@ -59,7 +62,13 @@ const getButtonStyles = (
       break;
     }
     case "soft": {
-      variantStyles = ["hover:border-base-content", "border-neutral", "border"];
+      variantStyles = [
+        "hover:border-base-content",
+        "border-neutral",
+        "border",
+        "text-opacity-60",
+        "hover:text-opacity-100",
+      ];
 
       activeStyles = classNames({
         "border-base-content": active,
@@ -191,7 +200,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="mtooltip mt-2 rounded-2xl bg-accent pt-2 pb-2 pr-4 pl-4 text-sm font-semibold">
+            <Tooltip.Content className="mtooltip rounded-btn mt-2 bg-accent pt-2 pb-2 pr-4 pl-4 text-sm font-semibold">
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>
