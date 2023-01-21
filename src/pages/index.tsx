@@ -108,21 +108,13 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
         </div>
         <h3>Text</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
+        <div className="flex">
+          <div className="mr-2">
             <Button variant="text" active={active}>
               <BellIcon />
             </Button>
           </div>
-          <div style={{ flex: 1 }}>
+          <div className="flex">
             <Button variant="text" active={active} fillWidth>
               Button
             </Button>
@@ -164,23 +156,15 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               <BellIcon />
             </Button>
           </div>
-          <div style={{ flex: 1 }}>
+          <div className="flex-1">
             <Button variant="outlined" active={active} fillWidth>
               Button
             </Button>
           </div>
         </div>
         <h3>Inverted Outlined</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
+        <div className="flex">
+          <div className="mr-2">
             <Button variant="outlined-inverted" active={active}>
               <BellIcon />
             </Button>
@@ -192,16 +176,8 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
         </div>
         <h3>Contained</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
+        <div className="flex">
+          <div className="mr-2">
             <Button variant="contained" active={active}>
               <BellIcon />
             </Button>
@@ -213,16 +189,8 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           </div>
         </div>
         <h3>Unstyled</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
+        <div className="flex">
+          <div className="mr-2">
             <Button variant="unstyled" active={active}>
               <BellIcon />
             </Button>

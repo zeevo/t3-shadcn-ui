@@ -32,10 +32,10 @@ const ComponentPreview: FunctionComponent = () => {
               <button className="tab tab-lifted">Tab</button>
             </div>
             <div className="flex flex-col">
-              <span className="link">I'm a simple link</span>
-              <span className="link-primary link">I'm a simple link</span>
-              <span className="link-secondary link">I'm a simple link</span>
-              <span className="link-accent link">I'm a simple link</span>
+              <span className="link">{"I'm a simple link"}</span>
+              <span className="link-primary link">{"I'm a simple link"}</span>
+              <span className="link-secondary link">{"I'm a simple link"}</span>
+              <span className="link-accent link">{"I'm a simple link"}</span>
             </div>
           </div>
           <div className="flex flex-col gap-3 md:w-1/2">
@@ -92,18 +92,24 @@ const ComponentPreview: FunctionComponent = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 md:w-1/2">
             <div
               className="radial-progress"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               style={{ "--value": 60, "--size": "3.5rem" }}
             >
               60%
             </div>
             <div
               className="radial-progress"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               style={{ "--value": 60, "--size": "3.5rem" }}
             >
               75%
             </div>
             <div
               className="radial-progress"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               style={{ "--value": 60, "--size": "3.5rem" }}
             >
               90%
