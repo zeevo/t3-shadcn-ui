@@ -1,8 +1,7 @@
 import { BellIcon } from "@radix-ui/react-icons";
 import type { NextPage } from "next";
-import Img from "next/image";
-import { PropsWithChildren, useState } from "react";
-
+import type { PropsWithChildren } from "react";
+import { useState } from "react";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
 import Head from "../core/components/Head";
@@ -11,11 +10,9 @@ import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
 import getConfig from "../core/lib/config";
-import image from "../core/resources/image.jpg";
-
 import { trpc } from "../core/utils/trpc";
 
-const H2: React.FC<PropsWithChildren<>> = ({ children }) => (
+const H2: React.FC<PropsWithChildren<{}>> = ({ children }) => (
   <h2 className="mt-4 mb-4">{children}</h2>
 );
 
@@ -78,6 +75,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           <div>
             <Button
               variant="outlined"
+              className="btn-xs"
               onClick={() => setLinkActive(!linkActive)}
               active={linkActive}
             >
@@ -101,6 +99,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
           <div>
             <Button
               variant="outlined"
+              className="btn-xs"
               onClick={() => setActive(!active)}
               active={active}
             >

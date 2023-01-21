@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply font-0;
+@layer base {
+  html {
+    @apply font-0;
+  }
 }
 
 @keyframes slide-down {
@@ -13,6 +15,10 @@ html {
   100% {
     transform: scale(1) translateY(0);
   }
+}
+
+code {
+  @apply font-mono;
 }
 
 .mtooltip {
