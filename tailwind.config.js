@@ -18,17 +18,17 @@ module.exports = {
         dark: {
           "base-100": "#000",
           "base-content": blueDark.blue12, // optional
-          primary: blueDark.blue11,
+          primary: blueDark.blue9,
           secondary: blueDark.blue6,
-          accent: blueDark.blue2,
+          accent: blueDark.blue4,
           neutral: slateDark.slate7,
         },
         light: {
           "base-100": slate.slate1,
           "base-content": slate.slate12,
-          primary: blue.blue11,
+          primary: blue.blue10,
           secondary: blue.blue6,
-          accent: blue.blue5,
+          accent: blue.blue4,
           neutral: slate.slate7,
         },
       },

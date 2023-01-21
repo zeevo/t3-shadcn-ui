@@ -19,7 +19,7 @@ const getVariantStyles = (variant?: string, active?: boolean) => {
     default: {
       return twMerge(
         cls([
-          "decoration-accent",
+          "decoration-secondary",
           "hover:decoration-primary",
           "underline underline-offset-4",
         ]),

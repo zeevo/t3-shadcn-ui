@@ -52,6 +52,7 @@ const getButtonStyles = (
         "hover:bg-accent",
         "bg-transparent",
         "hover:border-accent",
+        "border-0",
       ];
       break;
     }
@@ -140,6 +141,21 @@ const getButtonStyles = (
         }, {})
       );
       break;
+    }
+    case "primary": {
+      variantStyles = ["btn-primary"];
+    }
+
+    case "default": {
+      variantStyles = ["btn-default"];
+    }
+
+    case "secondary": {
+      variantStyles = ["btn-secondary"];
+    }
+
+    case "accent": {
+      variantStyles = ["btn-accent"];
     }
     default: {
       variantStyles = "";
