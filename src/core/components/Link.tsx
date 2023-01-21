@@ -10,31 +10,21 @@ const getVariantStyles = (variant?: string, active?: boolean) => {
   switch (variant) {
     case "soft": {
       return twMerge(
-        cls([
-          "no-underline",
-          "hover:text-text-light",
-          "dark:hover:text-text-dark",
-          "text-subtext-light",
-          "dark:text-subtext-dark",
-        ]),
+        cls(["no-underline", "hover:text-base-content", "text-base-content"]),
         cls({
-          "text-text-light": active,
-          "dark:text-text-dark": active,
+          "text-base-content": active,
         })
       );
     }
     default: {
       return twMerge(
         cls([
-          "decoration-subtle-light",
-          "dark:decoration-subtle-dark",
-          "hover:decoration-lowContrastText-light",
-          "hover:dark:decoration-lowContrastText-dark",
+          "decoration-accent",
+          "hover:decoration-primary",
           "underline underline-offset-4",
         ]),
         cls({
-          "decoration-uiHover-light": active,
-          "dark:decoration-uiHover-dark": active,
+          "decoration-primary": active,
         })
       );
     }

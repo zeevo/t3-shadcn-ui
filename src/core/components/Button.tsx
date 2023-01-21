@@ -49,7 +49,7 @@ const getButtonStyles = (
 
   switch (variant) {
     case "text": {
-      variantStyles = ["hover:bg-accent", "hover:bg-accent"];
+      variantStyles = ["hover:bg-accent", "hover:bg-accent", "bg-transparent"];
       break;
     }
     case "unstyled": {
