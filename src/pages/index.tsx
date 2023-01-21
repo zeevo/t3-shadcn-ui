@@ -4,6 +4,7 @@ import type { PropsWithChildren, ReactNode } from "react";
 import { useState } from "react";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
+import Code from "../core/components/Code";
 import ComponentPreview from "../core/components/ComponentPreview";
 import Head from "../core/components/Head";
 import Layout from "../core/components/Layout";
@@ -39,9 +40,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div>
           <H2>tRPC</H2>
           {hello.data ? (
-            <pre>
-              <code>{JSON.stringify(hello.data, null, 2)}</code>
-            </pre>
+            <Code>{JSON.stringify(hello.data, null, 2)}</Code>
           ) : (
             "Loading tRPC query..."
           )}

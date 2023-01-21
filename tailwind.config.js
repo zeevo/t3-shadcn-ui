@@ -20,7 +20,7 @@ module.exports = {
           "base-content": blueDark.blue12, // optional
           primary: blueDark.blue11,
           secondary: blueDark.blue6,
-          accent: blueDark.blue5,
+          accent: blueDark.blue2,
           neutral: slateDark.slate7,
         },
         light: {
