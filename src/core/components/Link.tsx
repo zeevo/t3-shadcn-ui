@@ -10,7 +10,12 @@ const getVariantStyles = (variant?: string, active?: boolean) => {
   switch (variant) {
     case "soft": {
       return twMerge(
-        cls(["no-underline", "hover:text-base-content", "text-base-content"]),
+        cls([
+          "no-underline",
+          "hover:text-base-content",
+          "hover:opacity-100",
+          "opacity-50",
+        ]),
         cls({
           "text-base-content": active,
         })
