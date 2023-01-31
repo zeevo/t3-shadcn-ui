@@ -111,7 +111,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="text" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div className="flex">
@@ -132,7 +132,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             }}
           >
             <Button variant="soft" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -153,7 +153,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             }}
           >
             <Button variant="outlined" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div className="flex-1">
@@ -166,7 +166,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="outlined-inverted" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -179,7 +179,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="contained" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -192,7 +192,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="unstyled" active={active}>
-              <Bell />
+              <Bell size={20} />
             </Button>
           </div>
           <div style={{ flex: 1 }}>

@@ -48,7 +48,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
                   variant="text"
                   aria-label={`${item.tooltip} button`}
                 >
-                  {Icon && <Icon />}
+                  {Icon && <Icon size={20} />}
                 </GhostButton>
               );
             }

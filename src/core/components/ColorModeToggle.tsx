@@ -3,6 +3,7 @@ import { Sun, Moon } from "lucide-react";
 
 import type { ThemeButtonVariantText } from "./Button";
 import Button from "./Button";
+import { useEffect, useState } from "react";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
@@ -16,6 +17,16 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
   }
 ) => {
   const { theme, setTheme } = useTheme();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  if (!loaded) {
+    return <></>;
+  }
+
   return (
     <Button
       onClick={() => {
