@@ -1,11 +1,9 @@
-import { PropsWithChildren, useCallback } from "react";
+import type { PropsWithChildren } from "react";
 import React, { useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import classNames from "classnames";
 import { twMerge } from "tailwind-merge";
-import debounce from "lodash.debounce";
-import throttle from "lodash.throttle";
 
 export type ThemeButtonVariantText =
   | "text"
