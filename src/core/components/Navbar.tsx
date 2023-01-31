@@ -1,10 +1,4 @@
-import {
-  GitHubLogoIcon,
-  HomeIcon,
-  MixIcon,
-  PersonIcon,
-  TwitterLogoIcon,
-} from "@radix-ui/react-icons";
+import { Home, Github, User, Twitter } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import React from "react";
 
@@ -14,11 +8,10 @@ import ColorModeToggle from "./ColorModeToggle";
 import StyledSeparator from "./Separator";
 
 const icons = {
-  HomeIcon: HomeIcon,
-  MixIcon: MixIcon,
-  GithubIcon: GitHubLogoIcon,
-  PersonIcon: PersonIcon,
-  TwitterIcon: TwitterLogoIcon,
+  Home: Home,
+  Github: Github,
+  User: User,
+  Twitter: Twitter,
 };
 
 const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({

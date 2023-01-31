@@ -32,7 +32,7 @@ const DEFAULT_CONFIG: Config = {
     },
     items: [
       {
-        icon: "HomeIcon",
+        icon: "Home",
         href: "/",
         tooltip: "Home",
       },
@@ -40,7 +40,7 @@ const DEFAULT_CONFIG: Config = {
         type: "separator",
       },
       {
-        icon: "GithubIcon",
+        icon: "Github",
         href: "https://github.com/zeevo/next-starter",
         tooltip: "Github",
       },
@@ -50,7 +50,7 @@ const DEFAULT_CONFIG: Config = {
 
 export interface NavbarItem {
   href?: string;
-  icon?: "HomeIcon" | "GithubIcon" | "MixIcon" | "PersonIcon";
+  icon?: "Home" | "Github" | "User";
   tooltip?: string;
   type?: "separator";
 }

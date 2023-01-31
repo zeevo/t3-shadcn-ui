@@ -1,6 +1,6 @@
-import { BellIcon } from "@radix-ui/react-icons";
+import { Bell } from "lucide-react";
 import type { NextPage } from "next";
-import type { PropsWithChildren, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
@@ -111,7 +111,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="text" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div className="flex">
@@ -132,7 +132,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             }}
           >
             <Button variant="soft" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -153,7 +153,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
             }}
           >
             <Button variant="outlined" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div className="flex-1">
@@ -166,7 +166,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="outlined-inverted" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -179,7 +179,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="contained" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div style={{ flex: 1 }}>
@@ -192,7 +192,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <div className="flex">
           <div className="mr-2">
             <Button variant="unstyled" active={active}>
-              <BellIcon />
+              <Bell />
             </Button>
           </div>
           <div style={{ flex: 1 }}>

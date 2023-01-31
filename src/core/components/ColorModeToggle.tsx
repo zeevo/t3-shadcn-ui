@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Sun, Moon } from "lucide-react";
 
 import type { ThemeButtonVariantText } from "./Button";
 import Button from "./Button";
@@ -28,7 +28,7 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
       variant={variant}
       aria-label="color mode toggle"
     >
-      {theme === "light" ? <SunIcon /> : <MoonIcon />}
+      {theme === "light" ? <Sun /> : <Moon />}
     </Button>
   );
 };
