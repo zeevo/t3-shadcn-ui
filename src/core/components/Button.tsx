@@ -1,9 +1,11 @@
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren, useCallback } from "react";
 import React, { useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import classNames from "classnames";
 import { twMerge } from "tailwind-merge";
+import debounce from "lodash.debounce";
+import throttle from "lodash.throttle";
 
 export type ThemeButtonVariantText =
   | "text"
@@ -25,6 +27,9 @@ const getButtonStyles = (
 ) => {
   let baseStyles = [
     "btn",
+    "h-auto",
+    "pl-0",
+    "pr-0",
     "bg-base-100",
     "hover:bg-base-100",
     "border-base-100",
@@ -66,7 +71,7 @@ const getButtonStyles = (
       variantStyles = [
         "hover:border-base-content",
         "border-neutral",
-        "border",
+        "border-2",
         "text-opacity-60",
         "hover:text-opacity-100",
       ];
@@ -79,7 +84,7 @@ const getButtonStyles = (
     }
     case "outlined": {
       variantStyles = [
-        "border",
+        "border-2",
 
         "text-base-content",
 
@@ -103,7 +108,7 @@ const getButtonStyles = (
     case "outlined-inverted": {
       variantStyles = [
         "border-solid",
-        "border",
+        "border-2",
 
         // Background
         "bg-primary",
@@ -204,15 +209,9 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
 
   if (tooltip) {
     return (
-      <Tooltip.Provider>
-        <Tooltip.Root open={open}>
-          <Tooltip.Trigger
-            asChild
-            onMouseLeave={() => {
-              setOpen(false);
-            }}
-            onMouseEnter={() => setOpen(true)}
-          >
+      <Tooltip.Provider delayDuration={0}>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
