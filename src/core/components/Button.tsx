@@ -184,17 +184,13 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
   className,
   ...rest
 }): React.ReactElement => {
-  const [open, setOpen] = useState<boolean>();
-
   const styles = getButtonStyles(variant, { fillWidth, active }, className);
 
   let content;
   if (href) {
     content = (
-      <Link href={href} passHref>
-        <button className={styles} {...rest}>
-          {children}
-        </button>
+      <Link href={href} className={styles}>
+        {children}
       </Link>
     );
   } else {
@@ -213,7 +209,10 @@ export const Button: React.FC<PropsWithChildren<ButtonProps & OtherProps>> = ({
             <div>{content}</div>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="mtooltip rounded-btn mt-2 bg-accent pt-2 pb-2 pr-4 pl-4 text-sm font-semibold">
+            <Tooltip.Content
+              className="mtooltip rounded-btn mt-2 bg-accent pt-2 pb-2 pr-4 pl-4 text-sm font-semibold"
+              hideWhenDetached={true}
+            >
               {tooltip}
             </Tooltip.Content>
           </Tooltip.Portal>
