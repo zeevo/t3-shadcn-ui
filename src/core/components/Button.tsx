@@ -133,7 +133,12 @@ const getButtonStyles = (
       break;
     }
     case "contained": {
-      variantStyles = ["bg-secondary", "hover:bg-secondary-focus", "border-0"];
+      variantStyles = [
+        "bg-primary",
+        "hover:bg-primary-focus",
+        "text-base-100",
+        "border-0",
+      ];
 
       activeStyles = classNames(
         ["bg-secondary-focus"].reduce<{
