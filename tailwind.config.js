@@ -1,5 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { slate, slateDark, blue, blueDark } = require("@radix-ui/colors");
+const {
+  slate,
+  slateDark,
+  blue,
+  blueDark,
+  green,
+  greenDark,
+  red,
+  redDark,
+  sky,
+  skyDark,
+  yellow,
+  yellowDark,
+} = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,20 +29,28 @@ module.exports = {
     themes: [
       {
         dark: {
-          "base-100": "#000",
+          "base-100": slateDark.slate1,
           "base-content": blueDark.blue12, // optional
-          primary: blueDark.blue9,
+          primary: blueDark.blue8,
           secondary: blueDark.blue6,
           accent: blueDark.blue4,
           neutral: slateDark.slate7,
+          success: greenDark.green8,
+          info: skyDark.sky8,
+          warning: yellowDark.yellow8,
+          error: redDark.red8,
         },
         light: {
           "base-100": slate.slate1,
           "base-content": slate.slate12,
-          primary: blue.blue10,
+          primary: blue.blue8,
           secondary: blue.blue6,
           accent: blue.blue4,
           neutral: slate.slate7,
+          success: green.green8,
+          info: sky.sky8,
+          warning: yellow.yellow8,
+          error: red.red8,
         },
       },
     ],

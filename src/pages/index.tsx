@@ -18,6 +18,66 @@ const H2: React.FC<{ children: ReactNode }> = ({ children }) => (
   <h2 className="mt-4 mb-4">{children}</h2>
 );
 
+const NextAuthShowCase = () => {
+  return (
+    <div>
+      <H2>Next Auth</H2>
+      <AuthShowcase />
+    </div>
+  );
+};
+
+const TypographyShowcase = () => {
+  return (
+    <div>
+      <H2>Typography</H2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+  );
+};
+
+const Links = ({ setActive, active }: any) => {
+  return (
+    <div className="flex items-center gap-2">
+      <H2>Link</H2>
+      <div>
+        <Button
+          variant="outlined"
+          className="btn-xs"
+          onClick={setActive}
+          active={active}
+        >
+          <span className="p-2">active</span>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+const ColorsShowcase = () => (
+  <>
+    <h3 className="text-2xl">Colors</h3>
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+      <div className="rounded bg-neutral text-center font-bold">Default</div>
+      <div className="bg-primary text-center font-bold">Primary</div>
+      <div className="bg-secondary text-center font-bold">Secondary</div>
+      <div className="bg-accent text-center font-bold">Accent</div>
+      <div className="bg-info text-center font-bold">Info</div>
+      <div className="bg-success text-center font-bold ">Success</div>
+      <div className="bg-warning text-center font-bold">Warning</div>
+      <div className="bg-error text-center font-bold">Error</div>
+    </div>
+  </>
+);
+
 const Home: NextPage<{ config: Config }> = ({ config }) => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
@@ -27,62 +87,24 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
 
   return (
     <Layout config={config}>
+      <Head
+        title={config.site.title}
+        defaultTitle={config.site.defaultTitle}
+        description={config.site.description}
+        canonical={config.site.url}
+        image={config.site.image}
+        site={config.site.url}
+      />
       <div className="prose mt-8">
-        <Head
-          title={config.site.title}
-          defaultTitle={config.site.defaultTitle}
-          description={config.site.description}
-          canonical={config.site.url}
-          image={config.site.image}
-          site={config.site.url}
-        />
         <h1>Next Starter</h1>
-        <div>
-          <H2>tRPC</H2>
-          {hello.data ? (
-            <Code>{JSON.stringify(hello.data, null, 2)}</Code>
-          ) : (
-            "Loading tRPC query..."
-          )}
-        </div>
-        <div className="mt-4">
-          <StyledSeparator orientation="horizontal" />
-        </div>
-        <div>
-          <H2>Next Auth</H2>
-          <AuthShowcase />
-        </div>
-        <div className="mt-4">
-          <StyledSeparator orientation="horizontal" />
-        </div>
-        <div>
-          <H2>Typography</H2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div className="mt-4">
-          <StyledSeparator orientation="horizontal" />
-        </div>
-        <div className="flex items-center gap-2">
-          <H2>Link</H2>
-          <div>
-            <Button
-              variant="outlined"
-              className="btn-xs"
-              onClick={() => setLinkActive(!linkActive)}
-              active={linkActive}
-            >
-              <span className="p-2">active</span>
-            </Button>
-          </div>
-        </div>
+        <TRPCShowcase />
+        <NextAuthShowCase />
+        <ColorsShowcase />
+        <TypographyShowcase />
+        <Links
+          setActive={() => setLinkActive((active) => !active)}
+          active={linkActive}
+        />
         <h3>Normal</h3>
         <Link active={linkActive} href="#">
           This is a link
@@ -114,7 +136,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
               <Bell size={20} />
             </Button>
           </div>
-          <div className="flex">
+          <div style={{ flex: 1 }}>
             <Button variant="text" active={active} fillWidth>
               Button
             </Button>
@@ -209,6 +231,19 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
       </div>
     </Layout>
   );
+
+  function TRPCShowcase() {
+    return (
+      <div>
+        <H2>tRPC</H2>
+        {hello.data ? (
+          <Code>{JSON.stringify(hello.data, null, 2)}</Code>
+        ) : (
+          "Loading tRPC query..."
+        )}
+      </div>
+    );
+  }
 };
 
 export const getStaticProps = () => {

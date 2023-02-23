@@ -1,8 +1,13 @@
 import type { FunctionComponent } from "react";
+import StyledSeparator from "./Separator";
 
 const ComponentPreview: FunctionComponent = () => {
   return (
     <div className="not-prose rounded-box grid gap-3 bg-base-100 text-base-content">
+      <StyledSeparator orientation="horizontal" />
+
+      <h3 className="text-2xl">Components</h3>
+
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
         <button className="btn">Default</button>
         <button className="btn-primary btn">Primary</button>
@@ -262,24 +267,6 @@ const ComponentPreview: FunctionComponent = () => {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <div className="alert">
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 flex-shrink-0 stroke-info"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-            <span>12 unread messages. Tap to see.</span>
-          </div>
-        </div>
         <div className="alert alert-info">
           <div>
             <svg
