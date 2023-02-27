@@ -11,8 +11,8 @@ import Layout from "../core/components/Layout";
 import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
-import getConfig from "../core/lib/config";
-import { trpc } from "../core/utils/trpc";
+import getConfig from "~/core/lib/config";
+import { api } from "~/core/utils/api";
 
 const H2: React.FC<{ children: ReactNode }> = ({ children }) => (
   <h2 className="mt-4 mb-4">{children}</h2>
@@ -78,8 +78,133 @@ const ColorsShowcase = () => (
   </>
 );
 
+const LinksShowcase = ({ setActive, active }) => (
+  <>
+    <Links setActive={setActive} active={active} />
+    <h3>Normal</h3>
+    <Link active={active} href="#">
+      This is a link
+    </Link>
+    <h3>Soft</h3>
+    <Link active={active} variant="soft" href="#">
+      This is a link
+    </Link>
+  </>
+);
+
+const ButtonShowcase = ({ setActive, active }) => (
+  <>
+    <H2>Button</H2>
+    <Button
+      variant="outlined"
+      className="btn-xs"
+      onClick={() => setActive(!active)}
+      active={active}
+    >
+      <span className="p-2">active</span>
+    </Button>
+    <h3>Text</h3>
+    <div className="flex">
+      <div className="mr-2">
+        <Button variant="text" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div style={{ flex: 1 }}>
+        <Button variant="text" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <h3>Soft</h3>
+    <div
+      style={{
+        display: "flex",
+      }}
+    >
+      <div
+        style={{
+          marginRight: "5px",
+        }}
+      >
+        <Button variant="soft" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div style={{ flex: 1 }}>
+        <Button variant="soft" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <h3>Outlined</h3>
+    <div
+      style={{
+        display: "flex",
+      }}
+    >
+      <div
+        style={{
+          marginRight: "5px",
+        }}
+      >
+        <Button variant="outlined" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div className="flex-1">
+        <Button variant="outlined" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <h3>Inverted Outlined</h3>
+    <div className="flex">
+      <div className="mr-2">
+        <Button variant="outlined-inverted" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div style={{ flex: 1 }}>
+        <Button variant="outlined-inverted" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <h3>Contained</h3>
+    <div className="flex">
+      <div className="mr-2">
+        <Button variant="contained" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div style={{ flex: 1 }}>
+        <Button variant="contained" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <h3>Unstyled</h3>
+    <div className="flex">
+      <div className="mr-2">
+        <Button variant="unstyled" active={active}>
+          <Bell size={20} />
+        </Button>
+      </div>
+      <div style={{ flex: 1 }}>
+        <Button variant="unstyled" active={active} fillWidth>
+          Button
+        </Button>
+      </div>
+    </div>
+    <div className="mt-4">
+      <StyledSeparator orientation="horizontal" />
+    </div>
+  </>
+);
+
 const Home: NextPage<{ config: Config }> = ({ config }) => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   const [active, setActive] = useState<boolean>(false);
 
@@ -101,131 +226,7 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         <NextAuthShowCase />
         <ColorsShowcase />
         <TypographyShowcase />
-        <Links
-          setActive={() => setLinkActive((active) => !active)}
-          active={linkActive}
-        />
-        <h3>Normal</h3>
-        <Link active={linkActive} href="#">
-          This is a link
-        </Link>
-        <h3>Soft</h3>
-        <Link active={linkActive} variant="soft" href="#">
-          This is a link
-        </Link>
-        <div className="mt-4">
-          <StyledSeparator orientation="horizontal" />
-        </div>
-        <div className="flex items-center gap-2">
-          <H2>Button</H2>
-          <div>
-            <Button
-              variant="outlined"
-              className="btn-xs"
-              onClick={() => setActive(!active)}
-              active={active}
-            >
-              <span className="p-2">active</span>
-            </Button>
-          </div>
-        </div>
-        <h3>Text</h3>
-        <div className="flex">
-          <div className="mr-2">
-            <Button variant="text" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Button variant="text" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <h3>Soft</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
-            <Button variant="soft" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Button variant="soft" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <h3>Outlined</h3>
-        <div
-          style={{
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              marginRight: "5px",
-            }}
-          >
-            <Button variant="outlined" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div className="flex-1">
-            <Button variant="outlined" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <h3>Inverted Outlined</h3>
-        <div className="flex">
-          <div className="mr-2">
-            <Button variant="outlined-inverted" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Button variant="outlined-inverted" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <h3>Contained</h3>
-        <div className="flex">
-          <div className="mr-2">
-            <Button variant="contained" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Button variant="contained" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <h3>Unstyled</h3>
-        <div className="flex">
-          <div className="mr-2">
-            <Button variant="unstyled" active={active}>
-              <Bell size={20} />
-            </Button>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Button variant="unstyled" active={active} fillWidth>
-              Button
-            </Button>
-          </div>
-        </div>
-        <div className="mt-4">
-          <StyledSeparator orientation="horizontal" />
-        </div>
+        <LinksShowcase active={linkActive} setActive={setLinkActive} />
         <H2>DaisyUI</H2>
         <ComponentPreview />
       </div>

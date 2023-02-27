@@ -1,11 +1,11 @@
-import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import { type AppType } from "next/app";
 
-import { trpc } from "../core/utils/trpc";
+import { api } from "~/core/utils/api";
 
-import "../core/styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import "~/core/styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -20,4 +20,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default trpc.withTRPC(MyApp);
+export default api.withTRPC(MyApp);

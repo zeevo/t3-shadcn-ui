@@ -1,36 +1,26 @@
 import { signIn, signOut, useSession } from "next-auth/react";
-
-import { trpc } from "../utils/trpc";
-import Button from "./Button";
+import { api } from "~/core/utils/api";
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
-  const { data } = trpc.auth.getSecretMessage.useQuery(
+  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
     { enabled: sessionData?.user !== undefined }
   );
 
   return (
-    <div>
-      <h3>
-        {sessionData && <span>Logged in as {sessionData?.user?.name}</span>}
-      </h3>
-      {data && (
-        <div className="mt-4 mb-4">
-          <pre>
-            <code>{JSON.stringify(data, null, 2)}</code>
-          </pre>
-        </div>
-      )}
-
-      <Button
-        variant="outlined"
-        className="p-3"
-        onClick={sessionData ? () => signOut() : () => signIn()}
+    <div className="flex flex-col items-center justify-center gap-4">
+      <p className="text-center text-2xl text-white">
+        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
+      </p>
+      <button
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
-      </Button>
+      </button>
     </div>
   );
 };
