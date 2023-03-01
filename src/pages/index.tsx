@@ -27,6 +27,11 @@ const NextAuthShowCase = () => {
   );
 };
 
+interface ActiveProps {
+  setActive: (active: boolean) => void;
+  active: boolean;
+}
+
 const TypographyShowcase = () => {
   return (
     <div>
@@ -44,7 +49,7 @@ const TypographyShowcase = () => {
   );
 };
 
-const Links = ({ setActive, active }: any) => {
+const Links = ({ setActive, active }: ActiveProps) => {
   return (
     <div className="flex items-center gap-2">
       <H2>Link</H2>
@@ -52,7 +57,7 @@ const Links = ({ setActive, active }: any) => {
         <Button
           variant="outlined"
           className="btn-xs"
-          onClick={setActive}
+          onClick={() => setActive(!active)}
           active={active}
         >
           <span className="p-2">active</span>
@@ -78,7 +83,7 @@ const ColorsShowcase = () => (
   </>
 );
 
-const LinksShowcase = ({ setActive, active }) => (
+const LinksShowcase = ({ setActive, active }: ActiveProps) => (
   <>
     <Links setActive={setActive} active={active} />
     <h3>Normal</h3>
@@ -92,7 +97,7 @@ const LinksShowcase = ({ setActive, active }) => (
   </>
 );
 
-const ButtonShowcase = ({ setActive, active }) => (
+const ButtonShowcase = ({ setActive, active }: ActiveProps) => (
   <>
     <H2>Button</H2>
     <Button
