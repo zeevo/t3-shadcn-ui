@@ -19,8 +19,12 @@ const Head: React.FC<PropsWithChildren<HeadProps>> = ({
   title,
   children,
 }) => {
-  const formattedTitle = defaultTitle ? `${title} | ${defaultTitle}` : title;
-  const formattedImage = !image?.startsWith("http") ? `${site}${image}` : image;
+  const formattedTitle = defaultTitle
+    ? `${title || ""} | ${defaultTitle}`
+    : title;
+  const formattedImage = !image?.startsWith("http")
+    ? `${site || ""}${image || ""}`
+    : image;
   return (
     <NextHead>
       <title>{formattedTitle}</title>

@@ -38,7 +38,13 @@ const SignIn = () => {
           </div>
         </div>
 
-        <GhostButton onClick={() => signOut()}>Sign out</GhostButton>
+        <GhostButton
+          onClick={() => {
+            void signOut();
+          }}
+        >
+          Sign out
+        </GhostButton>
         <pre>
           <code>{JSON.stringify(session, null, 2)}</code>
         </pre>
@@ -48,7 +54,13 @@ const SignIn = () => {
   return (
     <div>
       Not signed in <br />
-      <GhostButton fillWidth variant="contained" onClick={() => signIn()}>
+      <GhostButton
+        fillWidth
+        variant="contained"
+        onClick={() => {
+          void signIn();
+        }}
+      >
         <span className="font-normal">Sign in</span>
       </GhostButton>
     </div>
