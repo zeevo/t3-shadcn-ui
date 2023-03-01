@@ -37,9 +37,6 @@ const DEFAULT_CONFIG: Config = {
         tooltip: "Home",
       },
       {
-        type: "separator",
-      },
-      {
         icon: "Github",
         href: "https://github.com/zeevo/next-starter",
         tooltip: "Github",
