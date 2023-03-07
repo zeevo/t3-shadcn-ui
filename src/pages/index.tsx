@@ -97,120 +97,22 @@ const LinksShowcase = ({ setActive, active }: ActiveProps) => (
   </>
 );
 
-const ButtonShowcase = ({ setActive, active }: ActiveProps) => (
-  <>
-    <H2>Button</H2>
-    <Button
-      variant="outlined"
-      className="btn-xs"
-      onClick={() => setActive(!active)}
-      active={active}
-    >
-      <span className="p-2">active</span>
-    </Button>
-    <h3>Text</h3>
-    <div className="flex">
-      <div className="mr-2">
-        <Button variant="text" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Button variant="text" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <h3>Soft</h3>
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
-      <div
-        style={{
-          marginRight: "5px",
-        }}
-      >
-        <Button variant="soft" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Button variant="soft" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <h3>Outlined</h3>
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
-      <div
-        style={{
-          marginRight: "5px",
-        }}
-      >
-        <Button variant="outlined" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div className="flex-1">
-        <Button variant="outlined" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <h3>Inverted Outlined</h3>
-    <div className="flex">
-      <div className="mr-2">
-        <Button variant="outlined-inverted" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Button variant="outlined-inverted" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <h3>Contained</h3>
-    <div className="flex">
-      <div className="mr-2">
-        <Button variant="contained" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Button variant="contained" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <h3>Unstyled</h3>
-    <div className="flex">
-      <div className="mr-2">
-        <Button variant="unstyled" active={active}>
-          <Bell size={20} />
-        </Button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Button variant="unstyled" active={active} fillWidth>
-          Button
-        </Button>
-      </div>
-    </div>
-    <div className="mt-4">
-      <StyledSeparator orientation="horizontal" />
-    </div>
-  </>
-);
-
-const Home: NextPage<{ config: Config }> = ({ config }) => {
+function TRPCShowcase() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
+  return (
+    <div>
+      <H2>tRPC</H2>
+      {hello.data ? (
+        <Code>{JSON.stringify(hello.data, null, 2)}</Code>
+      ) : (
+        "Loading tRPC query..."
+      )}
+    </div>
+  );
+}
+
+const Home: NextPage<{ config: Config }> = ({ config }) => {
   const [active, setActive] = useState<boolean>(false);
 
   const [linkActive, setLinkActive] = useState<boolean>(false);
@@ -237,19 +139,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
       </div>
     </Layout>
   );
-
-  function TRPCShowcase() {
-    return (
-      <div>
-        <H2>tRPC</H2>
-        {hello.data ? (
-          <Code>{JSON.stringify(hello.data, null, 2)}</Code>
-        ) : (
-          "Loading tRPC query..."
-        )}
-      </div>
-    );
-  }
 };
 
 export const getStaticProps = () => {

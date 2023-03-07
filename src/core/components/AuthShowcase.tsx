@@ -11,10 +11,12 @@ const AuthShowcase: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
+      {sessionData && (
+        <p className="text-center text-xl font-bold text-base-content">
+          <span>Logged in as {sessionData.user?.name}</span>
+          <span> - {secretMessage}</span>
+        </p>
+      )}
       <button
         className="btn-primary btn"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
