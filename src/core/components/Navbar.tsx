@@ -34,10 +34,7 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
             let Icon;
             if (item.type === "separator") {
               ele = (
-                <StyledSeparator
-                  orientation="vertical"
-                  className="mr-0 ml-0 bg-accent"
-                />
+                <StyledSeparator orientation="vertical" className="mr-0 ml-0" />
               );
             } else {
               if (item.icon) {

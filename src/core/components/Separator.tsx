@@ -10,20 +10,16 @@ const StyledSeparator: React.FC<
   let baseStyles;
 
   if (orientation === "vertical") {
-    baseStyles = "mr-3.5 ml-3.5 h-3.5 w-px";
+    baseStyles = "h-full w-px";
   } else {
-    baseStyles = "w-full mr-2 ml-2 mt-4 mb-4  h-px";
+    baseStyles = "w-full h-px";
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex items-center" style={{ height: 20 }}>
       <Separator.Root
         {...props}
-        className={twMerge(
-          baseStyles,
-          "bg-subtext-light dark:bg-subtext-dark",
-          className
-        )}
+        className={twMerge(baseStyles, "bg-base-content transition", className)}
       >
         {children}
       </Separator.Root>
