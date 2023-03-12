@@ -22,8 +22,10 @@ export const getRootDir = () => {
 const DEFAULT_CONFIG: Config = {
   site: {
     title: "Next Starter",
-    defaultTitle: "",
     description: "A Next.js Starter Project",
+    defaultTitle: "",
+    image: "",
+    url: "",
   },
   navbar: {
     spacing: true,
@@ -49,8 +51,8 @@ const DEFAULT_CONFIG: Config = {
 };
 
 export interface NavbarItem {
-  href?: string;
-  icon?: "Home" | "Github" | "User";
+  href: string;
+  icon: "Home" | "Github" | "User";
   tooltip?: string;
   type?: "separator";
 }
@@ -66,11 +68,11 @@ export interface NavbarConfig {
 }
 
 export interface SiteConfig {
-  title?: string;
-  defaultTitle?: string;
-  description?: string;
-  image?: string;
-  url?: string;
+  title: string;
+  defaultTitle: string;
+  description: string;
+  image: string;
+  url: string;
 }
 
 export interface Config {
