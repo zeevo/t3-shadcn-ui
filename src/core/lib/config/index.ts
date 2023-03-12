@@ -37,6 +37,7 @@ const DEFAULT_CONFIG: Config = {
         icon: "Home",
         href: "/",
         tooltip: "Home",
+        type: "item",
       },
       {
         type: "separator",
@@ -45,6 +46,7 @@ const DEFAULT_CONFIG: Config = {
         icon: "Github",
         href: "https://github.com/zeevo/next-starter",
         tooltip: "Github",
+        type: "item",
       },
     ],
   },
@@ -54,10 +56,14 @@ export interface NavbarItem {
   href: string;
   icon: "Home" | "Github" | "User";
   tooltip?: string;
-  type?: "separator";
+  type: "item";
 }
 
-type NavbarItemOrSeparator = NavbarItem;
+export interface Separator {
+  type: "separator";
+}
+
+type NavbarItemOrSeparator = NavbarItem | Separator;
 
 export interface NavbarConfig {
   spacing: boolean;

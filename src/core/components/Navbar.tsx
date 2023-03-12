@@ -3,7 +3,7 @@ import cls from "classnames";
 import { Github, Home, Twitter, User } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import type { NavbarConfig } from "../lib/config";
+import type { NavbarConfig, NavbarItem } from "../lib/config";
 import ColorModeToggle from "./ColorModeToggle";
 import StyledSeparator from "./Separator";
 
@@ -49,16 +49,18 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
         }}
       >
         <div className="flex items-center justify-center">
-          {config.items.map((item) => {
-            const active = item.href == page;
-            const id = item.href || item.type;
+          {config.items.map((item, i) => {
+            let id;
             let ele;
             let Icon;
             if (item.type === "separator") {
+              id = i;
               ele = (
                 <StyledSeparator orientation="vertical" className="mr-0 ml-0" />
               );
             } else {
+              id = item.href;
+              const active = item.href == page;
               if (item.icon) {
                 Icon = icons[item.icon];
               }
