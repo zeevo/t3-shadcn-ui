@@ -24,12 +24,12 @@ const getVariantStyles = (variant?: string, active?: boolean) => {
     default: {
       return twMerge(
         cls([
-          "decoration-secondary",
-          "hover:decoration-primary",
+          "decoration-accent",
+          "hover:decoration-base-content",
           "underline underline-offset-4",
         ]),
         cls({
-          "decoration-primary": active,
+          "decoration-base-content": active,
         })
       );
     }

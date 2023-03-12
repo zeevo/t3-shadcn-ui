@@ -28,19 +28,24 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
   }
 
   return (
-    <Button
-      onClick={() => {
-        const nextMode = theme === "light" ? "dark" : "light";
-        setTheme(nextMode);
-      }}
-      tooltip={
+    <div
+      className="tooltip tooltip-bottom tooltip-accent"
+      data-tip={
         tooltip ? (theme === "light" ? "Light mode" : "Dark mode") : undefined
       }
-      variant={variant}
-      aria-label="color mode toggle"
     >
-      {theme === "light" ? <Sun /> : <Moon />}
-    </Button>
+      <Button
+        className="btn-ghost btn hover:bg-accent"
+        variant="ghost"
+        onClick={() => {
+          const nextMode = theme === "light" ? "dark" : "light";
+          setTheme(nextMode);
+        }}
+        aria-label="color mode toggle"
+      >
+        {theme === "light" ? <Sun /> : <Moon />}
+      </Button>
+    </div>
   );
 };
 export default ColorModeToggle;
