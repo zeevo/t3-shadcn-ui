@@ -2,8 +2,8 @@ import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 
 import type { ThemeButtonVariantText } from "./Button";
-import Button from "./Button";
 import { useEffect, useState } from "react";
+import IconButton from "./IconButton";
 
 interface ColorModeToggleProps {
   tooltip?: boolean;
@@ -11,7 +11,7 @@ interface ColorModeToggleProps {
 }
 
 const ColorModeToggle: React.FC<ColorModeToggleProps> = (
-  { tooltip, variant } = {
+  { tooltip } = {
     tooltip: false,
     variant: "text",
   }
@@ -34,9 +34,7 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
         tooltip ? (theme === "light" ? "Light mode" : "Dark mode") : undefined
       }
     >
-      <Button
-        className="btn-ghost btn hover:bg-accent"
-        variant="ghost"
+      <IconButton
         onClick={() => {
           const nextMode = theme === "light" ? "dark" : "light";
           setTheme(nextMode);
@@ -44,7 +42,7 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = (
         aria-label="color mode toggle"
       >
         {theme === "light" ? <Sun /> : <Moon />}
-      </Button>
+      </IconButton>
     </div>
   );
 };

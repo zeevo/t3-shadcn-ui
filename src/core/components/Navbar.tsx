@@ -1,10 +1,9 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import cls from "classnames";
 import { Github, Home, Twitter, User } from "lucide-react";
-import Link from "next/link";
 import React from "react";
-import type { NavbarConfig, NavbarItem } from "../lib/config";
+import type { NavbarConfig } from "../lib/config";
 import ColorModeToggle from "./ColorModeToggle";
+import IconButton from "./IconButton";
 import StyledSeparator from "./Separator";
 
 const icons = {
@@ -65,14 +64,14 @@ const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
                 Icon = icons[item.icon];
               }
               ele = (
-                <Link
-                  className={cls(buttonStyles, { "bg-accent": active })}
+                <IconButton
+                  active={active}
                   data-tip={item.tooltip}
                   href={item.href}
                   aria-label={`${item.tooltip || ""} button`}
                 >
                   {Icon && <Icon size={20} />}
-                </Link>
+                </IconButton>
               );
             }
 
