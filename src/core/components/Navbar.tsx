@@ -21,7 +21,6 @@ const buttonStyles = [
   "pl-0",
   "pr-0",
   "normal-case",
-  "bg-base-100",
   "hover:bg-accent",
   "flex",
   "font-semibold",
@@ -33,6 +32,7 @@ const buttonStyles = [
   "tooltip",
   "tooltip-bottom",
   "tooltip-accent",
+  "bg-transparent",
 ].join(" ");
 
 const Navbar: React.FC<{ config: NavbarConfig; page?: string }> = ({
