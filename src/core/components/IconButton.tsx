@@ -21,7 +21,7 @@ const buttonStyles = [
   "bg-transparent",
 ];
 
-const tooltipStyles = ["tooltip", "tooltip-bottom", "tooltip-accent"];
+const tooltipStyles = ["tooltip", "tooltip-bottom", "tooltip-accent"].join(" ");
 
 interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement & HTMLAnchorElement> {
@@ -39,7 +39,7 @@ const IconButton: FunctionComponent<IconButtonProps> = ({
   ...rest
 }) => {
   const styles = twMerge(
-    cls(buttonStyles, { tooltipStyles: tooltip }, { "bg-accent": active }),
+    cls(buttonStyles, { [tooltipStyles]: tooltip }, { "bg-accent": active }),
     className
   );
   if (href) {

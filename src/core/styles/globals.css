@@ -21,6 +21,10 @@ code {
   @apply font-mono;
 }
 
+.prose {
+  @apply max-w-none;
+}
+
 .mtooltip {
   animation: slide-down 0.07s;
 }

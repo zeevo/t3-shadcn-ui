@@ -34,12 +34,6 @@ const DEFAULT_CONFIG: Config = {
     },
     items: [
       {
-        icon: "Home",
-        href: "/",
-        tooltip: "Home",
-        type: "item",
-      },
-      {
         type: "separator",
       },
       {

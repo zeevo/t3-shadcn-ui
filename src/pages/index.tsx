@@ -113,8 +113,6 @@ function TRPCShowcase() {
 }
 
 const Home: NextPage<{ config: Config }> = ({ config }) => {
-  const [active, setActive] = useState<boolean>(false);
-
   const [linkActive, setLinkActive] = useState<boolean>(false);
 
   return (
@@ -128,7 +126,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         site={config.site.url}
       />
       <div className="prose mt-8">
-        <h1>Next Starter</h1>
         <TRPCShowcase />
         <NextAuthShowCase />
         <ColorsShowcase />

@@ -9,7 +9,7 @@ const Layout: React.FC<
   return (
     <div className="m-4">
       <div className="m-auto mb-12 w-full max-w-2xl">
-        <Navbar config={config.navbar} page={page} />
+        <Navbar config={config} page={page} />
       </div>
       <main className={twMerge("m-auto w-full max-w-2xl", mainClasses)}>
         {children}
