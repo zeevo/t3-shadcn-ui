@@ -1,11 +1,12 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { Github, Home, Menu, Twitter, User } from "lucide-react";
+import { Github, Home, LucideIcon, Twitter, User } from "lucide-react";
 import React from "react";
-import type { Config, NavbarConfig } from "../lib/config";
+import type { Config } from "../lib/config";
 import ColorModeToggle from "./ColorModeToggle";
-import IconButton from "./IconButton";
-import Link from "./Link";
+import IconLink from "./IconLink";
+import MobileMenu from "./MobileMenu";
 import StyledSeparator from "./Separator";
+import Link from "./Link";
 
 const icons = {
   Home: Home,
@@ -22,43 +23,47 @@ const Navbar: React.FC<{ config: Config; page?: string }> = ({
     <Tooltip.Provider>
       <nav className="navbar justify-between p-0">
         <div className="navbar-start flex gap-2">
-          <Link
-            href="/"
-            className="pr-2 text-2xl font-bold no-underline hover:text-primary"
-          >
-            {config.site.title}
-          </Link>
           {/* Normal */}
           {config.navbar.items.map((item, i) => {
-            let id;
-            let ele;
-            let Icon;
             if (item.type === "separator") {
-              id = i;
-              ele = (
-                <div className="flex min-w-[45px] justify-center">
+              const id = i;
+              return (
+                <div key={id} className="flex min-w-[45px] justify-center">
                   <StyledSeparator orientation="vertical" />
                 </div>
               );
-            } else {
-              id = item.href;
+            } else if (item.type === "icon") {
+              let Icon: LucideIcon;
+              const id = item.href;
               const active = item.href == page;
               if (item.icon) {
                 Icon = icons[item.icon];
+                return (
+                  <IconLink
+                    key={id}
+                    active={active}
+                    data-tip={item.value}
+                    href={item.href}
+                    aria-label={`${item.value} button`}
+                  >
+                    {Icon && <Icon size={20} />}
+                  </IconLink>
+                );
               }
-              ele = (
-                <IconButton
+            } else if (item.type === "text") {
+              const active = item.href == page;
+              const id = item.href;
+              return (
+                <Link
+                  key={id}
+                  className="pr-2 text-2xl font-bold no-underline hover:text-primary"
                   active={active}
-                  data-tip={item.tooltip}
                   href={item.href}
-                  aria-label={`${item.tooltip || ""} button`}
                 >
-                  {Icon && <Icon size={20} />}
-                </IconButton>
+                  {item.value}
+                </Link>
               );
             }
-
-            return ele;
           })}
         </div>
 
@@ -72,11 +77,7 @@ const Navbar: React.FC<{ config: Config; page?: string }> = ({
         </div>
 
         {/* Mobile */}
-        <div className="sm:hidden">
-          <button className="btn">
-            <Menu />
-          </button>
-        </div>
+        <MobileMenu config={config} />
       </nav>
     </Tooltip.Provider>
   );

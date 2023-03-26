@@ -1,4 +1,5 @@
 import cls from "classnames";
+import Link from "next/link";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -27,22 +28,27 @@ interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement & HTMLAnchorElement> {
   tooltip?: string;
   active?: boolean;
-  href?: string;
+  href: string;
 }
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ tooltip, active = false, children, className, ...rest }, ref) => {
-    const styles = twMerge(
-      cls(buttonStyles, { [tooltipStyles]: tooltip }, { "bg-accent": active }),
-      className
-    );
-    return (
-      <button data-tip={tooltip} className={styles} ref={ref} {...rest}>
-        {children}
-      </button>
-    );
-  }
-);
+const IconButton: React.FC<IconButtonProps> = ({
+  tooltip,
+  active = false,
+  href,
+  children,
+  className,
+  ...rest
+}) => {
+  const styles = twMerge(
+    cls(buttonStyles, { [tooltipStyles]: tooltip }, { "bg-accent": active }),
+    className
+  );
+  return (
+    <Link href={href} data-tip={tooltip} className={styles} {...rest}>
+      {children}
+    </Link>
+  );
+};
 
 IconButton.displayName = "IconButton";
 

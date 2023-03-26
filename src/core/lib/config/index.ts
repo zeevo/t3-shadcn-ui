@@ -34,37 +34,54 @@ const DEFAULT_CONFIG: Config = {
     },
     items: [
       {
+        href: "/",
+        value: "Home",
+        type: "text",
+      },
+      {
         type: "separator",
+      },
+      {
+        icon: "Twitter",
+        href: "https://twitter.com/zeevosec",
+        value: "Twitter",
+        type: "icon",
       },
       {
         icon: "Github",
         href: "https://github.com/zeevo/next-starter",
-        tooltip: "Github",
-        type: "item",
+        value: "Github",
+        type: "icon",
       },
     ],
   },
 };
 
-export interface NavbarItem {
+export interface NavbarIconItem {
   href: string;
-  icon: "Home" | "Github" | "User";
-  tooltip?: string;
-  type: "item";
+  icon: "Home" | "Github" | "User" | "Twitter";
+  value: string;
+  type: "text" | "icon";
+}
+
+export interface NavbarTextItem {
+  href: string;
+  value: string;
+  type: "text";
 }
 
 export interface Separator {
   type: "separator";
 }
 
-type NavbarItemOrSeparator = NavbarItem | Separator;
+type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
 
 export interface NavbarConfig {
   spacing: boolean;
   colorModeToggle?: {
     tooltip?: boolean;
   };
-  items: NavbarItemOrSeparator[];
+  items: NavbarItem[];
 }
 
 export interface SiteConfig {
