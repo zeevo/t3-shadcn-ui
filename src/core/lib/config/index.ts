@@ -34,8 +34,9 @@ const DEFAULT_CONFIG: Config = {
     },
     items: [
       {
+        icon: "Home",
         href: "/",
-        value: "Home",
+        value: "Next Starter",
         type: "text",
       },
       {
@@ -67,6 +68,7 @@ export interface NavbarIconItem {
 export interface NavbarTextItem {
   href: string;
   value: string;
+  icon: "Home";
   type: "text";
 }
 
@@ -74,7 +76,7 @@ export interface Separator {
   type: "separator";
 }
 
-type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
+export type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
 
 export interface NavbarConfig {
   spacing: boolean;

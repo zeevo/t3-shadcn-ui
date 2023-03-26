@@ -28,3 +28,11 @@ code {
 .mtooltip {
   animation: slide-down 0.07s;
 }
+
+.tooltip:after {
+  border-width: 0px;
+}
+
+.tooltip::before {
+  @apply mt-1 text-base-content;
+}

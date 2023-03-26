@@ -1,9 +1,14 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import { NavbarIconItem, NavbarTextItem, type Config } from "../lib/config";
+import {
+  type Config,
+  type NavbarIconItem,
+  type NavbarTextItem,
+} from "../lib/config";
+import Icon from "./Icon";
 import IconButton from "./IconButton";
 
 interface MobileMenuProps {
@@ -39,30 +44,45 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
                 (item): item is NavbarIconItem | NavbarTextItem =>
                   item.type !== "separator"
               )
+              .filter((item) => item.icon !== "Home")
               .map((item) => (
                 <DropdownMenu.Item key={item.value} asChild={true}>
                   <Link
                     href={item.href}
-                    className="w-full outline-accent hover:bg-accent"
+                    className="flex w-full rounded outline-accent hover:bg-accent"
                     style={{
                       gap: ".75rem",
                       padding: ".75rem 1rem",
                     }}
                   >
+                    {item.icon && <Icon value={item.icon} />}
                     {item.value}
                   </Link>
                 </DropdownMenu.Item>
               ))}
 
-            {/* {config.navbar.colorModeToggle && (
-              <DropdownMenu.Item asChild={true}>
-                <ColorModeToggle
-                  tooltip={config.navbar.colorModeToggle.tooltip}
-                  variant="text"
-                />
-                {theme}
+            {config.navbar.colorModeToggle && (
+              <DropdownMenu.Item
+                asChild={true}
+                onSelect={(event) => {
+                  event.preventDefault();
+                }}
+              >
+                <button
+                  className="flex w-full rounded outline-accent hover:bg-accent"
+                  style={{
+                    gap: ".75rem",
+                    padding: ".75rem 1rem",
+                  }}
+                  onClick={() => {
+                    const nextMode = theme === "light" ? "dark" : "light";
+                    setTheme(nextMode);
+                  }}
+                >
+                  {theme === "light" ? <Sun /> : <Moon />} {"Theme"}
+                </button>
               </DropdownMenu.Item>
-            )} */}
+            )}
           </>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
