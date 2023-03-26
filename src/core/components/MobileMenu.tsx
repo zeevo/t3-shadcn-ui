@@ -3,12 +3,7 @@ import { Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  NavbarIconItem,
-  NavbarTextItem,
-  type Config,
-  type NavbarItem,
-} from "../lib/config";
+import { NavbarIconItem, NavbarTextItem, type Config } from "../lib/config";
 import IconButton from "./IconButton";
 
 interface MobileMenuProps {
