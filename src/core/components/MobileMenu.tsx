@@ -1,12 +1,15 @@
-import { Menu } from "lucide-react";
-import { type NavbarItem, type Config } from "../lib/config";
-import IconButton from "./IconButton";
-import IconDropdown from "./IconDropdown";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { Menu } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import ColorModeToggle from "./ColorModeToggle";
-import { useTheme } from "next-themes";
+import {
+  NavbarIconItem,
+  NavbarTextItem,
+  type Config,
+  type NavbarItem,
+} from "../lib/config";
+import IconButton from "./IconButton";
 
 interface MobileMenuProps {
   config: Config;
@@ -15,17 +18,6 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
   const [active, setActive] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  const items = config.navbar.items.filter(
-    (item): item is NavbarItem => item.type === "item"
-  );
-
-  if (config.navbar.colorModeToggle) {
-    items.push({
-      icon: "Colormode",
-      tooltip: theme as string,
-    });
-  }
 
   return (
     <DropdownMenu.Root onOpenChange={() => setActive(!active)}>
@@ -48,9 +40,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
         >
           <>
             {config.navbar.items
-              .filter((item): item is NavbarItem => item.type === "item")
+              .filter(
+                (item): item is NavbarIconItem | NavbarTextItem =>
+                  item.type !== "separator"
+              )
               .map((item) => (
-                <DropdownMenu.Item key={item.tooltip} asChild={true}>
+                <DropdownMenu.Item key={item.value} asChild={true}>
                   <Link
                     href={item.href}
                     className="w-full outline-accent hover:bg-accent"
@@ -59,7 +54,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
                       padding: ".75rem 1rem",
                     }}
                   >
-                    {item.tooltip}
+                    {item.value}
                   </Link>
                 </DropdownMenu.Item>
               ))}
