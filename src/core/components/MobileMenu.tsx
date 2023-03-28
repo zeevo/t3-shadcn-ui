@@ -1,5 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
@@ -32,60 +32,58 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
         </IconButton>
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          side="bottom"
-          align="end"
-          className="menu flex w-52 items-center rounded bg-base-100 p-2 shadow"
-        >
-          <>
-            {config.navbar.items
-              .filter(
-                (item): item is NavbarIconItem | NavbarTextItem =>
-                  item.type !== "separator"
-              )
-              .filter((item) => item.icon !== "Home")
-              .map((item) => (
-                <DropdownMenu.Item key={item.value} asChild={true}>
-                  <Link
-                    href={item.href}
-                    className="flex w-full rounded outline-accent hover:bg-accent"
-                    style={{
-                      gap: ".75rem",
-                      padding: ".75rem 1rem",
-                    }}
-                  >
-                    {item.icon && <Icon value={item.icon} />}
-                    {item.value}
-                  </Link>
-                </DropdownMenu.Item>
-              ))}
-
-            {config.navbar.colorModeToggle && (
-              <DropdownMenu.Item
-                asChild={true}
-                onSelect={(event) => {
-                  event.preventDefault();
-                }}
-              >
-                <button
+      <DropdownMenu.Content
+        side="bottom"
+        align="end"
+        className="menu flex w-52 items-center rounded bg-base-100 p-2 shadow"
+      >
+        <>
+          {config.navbar.items
+            .filter(
+              (item): item is NavbarIconItem | NavbarTextItem =>
+                item.type !== "separator"
+            )
+            .filter((item) => item.icon !== "Home")
+            .map((item) => (
+              <DropdownMenu.Item key={item.value} asChild={true}>
+                <Link
+                  href={item.href}
                   className="flex w-full rounded outline-accent hover:bg-accent"
                   style={{
                     gap: ".75rem",
                     padding: ".75rem 1rem",
                   }}
-                  onClick={() => {
-                    const nextMode = theme === "light" ? "dark" : "light";
-                    setTheme(nextMode);
-                  }}
                 >
-                  {theme === "light" ? <Sun /> : <Moon />} {"Theme"}
-                </button>
+                  {item.icon && <Icon value={item.icon} />}
+                  {item.value}
+                </Link>
               </DropdownMenu.Item>
-            )}
-          </>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
+            ))}
+
+          {config.navbar.colorModeToggle && (
+            <DropdownMenu.Item
+              asChild={true}
+              onSelect={(event) => {
+                event.preventDefault();
+              }}
+            >
+              <button
+                className="flex w-full rounded outline-accent hover:bg-accent"
+                style={{
+                  gap: ".75rem",
+                  padding: ".75rem 1rem",
+                }}
+                onClick={() => {
+                  const nextMode = theme === "light" ? "dark" : "light";
+                  setTheme(nextMode);
+                }}
+              >
+                <SunMoon /> Theme
+              </button>
+            </DropdownMenu.Item>
+          )}
+        </>
+      </DropdownMenu.Content>
     </DropdownMenu.Root>
   );
 };

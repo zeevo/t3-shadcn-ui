@@ -16,7 +16,7 @@ const StyledSeparator: React.FC<
   }
 
   return (
-    <div className="flex items-center" style={{ height: 20 }}>
+    <div className={"flex flex-col justify-center"}>
       <Separator.Root
         {...props}
         className={twMerge(baseStyles, "bg-base-content transition", className)}

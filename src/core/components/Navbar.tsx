@@ -26,9 +26,7 @@ const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
 }) => {
   if (item.type === "separator") {
     return (
-      <div className="flex min-w-[45px] justify-center">
-        <StyledSeparator orientation="vertical" />
-      </div>
+      <StyledSeparator orientation="vertical" className={item.className} />
     );
   } else if (item.type === "icon") {
     let Icon: LucideIcon;
@@ -55,7 +53,7 @@ const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
     return (
       <Link
         key={id}
-        className="pr-2 text-2xl font-bold no-underline hover:text-primary"
+        className="pr-2 text-4xl font-bold no-underline hover:text-primary"
         active={active}
         href={item.href}
       >
@@ -81,7 +79,7 @@ const Navbar: React.FC<{ config: Config; page?: string }> = ({
   return (
     <Tooltip.Provider>
       <nav className="navbar justify-between p-0">
-        <div className="navbar-start hidden gap-2 sm:flex">
+        <div className="navbar-start hidden gap-4 sm:flex">
           {/* Normal */}
           {config.navbar.items.map((item, i) => (
             <NavItem key={i} item={item} page={page} />

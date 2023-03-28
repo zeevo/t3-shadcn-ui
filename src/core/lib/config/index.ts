@@ -41,12 +41,7 @@ const DEFAULT_CONFIG: Config = {
       },
       {
         type: "separator",
-      },
-      {
-        icon: "Twitter",
-        href: "https://twitter.com/zeevosec",
-        value: "Twitter",
-        type: "icon",
+        className: "h-7",
       },
       {
         icon: "Github",
@@ -74,6 +69,7 @@ export interface NavbarTextItem {
 
 export interface Separator {
   type: "separator";
+  className: string;
 }
 
 export type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
