@@ -8,17 +8,16 @@
   }
 }
 
-@keyframes slide-down {
-  0% {
-    transform: scale(0.6) translateY(-90%);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-
 code {
   @apply font-mono;
+}
+
+.btn-inverted {
+  @apply border-base-content bg-base-content text-base-100 hover:border-base-content hover:bg-base-100 hover:text-base-content;
+}
+
+.btn-edged {
+  @apply border-base-content bg-base-100 text-base-content hover:border-base-content hover:bg-base-100 hover:text-base-content;
 }
 
 .prose {

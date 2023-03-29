@@ -11,11 +11,12 @@ const {
   skyDark,
   yellow,
   yellowDark,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
 } = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "config.json"],
   theme: {
     extend: {
       fontFamily: [

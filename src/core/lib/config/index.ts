@@ -27,6 +27,7 @@ const DEFAULT_CONFIG: Config = {
     image: "",
     url: "",
   },
+  main: {},
   navbar: {
     spacing: true,
     colorModeToggle: {
@@ -75,6 +76,7 @@ export interface Separator {
 export type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
 
 export interface NavbarConfig {
+  className?: string;
   spacing: boolean;
   colorModeToggle?: {
     tooltip?: boolean;
@@ -90,8 +92,13 @@ export interface SiteConfig {
   url: string;
 }
 
+export interface MainConfig {
+  className?: string;
+}
+
 export interface Config {
   navbar: NavbarConfig;
+  main: MainConfig;
   site: SiteConfig;
   providers?: {
     [key: string]: {

@@ -4,14 +4,14 @@ import type { Config } from "../lib/config";
 import Navbar from "./Navbar";
 
 const Layout: React.FC<
-  PropsWithChildren<{ config: Config; page?: string; mainClasses?: string }>
-> = ({ config, page, children, mainClasses = "" }) => {
+  PropsWithChildren<{ config: Config; page?: string }>
+> = ({ config, page, children }) => {
   return (
     <div className="m-4">
-      <div className="m-auto mb-12 w-full max-w-2xl">
+      <div className={twMerge("m-auto mb-12 w-full", config.navbar.className)}>
         <Navbar config={config} page={page} />
       </div>
-      <main className={twMerge("m-auto w-full max-w-2xl", mainClasses)}>
+      <main className={twMerge("m-auto w-full", config.main.className)}>
         {children}
       </main>
     </div>

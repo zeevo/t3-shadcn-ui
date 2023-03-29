@@ -14,6 +14,10 @@ const ComponentPreview: FunctionComponent = () => {
         <button className="btn-secondary btn">Secondary</button>
         <button className="btn-accent btn">Accent</button>
         <button className="btn-info btn">Info</button>
+        <button className="btn-outline btn">Outline</button>
+        <button className="btn-inverted btn">Inverted</button>
+        <button className="btn-edged btn">Edged</button>
+        <button className="glass btn">Glass</button>
         <button className="btn-success btn">Success</button>
         <button className="btn-warning btn">Warning</button>
         <button className="btn-error btn">Error</button>
@@ -32,9 +36,9 @@ const ComponentPreview: FunctionComponent = () => {
         <div className="flex flex-col gap-3 md:flex-row">
           <div className="md:w-1/2">
             <div className="tabs">
-              <button className="tab tab-lifted">Tab</button>
-              <button className="tab tab-lifted tab-active">Tab</button>
-              <button className="tab tab-lifted">Tab</button>
+              <button className="tab-lifted tab">Tab</button>
+              <button className="tab-lifted tab tab-active">Tab</button>
+              <button className="tab-lifted tab">Tab</button>
             </div>
             <div className="flex flex-col">
               <span className="link">{"I'm a simple link"}</span>
