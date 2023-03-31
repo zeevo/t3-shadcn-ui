@@ -3,7 +3,10 @@ import StyledSeparator from "./Separator";
 
 const ComponentPreview: FunctionComponent = () => {
   return (
-    <div className="not-prose rounded-box grid gap-3 bg-base-100 text-base-content">
+    <div
+      className="not-prose rounded-box grid gap-3 bg-base-100 text-base-content"
+      id="daisyui"
+    >
       <StyledSeparator orientation="horizontal" />
 
       <h3 className="text-2xl">Components</h3>
