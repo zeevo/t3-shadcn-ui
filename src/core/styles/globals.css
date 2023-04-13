@@ -12,6 +12,10 @@ code {
   @apply font-mono;
 }
 
+pre {
+  @apply rounded p-2;
+}
+
 .btn-inverted {
   @apply border-base-content bg-base-content text-base-100 hover:border-base-content hover:bg-base-100 hover:text-base-content;
 }

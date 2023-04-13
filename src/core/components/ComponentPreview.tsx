@@ -7,10 +7,6 @@ const ComponentPreview: FunctionComponent = () => {
       className="not-prose rounded-box grid gap-3 bg-base-100 text-base-content"
       id="daisyui"
     >
-      <StyledSeparator orientation="horizontal" />
-
-      <h3 className="text-2xl">Components</h3>
-
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
         <button className="btn">Default</button>
         <button className="btn-primary btn">Primary</button>

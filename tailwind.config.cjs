@@ -33,7 +33,7 @@ module.exports = {
           "base-content": blueDark.blue12, // optional
           primary: blueDark.blue8,
           secondary: blueDark.blue6,
-          accent: blueDark.blue4,
+          accent: slateDark.slate4,
           neutral: slateDark.slate7,
           success: greenDark.green8,
           info: skyDark.sky8,

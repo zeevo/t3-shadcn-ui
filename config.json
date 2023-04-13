@@ -9,28 +9,54 @@
   "main": {
     "className": "container"
   },
-  "navbar": {
-    "className": "container",
-    "spacing": true,
-    "colorModeToggle": {
-      "tooltip": true
-    },
+  "layout": {
+    "type": "sidenav"
+  },
+  "sideNav": {
+    "className": "bg-base-100",
     "items": [
       {
-        "icon": "Home",
-        "href": "/",
-        "value": "Next Starter",
+        "icon": "Key",
+        "href": "#nextauth",
+        "value": "Next-Auth",
         "type": "text"
       },
       {
-        "type": "separator",
-        "className": "h-7"
+        "icon": "Network",
+        "href": "#trpc",
+        "value": "tRPC",
+        "type": "text"
       },
+      {
+        "icon": "Type",
+        "href": "#typography",
+        "value": "Typography",
+        "type": "text"
+      },
+      {
+        "icon": "Code",
+        "href": "#daisyui",
+        "value": "DaisyUI",
+        "type": "text"
+      }
+    ]
+  },
+  "navbar": {
+    "className": "container",
+    "spacing": true,
+    "justify": "justify-end",
+    "items": [
       {
         "icon": "Github",
         "href": "https://github.com/zeevo/next-starter",
         "value": "Github",
-        "type": "icon"
+        "type": "text"
+      },
+      {
+        "type": "theme",
+        "icon": "SunMoon",
+        "align": "right",
+        "tooltip": "Theme"
       }
     ]
   }

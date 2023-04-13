@@ -1,17 +1,22 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { Github, Home, LucideIcon, Twitter, User } from "lucide-react";
+import cls from "classnames";
+import {
+  Github,
+  Home,
+  type LucideIcon,
+  Menu,
+  Twitter,
+  User,
+} from "lucide-react";
 import React from "react";
-import type {
-  Config,
-  NavbarIconItem,
-  NavbarItem,
-  NavbarTextItem,
-} from "../lib/config";
+import { twMerge } from "tailwind-merge";
+import type { Config, NavbarItem } from "../lib/config";
 import ColorModeToggle from "./ColorModeToggle";
+import IconLabel from "./IconLabel";
 import IconLink from "./IconLink";
+import Link from "./Link";
 import MobileMenu from "./MobileMenu";
 import StyledSeparator from "./Separator";
-import Link from "./Link";
 
 const icons = {
   Home: Home,
@@ -20,7 +25,7 @@ const icons = {
   Twitter: Twitter,
 };
 
-const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
+export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
   item,
   page,
 }) => {
@@ -53,54 +58,69 @@ const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
     return (
       <Link
         key={id}
-        className="pr-2 text-4xl font-bold no-underline hover:text-primary"
+        className="text-xl font-bold no-underline hover:opacity-90"
         active={active}
         href={item.href}
       >
         {item.value}
       </Link>
     );
+  } else if (item.type == "theme") {
+    return <ColorModeToggle tooltip={item.tooltip} />;
   }
 
   return null;
 };
 
-const Navbar: React.FC<{ config: Config; page?: string }> = ({
-  config,
-  page,
-}) => {
-  const homeItem = config.navbar.items
-    .filter(
-      (item): item is NavbarIconItem | NavbarTextItem =>
-        item.type !== "separator"
-    )
-    .find((item) => item.icon === "Home");
-
+const Navbar: React.FC<{
+  config: Config;
+  page?: string;
+  layout?: "sidenav" | "default";
+}> = ({ config, page }) => {
   return (
     <Tooltip.Provider>
-      <nav className="navbar justify-between p-0">
-        <div className="navbar-start hidden gap-4 sm:flex">
-          {/* Normal */}
+      <nav className="navbar flex p-0">
+        {/* Normal  Left */}
+        {config.layout?.type === "sidenav" && (
+          <div className="navbar-left flex-0 flex gap-4">
+            <IconLabel htmlFor="drawer" className="flex sm:hidden">
+              <Menu />
+            </IconLabel>
+            <Link
+              href="/"
+              className="text-2xl font-bold no-underline sm:hidden sm:text-4xl"
+            >
+              {config.site.title}
+            </Link>
+          </div>
+        )}
+
+        {config.layout?.type === "default" && (
+          <Link
+            href="/"
+            className="justify-start whitespace-nowrap text-2xl font-bold no-underline sm:text-4xl"
+          >
+            {config.site.title}
+          </Link>
+        )}
+
+        {/* Normal */}
+        <div
+          className={cls("hidden w-full gap-4 sm:flex", config.navbar.justify)}
+        >
           {config.navbar.items.map((item, i) => (
             <NavItem key={i} item={item} page={page} />
           ))}
         </div>
 
-        <div className="hidden sm:flex">
-          {config.navbar.colorModeToggle && (
-            <ColorModeToggle
-              tooltip={config.navbar.colorModeToggle.tooltip}
-              variant="text"
-            />
-          )}
-        </div>
-
-        {/* Mobile */}
-        <div className="sm:hidden">
-          {homeItem && <NavItem item={homeItem} page={page} />}
-        </div>
-
-        <MobileMenu config={config} />
+        {/* Default Mobile */}
+        {config.layout?.type === "default" && (
+          <>
+            <div className="flex w-full justify-end sm:hidden">
+              <MobileMenu config={config} />
+            </div>
+          </>
+        )}
       </nav>
     </Tooltip.Provider>
   );

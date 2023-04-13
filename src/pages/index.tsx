@@ -13,18 +13,14 @@ import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
 import getConfig from "~/core/lib/config";
 import { api } from "~/core/utils/api";
+import SideNav from "~/core/components/SideNav";
 
 const H2: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <h2 className="mt-4 mb-4">{children}</h2>
+  <h2 className="mt-4 mb-4 text-2xl">{children}</h2>
 );
 
 const NextAuthShowCase = () => {
-  return (
-    <div>
-      <H2>Next Auth</H2>
-      <AuthShowcase />
-    </div>
-  );
+  return <AuthShowcase />;
 };
 
 interface ActiveProps {
@@ -34,8 +30,7 @@ interface ActiveProps {
 
 const TypographyShowcase = () => {
   return (
-    <div id="typography">
-      <H2>Typography</H2>
+    <div>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -52,7 +47,6 @@ const TypographyShowcase = () => {
 const Links = ({ setActive, active }: ActiveProps) => {
   return (
     <div className="flex items-center gap-2">
-      <H2>Link</H2>
       <div>
         <Button
           variant="outlined"
@@ -68,23 +62,20 @@ const Links = ({ setActive, active }: ActiveProps) => {
 };
 
 const ColorsShowcase = () => (
-  <div id="colors">
-    <h3 className="text-2xl">Colors</h3>
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-      <div className="rounded bg-neutral text-center font-bold">Default</div>
-      <div className="bg-primary text-center font-bold">Primary</div>
-      <div className="bg-secondary text-center font-bold">Secondary</div>
-      <div className="bg-accent text-center font-bold">Accent</div>
-      <div className="bg-info text-center font-bold">Info</div>
-      <div className="bg-success text-center font-bold ">Success</div>
-      <div className="bg-warning text-center font-bold">Warning</div>
-      <div className="bg-error text-center font-bold">Error</div>
-    </div>
+  <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+    <div className="rounded bg-neutral text-center font-bold">Default</div>
+    <div className="bg-primary text-center font-bold">Primary</div>
+    <div className="bg-secondary text-center font-bold">Secondary</div>
+    <div className="bg-accent text-center font-bold">Accent</div>
+    <div className="bg-info text-center font-bold">Info</div>
+    <div className="bg-success text-center font-bold ">Success</div>
+    <div className="bg-warning text-center font-bold">Warning</div>
+    <div className="bg-error text-center font-bold">Error</div>
   </div>
 );
 
 const LinksShowcase = ({ setActive, active }: ActiveProps) => (
-  <div id="links">
+  <div>
     <Links setActive={setActive} active={active} />
     <h3>Normal</h3>
     <Link active={active} href="#">
@@ -101,8 +92,7 @@ function TRPCShowcase() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
-    <div id="#trpc">
-      <H2>tRPC</H2>
+    <div>
       {hello.data ? (
         <Code>{JSON.stringify(hello.data, null, 2)}</Code>
       ) : (
@@ -121,40 +111,18 @@ const SideBarLink: React.FC<PropsWithChildren<{ href: string }>> = ({
   </a>
 );
 
-const Home: NextPage<{ config: Config }> = ({ config }) => {
-  const [linkActive, setLinkActive] = useState<boolean>(false);
+const Divider: React.FC<PropsWithChildren<{ id: string }>> = ({
+  id,
+  children,
+}) => (
+  <div className="divider divider-vertical mt-10" id={id}>
+    <span className="text-2xl">{children}</span>
+  </div>
+);
 
+const Home: NextPage<{ config: Config }> = ({ config }) => {
   return (
-    <Layout
-      config={config}
-      sideNav={
-        <>
-          <div className="sticky top-0 z-20 hidden items-center gap-2  px-4 py-2 text-4xl font-bold backdrop-blur lg:flex">
-            {config.site.title}
-          </div>
-          <ul className="menu menu-compact flex flex-col p-0 px-4">
-            <li>
-              <SideBarLink href="#trpc">TRPC</SideBarLink>
-            </li>
-            <li>
-              <SideBarLink href="#auth">Next-Auth</SideBarLink>
-            </li>
-            <li>
-              <SideBarLink href="#colors">Colors</SideBarLink>
-            </li>
-            <li>
-              <SideBarLink href="#typography">Typography</SideBarLink>
-            </li>
-            <li>
-              <SideBarLink href="#links">Links</SideBarLink>
-            </li>
-            <li>
-              <SideBarLink href="#daisyui">DaisyUI</SideBarLink>
-            </li>
-          </ul>
-        </>
-      }
-    >
+    <Layout config={config}>
       <Head
         title={config.site.title}
         defaultTitle={config.site.defaultTitle}
@@ -163,12 +131,15 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
         image={config.site.image}
         site={config.site.url}
       />
+      <Divider id="trpc">TRPC</Divider>
       <TRPCShowcase />
+      <Divider id="auth">Next Auth</Divider>
       <NextAuthShowCase />
+      <Divider id="colors">Colors</Divider>
       <ColorsShowcase />
+      <Divider id="typography">Typography</Divider>
       <TypographyShowcase />
-      <LinksShowcase active={linkActive} setActive={setLinkActive} />
-      <H2>DaisyUI</H2>
+      <Divider id="daisyui">DaisyUI</Divider>
       <ComponentPreview />
     </Layout>
   );

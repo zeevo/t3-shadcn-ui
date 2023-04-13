@@ -1,14 +1,38 @@
-import { Github, Home, Twitter, User } from "lucide-react";
+import {
+  Code,
+  Github,
+  Home,
+  Key,
+  Network,
+  Twitter,
+  Type,
+  User,
+  SunMoon,
+} from "lucide-react";
 
 const icons = {
   Home,
   Github,
   User,
   Twitter,
+  Key,
+  Type,
+  Code,
+  Network,
+  SunMoon,
 };
 
 interface IconProps {
-  value: "Home" | "Github" | "User" | "Twitter";
+  value:
+    | "Code"
+    | "Github"
+    | "Home"
+    | "Key"
+    | "Network"
+    | "Twitter"
+    | "Type"
+    | "User"
+    | "SunMoon";
 }
 
 const Icon: React.FC<IconProps> = ({ value }) => {

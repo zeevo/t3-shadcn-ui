@@ -28,6 +28,9 @@ const DEFAULT_CONFIG: Config = {
     url: "",
   },
   main: {},
+  layout: {
+    type: "default",
+  },
   navbar: {
     spacing: true,
     colorModeToggle: {
@@ -61,6 +64,11 @@ export interface NavbarIconItem {
   type: "text" | "icon";
 }
 
+export interface NavbarThemeToggleItem {
+  type: "theme";
+  tooltip: boolean;
+}
+
 export interface NavbarTextItem {
   href: string;
   value: string;
@@ -73,11 +81,19 @@ export interface Separator {
   className: string;
 }
 
-export type NavbarItem = NavbarIconItem | NavbarTextItem | Separator;
+export type NavbarItemType = "text" | "icon" | "separator" | "theme";
+
+export type NavbarItem = NavbarCoreItem | Separator;
+
+export type NavbarCoreItem =
+  | NavbarIconItem
+  | NavbarTextItem
+  | NavbarThemeToggleItem;
 
 export interface NavbarConfig {
   className?: string;
   spacing: boolean;
+  justify?: string;
   colorModeToggle?: {
     tooltip?: boolean;
   };
@@ -96,8 +112,16 @@ export interface MainConfig {
   className?: string;
 }
 
+export type LayoutType = "sidenav" | "default";
+
+export interface LayoutConfig {
+  type: LayoutType;
+  showTitle?: boolean;
+}
 export interface Config {
   navbar: NavbarConfig;
+  sideNav?: NavbarConfig;
+  layout?: LayoutConfig;
   main: MainConfig;
   site: SiteConfig;
   providers?: {

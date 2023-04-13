@@ -18,7 +18,7 @@ const AuthShowcase: React.FC = () => {
         </p>
       )}
       <button
-        className="btn-primary btn"
+        className="btn-primary btn w-full"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
