@@ -2,16 +2,8 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Menu, SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import React from "react";
-import { useState } from "react";
-import {
-  type NavbarThemeToggleIcon,
-  type Config,
-  type NavbarIconItem,
-  type NavbarTextItem,
-  NavbarItem,
-  NavbarCoreItem,
-} from "../lib/config";
+import React, { useState } from "react";
+import { type Config, type NavbarCoreItem } from "../lib/config";
 import Icon from "./Icon";
 import IconButton from "./IconButton";
 
@@ -55,7 +47,6 @@ const MobileDropdownItem = React.forwardRef<
       );
 
     case "theme":
-      console.log(item);
       return (
         <button
           className="flex w-full rounded outline-accent hover:bg-accent"
@@ -105,7 +96,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ config }) => {
       >
         {config.navbar.items
           .filter((item): item is NavbarCoreItem => item.type !== "separator")
-          .filter((item) => item.mobile !== false)
           .map((item, i) => {
             return (
               <DropdownMenu.Item key={i} asChild={true}>

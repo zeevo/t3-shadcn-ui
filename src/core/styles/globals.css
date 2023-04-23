@@ -6,14 +6,13 @@
   html {
     @apply font-0;
   }
-}
+  code {
+    @apply font-mono;
+  }
 
-code {
-  @apply font-mono;
-}
-
-pre {
-  @apply rounded p-2;
+  pre {
+    @apply rounded p-2;
+  }
 }
 
 .btn-inverted {
@@ -38,4 +37,15 @@ pre {
 
 .tooltip::before {
   @apply mt-1 text-base-content;
+}
+.drawer-toggle ~ .drawer-content {
+  transition-duration: 0ms;
+}
+
+.drawer-toggle ~ .drawer-side > .drawer-overlay + * {
+  transition-duration: 0ms;
+}
+
+.btn {
+  transition-duration: 0ms;
 }

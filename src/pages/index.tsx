@@ -1,23 +1,15 @@
-import { Bell } from "lucide-react";
 import type { NextPage } from "next";
 import type { PropsWithChildren, ReactNode } from "react";
-import { useState } from "react";
+import getConfig from "~/core/lib/config";
+import { api } from "~/core/utils/api";
+import Layout from "../components/Layout";
 import AuthShowcase from "../core/components/AuthShowcase";
 import Button from "../core/components/Button";
 import Code from "../core/components/Code";
 import ComponentPreview from "../core/components/ComponentPreview";
 import Head from "../core/components/Head";
-import Layout from "../core/components/Layout";
 import Link from "../core/components/Link";
-import StyledSeparator from "../core/components/Separator";
 import type { Config } from "../core/lib/config";
-import getConfig from "~/core/lib/config";
-import { api } from "~/core/utils/api";
-import SideNav from "~/core/components/SideNav";
-
-const H2: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <h2 className="mt-4 mb-4 text-2xl">{children}</h2>
-);
 
 const NextAuthShowCase = () => {
   return <AuthShowcase />;

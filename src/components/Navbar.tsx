@@ -3,20 +3,18 @@ import cls from "classnames";
 import {
   Github,
   Home,
-  type LucideIcon,
   Menu,
   Twitter,
   User,
+  type LucideIcon,
 } from "lucide-react";
 import React from "react";
-import { twMerge } from "tailwind-merge";
-import type { Config, NavbarItem } from "../lib/config";
-import ColorModeToggle from "./ColorModeToggle";
-import IconLabel from "./IconLabel";
-import IconLink from "./IconLink";
-import Link from "./Link";
-import MobileMenu from "./MobileMenu";
-import StyledSeparator from "./Separator";
+import ColorModeToggle from "../core/components/ColorModeToggle";
+import IconLabel from "../core/components/IconLabel";
+import IconLink from "../core/components/IconLink";
+import Link from "../core/components/Link";
+import StyledSeparator from "../core/components/Separator";
+import type { Config, NavbarItem } from "../core/lib/config";
 
 const icons = {
   Home: Home,
@@ -75,34 +73,22 @@ export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
 const Navbar: React.FC<{
   config: Config;
   page?: string;
-  layout?: "sidenav" | "default";
 }> = ({ config, page }) => {
   return (
     <Tooltip.Provider>
-      <nav className="navbar flex p-0">
+      <nav className="navbar flex bg-transparent p-0">
         {/* Normal  Left */}
-        {config.layout?.type === "sidenav" && (
-          <div className="navbar-left flex-0 flex gap-4">
-            <IconLabel htmlFor="drawer" className="flex sm:hidden">
-              <Menu />
-            </IconLabel>
-            <Link
-              href="/"
-              className="text-2xl font-bold no-underline sm:hidden sm:text-4xl"
-            >
-              {config.site.title}
-            </Link>
-          </div>
-        )}
-
-        {config.layout?.type === "default" && (
+        <div className="navbar-left flex-0 flex gap-4">
+          <IconLabel htmlFor="drawer" className="flex sm:hidden">
+            <Menu />
+          </IconLabel>
           <Link
             href="/"
-            className="justify-start whitespace-nowrap text-2xl font-bold no-underline sm:text-4xl"
+            className="text-2xl font-bold no-underline sm:hidden sm:text-4xl"
           >
             {config.site.title}
           </Link>
-        )}
+        </div>
 
         {/* Normal */}
         <div
@@ -112,15 +98,6 @@ const Navbar: React.FC<{
             <NavItem key={i} item={item} page={page} />
           ))}
         </div>
-
-        {/* Default Mobile */}
-        {config.layout?.type === "default" && (
-          <>
-            <div className="flex w-full justify-end sm:hidden">
-              <MobileMenu config={config} />
-            </div>
-          </>
-        )}
       </nav>
     </Tooltip.Provider>
   );
