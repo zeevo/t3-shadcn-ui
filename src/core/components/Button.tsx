@@ -1,8 +1,8 @@
-import type { PropsWithChildren } from "react";
-import React, { useState } from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import Link from "next/link";
 import classNames from "classnames";
+import Link from "next/link";
+import type { PropsWithChildren } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
 
 export type ThemeButtonVariantText =

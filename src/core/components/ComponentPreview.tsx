@@ -1,5 +1,4 @@
 import type { FunctionComponent } from "react";
-import StyledSeparator from "./Separator";
 
 const ComponentPreview: FunctionComponent = () => {
   return (

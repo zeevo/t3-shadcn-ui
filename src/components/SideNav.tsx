@@ -1,10 +1,9 @@
 import { SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
 import { type FunctionComponent } from "react";
-import Icon from "../core/components/Icon";
-import { NavbarCoreItem, type Config } from "../core/lib/config";
 import IconLink from "~/core/components/IconLink";
+import Icon from "../core/components/Icon";
+import { type NavbarCoreItem, type Config } from "../core/lib/config";
 
 interface SideNavProps {
   config: Config;

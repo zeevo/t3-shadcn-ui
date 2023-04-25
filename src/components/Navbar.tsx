@@ -1,14 +1,14 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 import cls from "classnames";
-import { Github, Home, Menu, Twitter, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import React from "react";
+import Icon from "~/core/components/Icon";
 import ColorModeToggle from "../core/components/ColorModeToggle";
 import IconLabel from "../core/components/IconLabel";
 import IconLink from "../core/components/IconLink";
 import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
 import type { Config, NavbarItem } from "../core/lib/config";
-import Icon from "~/core/components/Icon";
 
 export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
   item,
