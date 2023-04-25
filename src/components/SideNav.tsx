@@ -4,6 +4,7 @@ import Link from "next/link";
 import { type FunctionComponent } from "react";
 import Icon from "../core/components/Icon";
 import { NavbarCoreItem, type Config } from "../core/lib/config";
+import IconLink from "~/core/components/IconLink";
 
 interface SideNavProps {
   config: Config;
@@ -16,14 +17,14 @@ const SideNav: FunctionComponent<SideNavProps> = ({ config }) => {
     <>
       <div className="sticky top-0 z-20 flex items-center gap-2 px-4 py-2">
         <div className="font-title inline-flex text-lg text-base-content transition-all duration-200 md:text-3xl">
-          <Link
+          <IconLink
             href="#top"
             aria-current="page"
             aria-label="Homepage"
             className="flex-0 btn-ghost btn px-2 text-3xl normal-case no-underline"
           >
             {config.site.title}
-          </Link>
+          </IconLink>
         </div>
       </div>
       <div className="h-4" />

@@ -45,7 +45,7 @@ module.exports = {
           "base-content": slate.slate12,
           primary: blue.blue8,
           secondary: blue.blue6,
-          accent: blue.blue4,
+          accent: slate.slate4,
           neutral: slate.slate7,
           success: green.green8,
           info: sky.sky8,

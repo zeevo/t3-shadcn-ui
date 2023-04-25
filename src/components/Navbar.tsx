@@ -1,13 +1,6 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 import cls from "classnames";
-import {
-  Github,
-  Home,
-  Menu,
-  Twitter,
-  User,
-  type LucideIcon,
-} from "lucide-react";
+import { Github, Home, Menu, Twitter, User } from "lucide-react";
 import React from "react";
 import ColorModeToggle from "../core/components/ColorModeToggle";
 import IconLabel from "../core/components/IconLabel";
@@ -15,13 +8,7 @@ import IconLink from "../core/components/IconLink";
 import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
 import type { Config, NavbarItem } from "../core/lib/config";
-
-const icons = {
-  Home: Home,
-  Github: Github,
-  User: User,
-  Twitter: Twitter,
-};
+import Icon from "~/core/components/Icon";
 
 export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
   item,
@@ -32,36 +19,32 @@ export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
       <StyledSeparator orientation="vertical" className={item.className} />
     );
   } else if (item.type === "icon") {
-    let Icon: LucideIcon;
     const id = item.href;
     const active = item.href == page;
-    if (item.icon) {
-      Icon = icons[item.icon];
-      return (
-        <IconLink
-          key={id}
-          active={active}
-          data-tip={item.value}
-          tooltip={item.value}
-          href={item.href}
-          aria-label={`${item.value} button`}
-        >
-          {Icon && <Icon size={20} />}
-        </IconLink>
-      );
-    }
+    return (
+      <IconLink
+        key={id}
+        active={active}
+        data-tip={item.value}
+        tooltip={item.value}
+        href={item.href}
+        aria-label={`${item.value} button`}
+      >
+        <Icon value={item.icon} />
+      </IconLink>
+    );
   } else if (item.type === "text") {
     const active = item.href == page;
     const id = item.href;
     return (
-      <Link
+      <IconLink
         key={id}
-        className="text-xl font-bold no-underline hover:opacity-90"
+        className="pl-2 pr-2 text-xl font-bold normal-case"
         active={active}
         href={item.href}
       >
         {item.value}
-      </Link>
+      </IconLink>
     );
   } else if (item.type == "theme") {
     return <ColorModeToggle tooltip={item.tooltip} />;

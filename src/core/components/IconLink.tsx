@@ -31,7 +31,7 @@ interface IconButtonProps
   href: string;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({
+const IconLink: React.FC<IconButtonProps> = ({
   tooltip,
   active = false,
   href,
@@ -50,6 +50,6 @@ const IconButton: React.FC<IconButtonProps> = ({
   );
 };
 
-IconButton.displayName = "IconButton";
+IconLink.displayName = "IconLink";
 
-export default IconButton;
+export default IconLink;
