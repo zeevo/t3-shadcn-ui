@@ -3,7 +3,7 @@ import type { PropsWithChildren } from "react";
 import getConfig from "~/core/lib/config";
 import { api } from "~/core/utils/api";
 import Layout from "../components/Layout";
-import AuthShowcase from "../core/components/AuthShowcase";
+import AuthShowcase from "../components/AuthShowcase";
 import Button from "../core/components/Button";
 import Code from "../core/components/Code";
 import ComponentPreview from "../core/components/ComponentPreview";
