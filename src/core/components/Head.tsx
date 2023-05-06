@@ -1,30 +1,37 @@
-import type { PropsWithChildren } from "react";
 import NextHead from "next/head";
+import type { PropsWithChildren } from "react";
 
 interface HeadProps {
-  title?: string;
-  defaultTitle?: string;
-  canonical?: string;
-  description?: string;
+  title: string;
+  subtitle?: string;
+  canonical: string;
+  description: string;
   image?: string;
   site?: string;
 }
 
+const getTitle = (title: string, subtitle?: string) => {
+  if (subtitle) {
+    return subtitle ? `${title || ""} | ${subtitle}` : title;
+  }
+  return title;
+};
+
 const Head: React.FC<PropsWithChildren<HeadProps>> = ({
   canonical,
-  defaultTitle,
+  subtitle,
   description,
   site,
   image,
   title,
   children,
 }) => {
-  const formattedTitle = defaultTitle
-    ? `${title || ""} | ${defaultTitle}`
-    : title;
+  const formattedTitle = getTitle(title, subtitle);
+
   const formattedImage = !image?.startsWith("http")
     ? `${site || ""}${image || ""}`
     : image;
+
   return (
     <NextHead>
       <title>{formattedTitle}</title>

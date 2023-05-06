@@ -1,23 +1,16 @@
 import type { NextPage } from "next";
 import type { PropsWithChildren } from "react";
-import getConfig from "~/core/lib/config";
+import { useConfig } from "~/core/context/config";
 import { api } from "~/core/utils/api";
-import Layout from "../components/Layout";
 import AuthShowcase from "../components/AuthShowcase";
-import Button from "../core/components/Button";
+import Layout from "../components/Layout";
 import Code from "../core/components/Code";
 import ComponentPreview from "../core/components/ComponentPreview";
 import Head from "../core/components/Head";
-import type { Config } from "../core/lib/config";
 
 const NextAuthShowCase = () => {
   return <AuthShowcase />;
 };
-
-interface ActiveProps {
-  setActive: (active: boolean) => void;
-  active: boolean;
-}
 
 const TypographyShowcase = () => {
   return (
@@ -151,23 +144,6 @@ const TypographyShowcase = () => {
   );
 };
 
-const Links = ({ setActive, active }: ActiveProps) => {
-  return (
-    <div className="flex items-center gap-2">
-      <div>
-        <Button
-          variant="outlined"
-          className="btn-xs"
-          onClick={() => setActive(!active)}
-          active={active}
-        >
-          <span className="p-2">active</span>
-        </Button>
-      </div>
-    </div>
-  );
-};
-
 const ColorsShowcase = () => (
   <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
     <div className="rounded bg-neutral text-center font-bold">Default</div>
@@ -195,15 +171,6 @@ function TRPCShowcase() {
   );
 }
 
-const SideBarLink: React.FC<PropsWithChildren<{ href: string }>> = ({
-  children,
-  href,
-}) => (
-  <a className="flex gap-4" href={href}>
-    {children}
-  </a>
-);
-
 const Divider: React.FC<PropsWithChildren<{ id: string }>> = ({
   id,
   children,
@@ -213,12 +180,13 @@ const Divider: React.FC<PropsWithChildren<{ id: string }>> = ({
   </div>
 );
 
-const Home: NextPage<{ config: Config }> = ({ config }) => {
+const Home: NextPage = () => {
+  const config = useConfig();
+
   return (
-    <Layout config={config}>
+    <Layout>
       <Head
         title={config.site.title}
-        defaultTitle={config.site.defaultTitle}
         description={config.site.description}
         canonical={config.site.url}
         image={config.site.image}
@@ -236,14 +204,6 @@ const Home: NextPage<{ config: Config }> = ({ config }) => {
       <ComponentPreview />
     </Layout>
   );
-};
-
-export const getStaticProps = () => {
-  return {
-    props: {
-      config: getConfig(),
-    },
-  };
 };
 
 export default Home;

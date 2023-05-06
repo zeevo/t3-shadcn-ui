@@ -1,6 +1,5 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import { useSession, signIn, signOut } from "next-auth/react";
-import GhostButton from "./Button";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Separator from "./Separator";
 
 const SignIn = () => {
@@ -38,13 +37,14 @@ const SignIn = () => {
           </div>
         </div>
 
-        <GhostButton
+        <button
+          className="btn-primary btn"
           onClick={() => {
             void signOut();
           }}
         >
           Sign out
-        </GhostButton>
+        </button>
         <pre>
           <code>{JSON.stringify(session, null, 2)}</code>
         </pre>
@@ -54,15 +54,14 @@ const SignIn = () => {
   return (
     <div>
       Not signed in <br />
-      <GhostButton
-        fillWidth
-        variant="contained"
+      <button
+        className="btn-primary btn"
         onClick={() => {
           void signIn();
         }}
       >
         <span className="font-normal">Sign in</span>
-      </GhostButton>
+      </button>
     </div>
   );
 };

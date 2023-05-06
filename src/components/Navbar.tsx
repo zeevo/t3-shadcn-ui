@@ -8,7 +8,9 @@ import IconLabel from "../core/components/IconLabel";
 import IconLink from "../core/components/IconLink";
 import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
-import type { Config, NavbarItem } from "../core/lib/config";
+import type { NavbarItem } from "../core/lib/config";
+import { useConfig } from "~/core/context/config";
+import { useRouter } from "next/router";
 
 export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
   item,
@@ -53,10 +55,10 @@ export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
   return null;
 };
 
-const Navbar: React.FC<{
-  config: Config;
-  page?: string;
-}> = ({ config, page }) => {
+const Navbar: React.FC = () => {
+  const config = useConfig();
+  const { pathname } = useRouter();
+
   return (
     <Tooltip.Provider>
       <nav className="navbar flex bg-transparent p-0">
@@ -78,7 +80,7 @@ const Navbar: React.FC<{
           className={cls("hidden w-full gap-4 sm:flex", config.navbar.justify)}
         >
           {config.navbar.items.map((item, i) => (
-            <NavItem key={i} item={item} page={page} />
+            <NavItem key={i} item={item} page={pathname} />
           ))}
         </div>
       </nav>

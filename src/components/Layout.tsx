@@ -1,15 +1,11 @@
 import type { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
-import type { Config } from "../core/lib/config";
 import Navbar from "./Navbar";
 import SideNav from "./SideNav";
+import { useConfig } from "~/core/context/config";
 
-const Layout: React.FC<
-  PropsWithChildren<{
-    config: Config;
-    page?: string;
-  }>
-> = ({ config, page, children }) => {
+const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+  const config = useConfig();
   return (
     <div className="drawer-mobile drawer">
       <input id="drawer" type="checkbox" className="drawer-toggle" />
@@ -19,7 +15,7 @@ const Layout: React.FC<
             className="sticky top-0 z-30 flex h-16 w-full justify-center bg-transparent bg-opacity-90 
   text-base-content backdrop-blur transition-all duration-100 "
           >
-            <Navbar config={config} page={page} />
+            <Navbar />
           </div>
           <main>{children}</main>
         </div>
