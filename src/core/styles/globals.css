@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply font-0;
+    @apply font-0 text-base;
   }
   code {
     @apply font-mono;
@@ -27,25 +27,10 @@
   @apply max-w-none;
 }
 
-.mtooltip {
-  animation: slide-down 0.07s;
-}
-
 .tooltip:after {
   border-width: 0px;
 }
 
 .tooltip::before {
   @apply mt-1 text-base-content;
-}
-.drawer-toggle ~ .drawer-content {
-  transition-duration: 0ms;
-}
-
-.drawer-toggle ~ .drawer-side > .drawer-overlay + * {
-  transition-duration: 0ms;
-}
-
-.btn {
-  transition-duration: 0ms;
 }

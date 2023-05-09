@@ -17,6 +17,7 @@ const ColorModeToggle: React.FC<ColorModeToggleProps> = ({ tooltip }) => {
         setTheme(nextMode);
       }}
       tooltip={tooltip ? "Theme" : undefined}
+      className="opacity-70 hover:opacity-100"
       aria-label="color mode toggle"
     >
       <SunMoon />

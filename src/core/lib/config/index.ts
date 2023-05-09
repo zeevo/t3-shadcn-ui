@@ -1,8 +1,8 @@
 export interface NavbarIconItem {
   href: string;
   icon: "Home" | "Github" | "User" | "Twitter";
-  value: string;
-  type: "text" | "icon";
+  tooltip: string;
+  type: "icon";
 }
 
 export interface NavbarThemeToggleItem {
@@ -13,7 +13,6 @@ export interface NavbarThemeToggleItem {
 export interface NavbarTextItem {
   href: string;
   value: string;
-  icon: "Home";
   type: "text";
 }
 

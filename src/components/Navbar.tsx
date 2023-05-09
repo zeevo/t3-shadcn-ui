@@ -1,59 +1,15 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 import cls from "classnames";
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import Icon from "~/core/components/Icon";
+import IconButton from "~/core/components/IconButton";
+import { useConfig } from "~/core/context/config";
 import ColorModeToggle from "../core/components/ColorModeToggle";
 import IconLabel from "../core/components/IconLabel";
-import IconLink from "../core/components/IconLink";
-import Link from "../core/components/Link";
 import StyledSeparator from "../core/components/Separator";
-import type { NavbarItem } from "../core/lib/config";
-import { useConfig } from "~/core/context/config";
-import { useRouter } from "next/router";
-
-export const NavItem: React.FC<{ item: NavbarItem; page?: string }> = ({
-  item,
-  page,
-}) => {
-  if (item.type === "separator") {
-    return (
-      <StyledSeparator orientation="vertical" className={item.className} />
-    );
-  } else if (item.type === "icon") {
-    const id = item.href;
-    const active = item.href == page;
-    return (
-      <IconLink
-        key={id}
-        active={active}
-        data-tip={item.value}
-        tooltip={item.value}
-        href={item.href}
-        aria-label={`${item.value} button`}
-      >
-        <Icon value={item.icon} />
-      </IconLink>
-    );
-  } else if (item.type === "text") {
-    const active = item.href == page;
-    const id = item.href;
-    return (
-      <IconLink
-        key={id}
-        className="pl-2 pr-2 text-xl font-bold normal-case"
-        active={active}
-        href={item.href}
-      >
-        {item.value}
-      </IconLink>
-    );
-  } else if (item.type == "theme") {
-    return <ColorModeToggle tooltip={item.tooltip} />;
-  }
-
-  return null;
-};
 
 const Navbar: React.FC = () => {
   const config = useConfig();
@@ -76,12 +32,47 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Normal */}
-        <div
-          className={cls("hidden w-full gap-4 sm:flex", config.navbar.justify)}
-        >
-          {config.navbar.items.map((item, i) => (
-            <NavItem key={i} item={item} page={pathname} />
-          ))}
+        <div className="navbar-end hidden w-full gap-4 sm:flex">
+          {config.navbar.items.map((item, i) => {
+            if (item.type === "separator") {
+              return (
+                <div key={i} className="flex min-w-[45px] justify-center">
+                  <StyledSeparator orientation="vertical" />
+                </div>
+              );
+            }
+
+            if (item.type === "theme") {
+              return <ColorModeToggle key="theme" tooltip={item.tooltip} />;
+            }
+
+            const active = item.href === pathname;
+
+            if (item.type === "icon") {
+              return (
+                <IconButton
+                  active={active}
+                  key={`${i}${item.icon}`}
+                  tooltip={item.tooltip}
+                  href={item.href}
+                  aria-label={`${item.tooltip || ""} button`}
+                >
+                  <Icon value={item.icon} />
+                </IconButton>
+              );
+            }
+
+            return (
+              <Link
+                key={`${i}${item.value}`}
+                href={item.href}
+                aria-label={`${item.value || ""} link`}
+                className="text-xl font-bold opacity-70 hover:opacity-100"
+              >
+                {item.value}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </Tooltip.Provider>
