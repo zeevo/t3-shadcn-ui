@@ -1,15 +1,16 @@
+import { Layout } from "@/components/layout";
+import { DashboardTableOfContents } from "@/components/toc";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
+import { api } from "@/utils/api";
+import { ChevronRight } from "lucide-react";
 import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-
-import { Layout } from "@/components/layout";
-import { api } from "@/utils/api";
-import { ChevronRight } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
-            Docs
+            App
           </div>
           <ChevronRight className="h-4 w-4" />
           <div className="font-medium text-foreground">Introduction</div>
@@ -74,6 +75,34 @@ const Home: NextPage = () => {
         >
           Click me
         </Button>
+
+        <Separator className="my-4 md:my-6" />
+        <p className="mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div className="hidden text-sm xl:block">
+        <div className="sticky top-16 -mt-10  overflow-hidden pt-6">
+          {/* Above originally had h-[calc(100vh-3.5rem)]*/}
+          <ScrollArea className="pb-10">
+            <DashboardTableOfContents
+              toc={{
+                items: [
+                  {
+                    title: "test",
+                    url: "url",
+                  },
+                ],
+              }}
+            />
+          </ScrollArea>
+        </div>
       </div>
     </Layout>
   );
