@@ -1,209 +1,106 @@
-import type { NextPage } from "next";
-import type { PropsWithChildren } from "react";
-import { useConfig } from "~/core/context/config";
-import { api } from "~/core/utils/api";
-import AuthShowcase from "../components/AuthShowcase";
-import Layout from "../components/Layout";
-import Code from "../core/components/Code";
-import ComponentPreview from "../core/components/ComponentPreview";
-import Head from "../core/components/Head";
+import { type NextPage } from "next";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 
-const NextAuthShowCase = () => {
-  return <AuthShowcase />;
-};
-
-const TypographyShowcase = () => {
-  return (
-    <div className="prose w-full max-w-4xl flex-grow">
-      <div className="my-20 max-w-3xl">
-        <h1 id="heading-1">
-          <a aria-hidden="true" tabIndex={-1} href="#heading-1">
-            <span className="relative mr-1 -mt-1 inline-block align-middle text-base font-bold opacity-20 hover:opacity-60">
-              #
-            </span>
-          </a>
-          Heading 1
-        </h1>
-        <h2 id="heading-2">
-          <a aria-hidden="true" tabIndex={-1} href="#heading-2">
-            <span className="relative mr-1 -mt-1 inline-block align-middle text-base font-bold opacity-20 hover:opacity-60">
-              #
-            </span>
-          </a>
-          Heading 2
-        </h2>
-        <h3 id="heading-3">
-          <a aria-hidden="true" tabIndex={-1} href="#heading-3">
-            <span className="relative mr-1 -mt-1 inline-block align-middle text-base font-bold opacity-20 hover:opacity-60">
-              #
-            </span>
-          </a>
-          Heading 3
-        </h3>
-        <h4 id="heading-4">
-          <a aria-hidden="true" tabIndex={-1} href="#heading-4">
-            <span className="relative mr-1 -mt-1 inline-block align-middle text-base font-bold opacity-20 hover:opacity-60">
-              #
-            </span>
-          </a>
-          Heading 4
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <blockquote>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitati
-          </p>
-        </blockquote>
-        <pre className="language-html">
-          <code className="language-html">
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;</span>article{" "}
-              </span>
-              <span className="token attr-name">class</span>
-              <span className="token attr-value">
-                <span className="token punctuation attr-equals">=</span>
-                <span className="token punctuation">{'"'}</span>prose
-                <span className="token punctuation">{'"'}</span>
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            {"\n"}
-            {"  "}
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;</span>h1
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            Garlic bread with cheese: What the science tells us
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;/</span>h1
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            {"\n"}
-            {"  "}
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;</span>p
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            For years parents have espoused the health benefits of eating garlic
-            bread with cheese to their children, with the food earning such an
-            iconic status in our culture that kids will often dress up as warm,
-            cheesy loaf for Halloween.
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;/</span>p
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            {"\n"}
-            {"  "}
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;</span>p
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            But a recent study shows that the celebrated appetizer may be linked
-            to a series of rabies cases springing up around the country.
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;/</span>p
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-            {"\n"}
-            {"  "}
-            <span className="token comment">&lt;!-- ... --&gt;</span>
-            {"\n"}
-            <span className="token tag">
-              <span className="token tag">
-                <span className="token punctuation">&lt;/</span>article
-              </span>
-              <span className="token punctuation">&gt;</span>
-            </span>
-          </code>
-        </pre>
-      </div>
-    </div>
-  );
-};
-
-const ColorsShowcase = () => (
-  <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-    <div className="rounded bg-neutral text-center font-bold">Default</div>
-    <div className="bg-primary text-center font-bold">Primary</div>
-    <div className="bg-secondary text-center font-bold">Secondary</div>
-    <div className="bg-accent text-center font-bold">Accent</div>
-    <div className="bg-info text-center font-bold">Info</div>
-    <div className="bg-success text-center font-bold ">Success</div>
-    <div className="bg-warning text-center font-bold">Warning</div>
-    <div className="bg-error text-center font-bold">Error</div>
-  </div>
-);
-
-function TRPCShowcase() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
-  return (
-    <div>
-      {hello.data ? (
-        <Code>{JSON.stringify(hello.data, null, 2)}</Code>
-      ) : (
-        "Loading tRPC query..."
-      )}
-    </div>
-  );
-}
-
-const Divider: React.FC<PropsWithChildren<{ id: string }>> = ({
-  id,
-  children,
-}) => (
-  <div className="divider divider-vertical mt-10" id={id}>
-    <span className="text-2xl">{children}</span>
-  </div>
-);
+import { Layout } from "@/components/layout";
+import { api } from "@/utils/api";
+import { ChevronRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 const Home: NextPage = () => {
-  const config = useConfig();
+  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const { toast } = useToast();
 
   return (
     <Layout>
-      <Head
-        title={config.site.title}
-        description={config.site.description}
-        canonical={config.site.url}
-        image={config.site.image}
-        site={config.site.url}
-      />
-      <Divider id="trpc">TRPC</Divider>
-      <TRPCShowcase />
-      <Divider id="auth">Next Auth</Divider>
-      <NextAuthShowCase />
-      <Divider id="colors">Colors</Divider>
-      <ColorsShowcase />
-      <Divider id="typography">Typography</Divider>
-      <TypographyShowcase />
-      <Divider id="daisyui">DaisyUI</Divider>
-      <ComponentPreview />
+      <Head>
+        <title>Create T3 App</title>
+        <meta name="description" content="Template by zeevo/next-starter" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="mx-auto w-full min-w-0">
+        <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+            Docs
+          </div>
+          <ChevronRight className="h-4 w-4" />
+          <div className="font-medium text-foreground">Introduction</div>
+        </div>
+        <div className="space-y-2">
+          <h2 className="scroll-m-20 text-4xl font-bold tracking-tight">
+            Next Starter
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            This template combines T3 App and shadcn UI
+          </p>
+        </div>
+        <Separator className="my-4 md:my-6" />
+        <h2 className="my-4 scroll-m-20 text-2xl font-bold tracking-tight">
+          Authentication
+        </h2>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>tRPC</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-2xl ">
+                {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+              </p>
+              <AuthShowcase />
+            </div>
+          </CardContent>
+        </Card>
+        <Separator className="my-4 md:my-6" />
+        <h2 className="my-4 scroll-m-20 text-2xl font-bold tracking-tight">
+          Toasts
+        </h2>
+        <Button
+          variant="outline"
+          onClick={() => {
+            toast({
+              title: "Scheduled: Catch up ",
+              description: "Friday, February 10, 2023 at 5:57 PM",
+              action: (
+                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+              ),
+            });
+          }}
+        >
+          Click me
+        </Button>
+      </div>
     </Layout>
   );
 };
 
 export default Home;
+
+const AuthShowcase: React.FC = () => {
+  const { data: sessionData } = useSession();
+
+  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
+    undefined, // no input
+    { enabled: sessionData?.user !== undefined }
+  );
+
+  return (
+    <div className="flex flex-col items-center justify-center gap-4">
+      <p className="text-center text-2xl">
+        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        {secretMessage && <span> - {secretMessage}</span>}
+      </p>
+      <Button
+        variant="outline"
+        onClick={sessionData ? () => void signOut() : () => void signIn()}
+      >
+        {sessionData ? "Sign out" : "Sign in"}
+      </Button>
+    </div>
+  );
+};
