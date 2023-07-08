@@ -1,27 +1,21 @@
-# Create T3 App
+<p align="center">  
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/t3-oss/create-t3-app/99286f37324330ecdf75132fae1f246440a88035/www/public/images/t3-light.svg">
+  <img src="https://raw.githubusercontent.com/t3-oss/create-t3-app/99286f37324330ecdf75132fae1f246440a88035/www/public/images/t3-dark.svg" width="130" height="130" alt="Logo for T3">
+  </picture>
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/shadcn/ui/main/apps/www/public/android-chrome-512x512.png">
+  <img src="https://raw.githubusercontent.com/shadcn/ui/main/apps/www/public/android-chrome-512x512.png" width="130" height="130" alt="Logo for shadcn-ui">
+  </picture>
+</p>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+# t3-shadcn-ui
 
-## What's next? How do I make an app with this?
+Do you like the [T3 Stack?](https://create.t3.gg/) Do you like [shadcn/ui components?](https://ui.shadcn.com/) Then this is the boilerplate for you.
+This project takes the backend of T3 and merges it with the frontend of shadcn/ui.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- [T3](https://github.com/t3-oss/create-t3-app)
+- [shadcn/ui](https://github.com/shadcn/ui)
 
 ## How do I deploy this?
 
