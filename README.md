@@ -17,6 +17,18 @@ This project takes the backend of T3 and merges it with the frontend of shadcn/u
 - [T3](https://github.com/t3-oss/create-t3-app)
 - [shadcn/ui](https://github.com/shadcn/ui)
 
+# Getting started
+
+Clone, install, migrate, and run the project.
+
+```
+git clone git@github.com:zeevo/t3-shadcn-ui.git
+cd t3-shadcn-ui
+npm i
+npm exec prisma migrate dev
+npm run dev
+```
+
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
