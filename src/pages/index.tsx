@@ -21,8 +21,14 @@ const Home: NextPage = () => {
       <div className="flex min-h-screen flex-col">
         <nav className="container flex h-14 items-center justify-end gap-2">
           <ModeToggle />
-          <Button variant="ghost" className="h-9 w-9 fill-current px-0 py-2">
-            <Icons.gitHub className="h-4 w-4" />
+          <Button
+            asChild
+            variant="ghost"
+            className="h-9 w-9 fill-current px-0 py-2"
+          >
+            <a href="https://github.com/zeevo/t3-shadcn-ui">
+              <Icons.gitHub className="h-4 w-4" />
+            </a>
           </Button>
         </nav>
 
