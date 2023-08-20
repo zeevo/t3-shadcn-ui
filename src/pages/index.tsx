@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 
+import { Icons } from "@/components/icons";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -18,8 +19,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex min-h-screen flex-col">
-        <nav className="container flex h-14 items-center justify-end">
+        <nav className="container flex h-14 items-center justify-end gap-2">
           <ModeToggle />
+          <Button variant="ghost" className="h-9 w-9 fill-current px-0 py-2">
+            <Icons.gitHub className="h-4 w-4" />
+          </Button>
         </nav>
 
         <main className="flex flex-1 flex-col items-center">
