@@ -22,7 +22,7 @@ This project takes the backend of T3 and combines it with the frontend of shadcn
 Clone, install, migrate, and run the project.
 
 ```
-git clone git@github.com:zeevo/t3-shadcn-ui.git
+git clone https://github.com/zeevo/t3-shadcn-ui.git
 cd t3-shadcn-ui
 npm i
 npm exec prisma migrate dev
