@@ -31,6 +31,7 @@ npm run dev
 
 # Opinionated Changes We Have Made
 
+- DrizzleORM over Prisma
 - Postgres over Planetscale/MySQL
 - Added `next-themes`
 - "New York" style shadcn/ui
