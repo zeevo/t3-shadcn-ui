@@ -4,10 +4,12 @@ import {
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
+import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 
 import { env } from "@/env";
 import { db } from "@/server/db";
+import { createTable } from "@/server/db/schema";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -45,7 +47,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db, createTable) as Adapter,
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
