@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "db:generate": "dotenv drizzle-kit generate:pg",
     "db:push": "drizzle-kit push:pg",
     "db:studio": "dotenv drizzle-kit studio",
     "dev": "next dev",
