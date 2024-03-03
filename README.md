@@ -24,8 +24,7 @@ Clone, install, migrate, and run the project.
 ```
 git clone https://github.com/zeevo/t3-shadcn-ui.git
 cd t3-shadcn-ui
-npm i
-npm exec prisma migrate dev
+npm run db:push
 npm run dev
 ```
 
