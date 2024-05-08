@@ -11,7 +11,7 @@
 
     /* Strictness */
     "strict": true,
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": false,
     "checkJs": true,
 
     /* Bundled projects */
