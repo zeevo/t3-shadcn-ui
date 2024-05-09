@@ -47,6 +47,7 @@ const config = {
         drizzleObjectName: ["db"],
       },
     ],
+    "@typescript-eslint/no-empty-interface": "off",
   },
 };
 module.exports = config;
