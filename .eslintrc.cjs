@@ -47,7 +47,7 @@ const config = {
         drizzleObjectName: ["db"],
       },
     ],
-    "@typescript-eslint/no-empty-interface": "off",
   },
+  ignorePatterns: ["src/app/_components/ui/*"],
 };
 module.exports = config;
