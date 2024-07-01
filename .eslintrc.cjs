@@ -38,16 +38,17 @@ const config = {
     "drizzle/enforce-delete-with-where": [
       "error",
       {
-        drizzleObjectName: ["db"],
+        drizzleObjectName: ["db", "ctx.db"],
       },
     ],
     "drizzle/enforce-update-with-where": [
       "error",
       {
-        drizzleObjectName: ["db"],
+        drizzleObjectName: ["db", "ctx.db"],
       },
     ],
   },
-  ignorePatterns: ["src/app/_components/ui/*"],
+  // Ignore shadcn-ui components as they use different conventions
+  ignorePatterns: ["src/app/_components/ui"],
 };
 module.exports = config;
