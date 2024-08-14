@@ -11,7 +11,7 @@
 
 # t3-shadcn-ui
 
-Do you like the [T3 Stack?](https://create.t3.gg/) Do you like [shadcn/ui components?](https://ui.shadcn.com/) Then this is the project starter for you.
+Do you like the [T3 Stack](https://create.t3.gg/)? Do you like [shadcn/ui components](https://ui.shadcn.com/)? Then this is the project starter for you.
 This project takes the backend of T3 and combines it with the frontend of shadcn/ui.
 
 - [T3](https://github.com/t3-oss/create-t3-app)
